@@ -1,4 +1,4 @@
-import Foundation
+ import Foundation
 import Alamofire
 import ObjectMapper
 import PromiseKit
@@ -19,6 +19,7 @@ public class AccountsApiClient {
         self.credentials = credentials
     }
     
+    // MARK: - Paysera wallet information API
     public func getIbanInformation(iban: String) -> Promise<PSIbanInformation> {
         let request = createRequest(.getIbanInformation(iban: iban))
         makeRequest(apiRequest: request)
@@ -31,6 +32,45 @@ public class AccountsApiClient {
     
     public func getBalance(accountNumber: String) -> Promise<PSBalanceInformation> {
         let request = createRequest(.getBalance(accountNumber: accountNumber))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+    
+    
+    // MARK: - Payment cards API
+    public func createCard(_ card: PSCard) -> Promise<PSCard> {
+        
+        let request = createRequest(.createCard(card))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+    
+    public func activateCard(_ id: Int) -> Promise<PSCard> {
+        
+        let request = createRequest(.activateCard(id: id))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+
+    /// Get cards endpoint
+    ///
+    /// - Parameter cardsFilter: PSGetCardsFilter object, to fill request parameters. One of account_numbers, card_owner_id or account_owner_id must be filled
+    /// - Returns: array of PSCard
+    public func getCards(cardsFilter: PSGetCardsFilter) -> Promise<PSMetadataAwareResponse<PSCard>> {
+        
+        let request = createRequest(.getCards(cardsFilter: cardsFilter))
         makeRequest(apiRequest: request)
         
         return request
