@@ -67,7 +67,7 @@ public class AccountsApiClient {
     /// Get cards endpoint
     ///
     /// - Parameter cardsFilter: PSGetCardsFilter object, to fill request parameters. One of account_numbers, card_owner_id or account_owner_id must be filled
-    /// - Returns: array of PSCard
+    /// - Returns: object PSMetadataAwareResponse with items array of PSCard
     public func getCards(cardsFilter: PSGetCardsFilter) -> Promise<PSMetadataAwareResponse<PSCard>> {
         
         let request = createRequest(.getCards(cardsFilter: cardsFilter))

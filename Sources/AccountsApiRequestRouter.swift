@@ -83,7 +83,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
             
         case (_) where method == .put:
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
+            urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
             
         default:
             urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
