@@ -2,20 +2,23 @@ import Foundation
 import Alamofire
 
 public enum AccountsApiRequestRouter: URLRequestConvertible {
-    static var baseURLString = "https://accounts.paysera.com/public"
     
-    // GET
+    // MARK: - GET
     case getIbanInformation(iban: String)
     case getBalance(accountNumber: String)
-    case getCards(cardsFilter: PSGetPaymentCardsFilter)
+    case getPaymentCards(cardsFilter: PSGetPaymentCardsFilter)
     
-    // POST
-    case createCard(PSRequestPaymentCard)
+    // MARK: - POST
+    case createCard(PSCreatePaymentCard)
     
-    // PUT
+    // MARK: - PUT
     case activateCard(id: Int)
     
-    var method: HTTPMethod {
+    
+    // MARK: - Declarations
+    static var baseURLString = "https://accounts.paysera.com/public"
+    
+    private var method: HTTPMethod {
         switch self {
         case .getIbanInformation( _):
             return .get
@@ -23,7 +26,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .getBalance( _):
             return .get
         
-        case .getCards( _):
+        case .getPaymentCards( _):
             return .get
             
         case .createCard( _):
@@ -34,7 +37,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         }
     }
     
-    var path: String {
+    private var path: String {
         switch self {
             
         case .getIbanInformation(let iban):
@@ -43,7 +46,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .getBalance(let accountNumber):
             return "/account/rest/v1/accounts/\(accountNumber)/full-balance"
             
-        case .getCards( _):
+        case .getPaymentCards( _):
             return "/payment-card/v1/cards"
             
         case .createCard( _):
@@ -54,10 +57,10 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         }
     }
     
-    var parameters: Parameters? {
+    private var parameters: Parameters? {
         switch self {
  
-        case .getCards(let cardsFilter):
+        case .getPaymentCards(let cardsFilter):
             return cardsFilter.toJSON()
             
         case .createCard(let psCard):
@@ -68,6 +71,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         }
     }
     
+    // MARK: - Method
     public func asURLRequest() throws -> URLRequest {
         let url = try! AccountsApiRequestRouter.baseURLString.asURL()
         

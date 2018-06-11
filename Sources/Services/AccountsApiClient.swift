@@ -45,9 +45,9 @@ public class AccountsApiClient {
     
     /// Create a new payment card
     ///
-    /// - Parameter card: PSRequestPaymentCard entity should be filled.
+    /// - Parameter card: PSCreatePaymentCard entity should be filled.
     /// - Returns: PSPaymentCard
-    public func createCard(_ card: PSRequestPaymentCard) -> Promise<PSPaymentCard> {
+    public func createPaymentCard(_ card: PSCreatePaymentCard) -> Promise<PSPaymentCard> {
         
         let request = createRequest(.createCard(card))
         makeRequest(apiRequest: request)
@@ -77,9 +77,9 @@ public class AccountsApiClient {
     ///
     /// - Parameter cardsFilter: PSGetPaymentCardsFilter entity should be filled.
     /// - Returns: object PSMetadataAwareResponse with items array of PSCard
-    public func getCards(cardsFilter: PSGetPaymentCardsFilter) -> Promise<PSMetadataAwareResponse<PSPaymentCard>> {
+    public func getPaymentCards(cardsFilter: PSGetPaymentCardsFilter) -> Promise<PSMetadataAwareResponse<PSPaymentCard>> {
         
-        let request = createRequest(.getCards(cardsFilter: cardsFilter))
+        let request = createRequest(.getPaymentCards(cardsFilter: cardsFilter))
         makeRequest(apiRequest: request)
         
         return request

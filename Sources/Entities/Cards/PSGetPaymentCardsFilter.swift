@@ -36,7 +36,7 @@ public class PSGetPaymentCardsFilter: Mappable {
         accountNumbers  <- map["account_numbers"]
         statuses        <- map["statuses"]
         cardOwnerId     <- map["card_owner_id"]
-        accountOwnerId  <- map["account_owner_d"]
+        accountOwnerId  <- map["account_owner_id"]
     }
     
 }

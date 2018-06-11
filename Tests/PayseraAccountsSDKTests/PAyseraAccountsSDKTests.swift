@@ -15,7 +15,7 @@ class AccountsSDKTests: XCTestCase {
     
     func createAccountsApiClient() -> AccountsApiClient {
         let credentials = AccountsApiCredentials()
-        let token = "eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJldnBiYW5rIiwiaXNzIjoibW9rZWppbWFpIiwicHNyOnMiOlsicGIiLCJhOkVWUDE2MTAwMDE4NDU3NDQ6bSJdLCJwc3I6dSI6NDUxNzQ1LCJleHAiOjE1MjcyNDEwMzIsImlhdCI6MTUyNzIzNzQzMn0.4VAvxiZR2EeMkSBDzTGGY-slhkbLFT56fKMCffdh5YpYondmHcvZZGYwPNjzfLjbTYJTpxhT_gosLuOjROV3GAoqAyEaHPdKWa_1WkYlYOxkttCyh5uVySIAzGzaizzP-z05mvNlhGY2mnKvRmTUNSpglt2ildJvLW4F3GqCHqRg0rnZAnzjwKxid6uAxwCHUgI12bO0QEtvj40Sc8lnuS0bZBTz7RqP7hESNKm34WqJjGhxZ5Euvzx4sXHBn9SUtGcpg6RA7MfXv5tRr3aJcj4PMPK84VillwYlJB_N0CBRwwZDb-TLx1GdEo9p7j1Ibcv8b1idGVu44ucNe5PPH-2wcrpBogk_hvGWXRAM32-HL-p7s9IOaR9eI7tGmPxnv62twgeryau0-emP6uQfeEJxcI_aFKxvQkLTK-AoH8e6-iXJVfGR1NbyMoOTH66qt1cmoiU0czXq3SErDVy9yqe_hsON5cbEWyBucWD_ZPajxZ_1rWyDQS_wSuvlOTqNErsAjGwiloONz-El6cB9c_UBrLE_WUBxyaIXr5lfSu1PlvWJigXdLvVkc_PG8mNbr6XhCmJWo1oJzIzWQwf8WuQcAW0yO9klYiK018-9JmqXX5S2k8BKop60bbbHuJctNm1liQQi5JeNnZKwTpNOdk5-5JeLATktFLqJBGrMWLE"
+        let token = "eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJldnBiYW5rIiwiaXNzIjoibW9rZWppbWFpIiwicHNyOnMiOlsicGIiLCJhOkVWUDI4MTAwMDEyNDg2Mzc6bSIsImE6RVZQMTYxMDAwMTg0NTc0NDptIiwiYTpFVlA4NjEwMDAxNjcwMjM5Om0iLCJhOkVWUDkwMTAwMDE2NTAxMzY6bSJdLCJwc3I6dSI6NDUxNzQ1LCJleHAiOjE1Mjg3MjIxOTQsImlhdCI6MTUyODcxODU5NH0.PnZxhVGDjKnjRTzqsMR_bolN7Vx3-j9b0zqC7eXT_Uo3T3zFEGWvbFtA2FaJC4FJjkmYFXlYqysTbxKLvA79uE_af2hUGbqD0kkEZ4lrWkaHM0aNfplUyg8jkuYFLO05soSfwBCkP5GSSEHnSybNHoOyKzjyedGBHRWRVTKnXkV7Q7NPwG-AP_CKbt0XxUjdwD_QiQCgF_bodhRhPPuNaw0cBAJjqs_myccWn0GL43FqvEK9SLAAwrPoOUAiep7HKcxmDXPo_LNrWQd32Ae-Pxh8MTyeoIuNl2wBk3RMmiv6AYEgTXGXxq8V2mWDW70UXcfRkVbqeaDTubcqkrocW1bxI9Y9vEJy64ICpL0Qx5vM-M5PVY77g95eCvEPFNLMMT-F0Odn3Cp3yadQLpPqowzV2DdcmxB-i548DB6en2l3T7db_iR3KSSx0ccHi_vvOaSve1KFObOncAIFmWxDL0-aRHdViaChsj5Kj01LSyNgo-7oi3zyhq9FyjrPuSMukgZvffFl70koU7UZjW2r9WcXdPyApvGbFS3DnMJUK0SxbCvxL6JPzUg9S0KI_r4ZzPw2kiMwOJyUiwN3CPQAnTSThemVVftlzIGzvmvo02amC5vPykzfbqRcWsn1-37845G6Tp3obyDDXBepcp85nyGv8CNRQKGwlMYyaqZDxxk"
         
         credentials.token = try! decode(jwt: token)
         
@@ -44,55 +44,50 @@ class AccountsSDKTests: XCTestCase {
     
     func testCreatePaymentCard() {
         
-        var cardsFilter = NSO
-        var expectedCards: [PSPaymentCard]?
-        
-//        cardsFilter.limit = 25
-//        cardsFilter.offset = 0
-//        cardsFilter.orderBy = "createdAt"
-//        cardsFilter.accountNumbers = ["EVP1610001845744"]
-//        cardsFilter.orderDirection = "asc"
-//        cardsFilter.statuses = ["ordered"]
- //       cardsFilter.cardOwnerId = "451745"
-//        cardsFilter.accountOwnerId = "451745"
-        
+        var expectedCard: PSPaymentCard?
+    
+        let createPaymentCard = PSCreatePaymentCard(cardOwnerId: 1001,
+                                                    shippingAddress: PSPaymentCardShippingAddress.init(postalCode: "9999999999", address: "test", city: "Kaunas", country: "Lithuania"),
+                                                    accountOwnerId: 1001,
+                                                    chargeInfo: PSChargeInfo.init(accountNumber: "EVP1610001845744"),
+                                                    deliveryType: "registered_post")
+
         let expectation = XCTestExpectation(description: "cards should be not nil")
-        
-        accountsApiClient.getCards(cardsFilter: cardsFilter)
-        accountsApiClient.getCards(cardsFilter: cardsFilter).done { getCardsResponse in
+
+        accountsApiClient.createPaymentCard(createPaymentCard).done { createCardResponse in
 
             print("\n")
-            print(getCardsResponse.toJSON())
-            expectedCards = getCardsResponse.items
+            print(createCardResponse.toJSON())
+            expectedCard = createCardResponse
             expectation.fulfill()
             }.catch { error in
                 print("\n")
-                print(error)
+                print((error as! PSAccountApiError).error)
+                print((error as! PSAccountApiError).description)
                 expectation.fulfill()
         }
-        
+
         wait(for: [expectation], timeout: 15.0)
-        XCTAssertNotNil(expectedCards)
+        XCTAssertNotNil(expectedCard)
     }
     
     func testGetCards() {
         
-        var cardsFilter = PSGetCardsFilter()
-        var expectedCards: [PSCard]?
+        var cardsFilter = PSGetPaymentCardsFilter()
+        var expectedCards: [PSPaymentCard]?
         
-        //        cardsFilter.limit = 25
-        //        cardsFilter.offset = 0
-        //        cardsFilter.orderBy = "createdAt"
-        //        cardsFilter.accountNumbers = ["EVP1610001845744"]
-        //        cardsFilter.orderDirection = "asc"
-        //        cardsFilter.statuses = ["ordered"]
-        //       cardsFilter.cardOwnerId = "451745"
-        //        cardsFilter.accountOwnerId = "451745"
+        //  cardsFilter.limit = 25
+        //  cardsFilter.offset = 0
+        //  cardsFilter.orderBy = "createdAt"
+        //  cardsFilter.accountNumbers = ["EVP1610001845744"]
+        //  cardsFilter.orderDirection = "asc"
+        //  cardsFilter.statuses = ["ordered"]
+        //  cardsFilter.cardOwnerId = "451745"
+        cardsFilter.accountOwnerId = "451745"
         
         let expectation = XCTestExpectation(description: "cards should be not nil")
         
-        accountsApiClient.getCards(cardsFilter: cardsFilter)
-        accountsApiClient.getCards(cardsFilter: cardsFilter).done { getCardsResponse in
+        accountsApiClient.getPaymentCards(cardsFilter: cardsFilter).done { getCardsResponse in
             
             print("\n")
             print(getCardsResponse.toJSON())
@@ -100,7 +95,8 @@ class AccountsSDKTests: XCTestCase {
             expectation.fulfill()
             }.catch { error in
                 print("\n")
-                print(error)
+                print((error as! PSAccountApiError).error)
+                print((error as! PSAccountApiError).description)
                 expectation.fulfill()
         }
         

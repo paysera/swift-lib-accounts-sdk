@@ -17,4 +17,8 @@ public class PSChargeInfo: Mappable {
             return nil
         }
     }
+    
+    public init(accountNumber: String) {
+        self.accountNumber = accountNumber
+    }
 }
