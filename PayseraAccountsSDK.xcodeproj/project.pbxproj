@@ -137,13 +137,13 @@
 		1CB5AC6B20B405B7006CDDE3 /* Cards */ = {
 			isa = PBXGroup;
 			children = (
-				1CB5AC6C20B4090E006CDDE3 /* PSPaymentCard.swift */,
+				1CB5AC7620B43F57006CDDE3 /* PSChargeInfo.swift */,
+				1C8E982020CE518B000770BB /* PSCreatePaymentCard.swift */,
+				1C50616120B7F37E00F4CBE7 /* PSGetPaymentCardsFilter.swift */,
 				1CB5AC7020B43635006CDDE3 /* PSPayemntCardAccount.swift */,
+				1CB5AC6C20B4090E006CDDE3 /* PSPaymentCard.swift */,
 				1CB5AC7420B43CCC006CDDE3 /* PSPaymentCardClient.swift */,
 				1CB5AC6E20B43186006CDDE3 /* PSPaymentCardShippingAddress.swift */,
-				1CB5AC7620B43F57006CDDE3 /* PSChargeInfo.swift */,
-				1C50616120B7F37E00F4CBE7 /* PSGetPaymentCardsFilter.swift */,
-				1C8E982020CE518B000770BB /* PSCreatePaymentCard.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -194,14 +194,14 @@
 			isa = PBXGroup;
 			children = (
 				1CB5AC6B20B405B7006CDDE3 /* Cards */,
-				1C50615D20B7EA8900F4CBE7 /* PSMetadataAwareResponse.swift */,
 				88B25A45206A23EB00BE81C5 /* AccountsApiCredentials.swift */,
 				88B25A4E206A302800BE81C5 /* AccountsApiRequest.swift */,
 				880FCB9B206CEB0400350F98 /* PSAccountApiError.swift */,
 				880FCB95206CC6F900350F98 /* PSBalanceInformation.swift */,
 				88B25A58206A4C6A00BE81C5 /* PSIbanInformation.swift */,
-				880FCB9D206CF18500350F98 /* PSMoney.swift */,
 				1C50615F20B7EB9500F4CBE7 /* PSMetaData.swift */,
+				1C50615D20B7EA8900F4CBE7 /* PSMetadataAwareResponse.swift */,
+				880FCB9D206CF18500350F98 /* PSMoney.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
