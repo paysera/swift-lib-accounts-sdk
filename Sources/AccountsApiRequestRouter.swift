@@ -7,10 +7,10 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     // GET
     case getIbanInformation(iban: String)
     case getBalance(accountNumber: String)
-    case getCards(cardsFilter: PSGetCardsFilter)
+    case getCards(cardsFilter: PSGetPaymentCardsFilter)
     
     // POST
-    case createCard(PSCard)
+    case createCard(PSRequestPaymentCard)
     
     // PUT
     case activateCard(id: Int)

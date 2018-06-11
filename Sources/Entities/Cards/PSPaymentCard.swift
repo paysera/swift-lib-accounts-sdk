@@ -1,16 +1,17 @@
 import ObjectMapper
 
-public class PSCard: Mappable {
+/// The entity class describing payment card
+public class PSPaymentCard: Mappable {
     
-    public var id: Int = 0
-    public var cardOwnerId: Int = 0
+    public var id: Int
+    public var cardOwnerId: Int
     public var accountOwnerId: Int?
     public var nameOnCard: String?
     public var maskedNumber: String?
     public var accountNumber: String?
     
     public var chargeInfo: PSChargeInfo?
-    public var shippingAddress: PSCardShippingAddress?
+    public var shippingAddress: PSPaymentCardShippingAddress?
     
     public var status: String?
     public var expirationDate: String?
@@ -21,7 +22,7 @@ public class PSCard: Mappable {
     public var main: Bool?
     public var deliveryType: String?
     public var deliveryPrice: PSMoney?
-    public var account: PSCardAccount?
+    public var account: PSPayemntCardAccount?
     
     public func mapping(map: Map) {
         id              <- map["id"]
@@ -34,8 +35,8 @@ public class PSCard: Mappable {
         shippingAddress <- map["shipping_address"]
         status          <- map["status"]
         expirationDate  <- map["expiration_date"]
-        orderDate       <- map["order_date"]
-        shippingDate    <- map["shipping_date"]
+        orderDate       <- (map["order_date"], DateTransform())
+        shippingDate    <- (map["shipping_date"], DateTransform())
         main            <- map["main"]
         deliveryType    <- map["delivery_type"]
         deliveryPrice   <- map["delivery_price_amount"]
@@ -50,24 +51,5 @@ public class PSCard: Mappable {
             print(error)
             return nil
         }
-    }
-    
-    public init() {
-    }
-    
-    /// init PSCard with required fields to be able to post request for new card ordering
-    ///
-    /// - Parameters:
-    ///   - chargeInfo: charge order
-    ///   - cardOwnerId: user id which owns a card
-    ///   - shippingAddress: shipping address
-    ///   - deliveryType: regular, registered_post, dhl
-    ///   - accountOwnerId: user id which owns a account but not necessarily a card
-    public init(chargeInfo: PSChargeInfo, cardOwnerId: Int, shippingAddress: PSCardShippingAddress, deliveryType: String, accountOwnerId:  Int) {
-        self.chargeInfo = chargeInfo
-        self.cardOwnerId = cardOwnerId
-        self.accountOwnerId = accountOwnerId
-        self.shippingAddress = shippingAddress
-        self.deliveryType = deliveryType
     }
 }

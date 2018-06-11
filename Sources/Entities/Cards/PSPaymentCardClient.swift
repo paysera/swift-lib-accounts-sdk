@@ -1,7 +1,8 @@
 
 import ObjectMapper
 
-public class PSCardClient: Mappable {
+/// The entity class describing payment card user/client
+public class PSPaymentCardClient: Mappable {
     
     public var id: Int
     public var userId: Int

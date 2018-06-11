@@ -1,6 +1,7 @@
 import ObjectMapper
 
-public class PSCardAccount: Mappable {
+/// The entity class describing payment card info
+public class PSPayemntCardAccount: Mappable {
     
     public var number: String
     public var clientId: Int
@@ -9,7 +10,7 @@ public class PSCardAccount: Mappable {
     public var active: Bool
     public var closed: Bool
     public var type: String
-    public var client: PSCardClient?
+    public var client: PSPaymentCardClient?
     public var ibanList: [String]?
     
     public func mapping(map: Map) {

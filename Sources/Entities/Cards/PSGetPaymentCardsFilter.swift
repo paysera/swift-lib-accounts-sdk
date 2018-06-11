@@ -1,6 +1,7 @@
 import ObjectMapper
 
-public class PSGetCardsFilter: Mappable {
+/// The entity class to get payment cards
+public class PSGetPaymentCardsFilter: Mappable {
     
     public var limit: Int?
     public var offset: Int?
@@ -15,7 +16,16 @@ public class PSGetCardsFilter: Mappable {
         
     }
     
-    public init() {
+    /// init PSGetPaymentCardsFilter. One of account_numbers, card_owner_id or account_owner_id must be filled
+    ///
+    /// - Parameters:
+    ///   - accountNumbers: array of user payment cards numbers
+    ///   - cardOwnerId: optional
+    ///   - accountOwnerId: optional
+    public init(accountNumbers: [String]? = nil, cardOwnerId: String? = nil, accountOwnerId: String? = nil) {
+        self.accountNumbers = accountNumbers
+        self.cardOwnerId = cardOwnerId
+        self.accountOwnerId = accountOwnerId
     }
     
     public func mapping(map: Map) {

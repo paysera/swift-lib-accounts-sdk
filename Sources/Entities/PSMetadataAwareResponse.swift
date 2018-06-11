@@ -8,7 +8,7 @@ public class PSMetadataAwareResponse<T: Mappable>: Mappable  {
     private var itemsResponseKey: String {
         
         switch T.self {
-        case ( _) where T.self == PSCard.self:
+        case ( _) where T.self == PSPaymentCard.self:
             return "cards"
 
         default:

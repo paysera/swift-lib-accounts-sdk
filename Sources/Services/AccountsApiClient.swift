@@ -42,7 +42,12 @@ public class AccountsApiClient {
     
     
     // MARK: - Payment cards API
-    public func createCard(_ card: PSCard) -> Promise<PSCard> {
+    
+    /// Create a new payment card
+    ///
+    /// - Parameter card: PSRequestPaymentCard entity should be filled.
+    /// - Returns: PSPaymentCard
+    public func createCard(_ card: PSRequestPaymentCard) -> Promise<PSPaymentCard> {
         
         let request = createRequest(.createCard(card))
         makeRequest(apiRequest: request)
@@ -53,7 +58,11 @@ public class AccountsApiClient {
             .then(createPromise)
     }
     
-    public func activateCard(_ id: Int) -> Promise<PSCard> {
+    /// Activate payment card
+    ///
+    /// - Parameter id: requested card id
+    /// - Returns: PSPaymentCard
+    public func activateCard(_ id: Int) -> Promise<PSPaymentCard> {
         
         let request = createRequest(.activateCard(id: id))
         makeRequest(apiRequest: request)
@@ -66,9 +75,9 @@ public class AccountsApiClient {
 
     /// Get cards endpoint
     ///
-    /// - Parameter cardsFilter: PSGetCardsFilter object, to fill request parameters. One of account_numbers, card_owner_id or account_owner_id must be filled
+    /// - Parameter cardsFilter: PSGetPaymentCardsFilter entity should be filled.
     /// - Returns: object PSMetadataAwareResponse with items array of PSCard
-    public func getCards(cardsFilter: PSGetCardsFilter) -> Promise<PSMetadataAwareResponse<PSCard>> {
+    public func getCards(cardsFilter: PSGetPaymentCardsFilter) -> Promise<PSMetadataAwareResponse<PSPaymentCard>> {
         
         let request = createRequest(.getCards(cardsFilter: cardsFilter))
         makeRequest(apiRequest: request)
@@ -78,6 +87,9 @@ public class AccountsApiClient {
             .promise
             .then(createPromise)
     }
+    
+    
+    // MARK: - Private request methods
     
     private func makeRequest(apiRequest: AccountsApiRequest) {
         let lockQueue = DispatchQueue(label: String(describing: tokenRefresher), attributes: [])

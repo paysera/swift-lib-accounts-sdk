@@ -1,6 +1,7 @@
 import ObjectMapper
 
-public class PSCardShippingAddress: Mappable {
+/// The payment card shipping address entity class
+public class PSPaymentCardShippingAddress: Mappable {
 
     public var postalCode: String
     public var address: String

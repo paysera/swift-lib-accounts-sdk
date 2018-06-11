@@ -42,10 +42,10 @@ class AccountsSDKTests: XCTestCase {
         XCTAssertNotNil(ibanInformation)
     }
     
-    func testGetCards() {
+    func testCreatePaymentCard() {
         
-        var cardsFilter = PSGetCardsFilter()
-        var expectedCards: [PSCard]?
+        var cardsFilter = NSO
+        var expectedCards: [PSPaymentCard]?
         
 //        cardsFilter.limit = 25
 //        cardsFilter.offset = 0
@@ -61,6 +61,39 @@ class AccountsSDKTests: XCTestCase {
         accountsApiClient.getCards(cardsFilter: cardsFilter)
         accountsApiClient.getCards(cardsFilter: cardsFilter).done { getCardsResponse in
 
+            print("\n")
+            print(getCardsResponse.toJSON())
+            expectedCards = getCardsResponse.items
+            expectation.fulfill()
+            }.catch { error in
+                print("\n")
+                print(error)
+                expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 15.0)
+        XCTAssertNotNil(expectedCards)
+    }
+    
+    func testGetCards() {
+        
+        var cardsFilter = PSGetCardsFilter()
+        var expectedCards: [PSCard]?
+        
+        //        cardsFilter.limit = 25
+        //        cardsFilter.offset = 0
+        //        cardsFilter.orderBy = "createdAt"
+        //        cardsFilter.accountNumbers = ["EVP1610001845744"]
+        //        cardsFilter.orderDirection = "asc"
+        //        cardsFilter.statuses = ["ordered"]
+        //       cardsFilter.cardOwnerId = "451745"
+        //        cardsFilter.accountOwnerId = "451745"
+        
+        let expectation = XCTestExpectation(description: "cards should be not nil")
+        
+        accountsApiClient.getCards(cardsFilter: cardsFilter)
+        accountsApiClient.getCards(cardsFilter: cardsFilter).done { getCardsResponse in
+            
             print("\n")
             print(getCardsResponse.toJSON())
             expectedCards = getCardsResponse.items

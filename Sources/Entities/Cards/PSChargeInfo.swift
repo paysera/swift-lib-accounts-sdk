@@ -1,6 +1,6 @@
 import ObjectMapper
 
-
+/// The entity class specifying from which account charge a commissions
 public class PSChargeInfo: Mappable {
     public var accountNumber: String
     

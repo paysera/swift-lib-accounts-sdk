@@ -22,11 +22,12 @@
 /* Begin PBXBuildFile section */
 		1C50615E20B7EA8900F4CBE7 /* PSMetadataAwareResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C50615D20B7EA8900F4CBE7 /* PSMetadataAwareResponse.swift */; };
 		1C50616020B7EB9500F4CBE7 /* PSMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C50615F20B7EB9500F4CBE7 /* PSMetaData.swift */; };
-		1C50616220B7F37E00F4CBE7 /* PSGetCardsFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C50616120B7F37E00F4CBE7 /* PSGetCardsFilter.swift */; };
-		1CB5AC6D20B4090E006CDDE3 /* PSCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB5AC6C20B4090E006CDDE3 /* PSCard.swift */; };
-		1CB5AC6F20B43186006CDDE3 /* PSCardShippingAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB5AC6E20B43186006CDDE3 /* PSCardShippingAddress.swift */; };
-		1CB5AC7120B43635006CDDE3 /* PSCardAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB5AC7020B43635006CDDE3 /* PSCardAccount.swift */; };
-		1CB5AC7520B43CCC006CDDE3 /* PSCardClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB5AC7420B43CCC006CDDE3 /* PSCardClient.swift */; };
+		1C50616220B7F37E00F4CBE7 /* PSGetPaymentCardsFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C50616120B7F37E00F4CBE7 /* PSGetPaymentCardsFilter.swift */; };
+		1C8E982120CE518B000770BB /* PSRequestPaymentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8E982020CE518B000770BB /* PSRequestPaymentCard.swift */; };
+		1CB5AC6D20B4090E006CDDE3 /* PSPaymentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB5AC6C20B4090E006CDDE3 /* PSPaymentCard.swift */; };
+		1CB5AC6F20B43186006CDDE3 /* PSPaymentCardShippingAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB5AC6E20B43186006CDDE3 /* PSPaymentCardShippingAddress.swift */; };
+		1CB5AC7120B43635006CDDE3 /* PSPayemntCardAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB5AC7020B43635006CDDE3 /* PSPayemntCardAccount.swift */; };
+		1CB5AC7520B43CCC006CDDE3 /* PSPaymentCardClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB5AC7420B43CCC006CDDE3 /* PSPaymentCardClient.swift */; };
 		1CB5AC7720B43F57006CDDE3 /* PSChargeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB5AC7620B43F57006CDDE3 /* PSChargeInfo.swift */; };
 		52D6D9871BEFF229002C0205 /* PayseraAccountsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* PayseraAccountsSDK.framework */; };
 		880FCB92206CB29700350F98 /* PayseraAccountsSDK.plist in Resources */ = {isa = PBXBuildFile; fileRef = 880FCB91206CB29700350F98 /* PayseraAccountsSDK.plist */; };
@@ -78,11 +79,12 @@
 		1C1B4D94206E5BD500FEE074 /* PayseraAccountsSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PayseraAccountsSDK.framework; sourceTree = SOURCE_ROOT; };
 		1C50615D20B7EA8900F4CBE7 /* PSMetadataAwareResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSMetadataAwareResponse.swift; sourceTree = "<group>"; };
 		1C50615F20B7EB9500F4CBE7 /* PSMetaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSMetaData.swift; sourceTree = "<group>"; };
-		1C50616120B7F37E00F4CBE7 /* PSGetCardsFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSGetCardsFilter.swift; sourceTree = "<group>"; };
-		1CB5AC6C20B4090E006CDDE3 /* PSCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSCard.swift; sourceTree = "<group>"; };
-		1CB5AC6E20B43186006CDDE3 /* PSCardShippingAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSCardShippingAddress.swift; sourceTree = "<group>"; };
-		1CB5AC7020B43635006CDDE3 /* PSCardAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSCardAccount.swift; sourceTree = "<group>"; };
-		1CB5AC7420B43CCC006CDDE3 /* PSCardClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSCardClient.swift; sourceTree = "<group>"; };
+		1C50616120B7F37E00F4CBE7 /* PSGetPaymentCardsFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSGetPaymentCardsFilter.swift; sourceTree = "<group>"; };
+		1C8E982020CE518B000770BB /* PSRequestPaymentCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSRequestPaymentCard.swift; sourceTree = "<group>"; };
+		1CB5AC6C20B4090E006CDDE3 /* PSPaymentCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCard.swift; sourceTree = "<group>"; };
+		1CB5AC6E20B43186006CDDE3 /* PSPaymentCardShippingAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardShippingAddress.swift; sourceTree = "<group>"; };
+		1CB5AC7020B43635006CDDE3 /* PSPayemntCardAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPayemntCardAccount.swift; sourceTree = "<group>"; };
+		1CB5AC7420B43CCC006CDDE3 /* PSPaymentCardClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardClient.swift; sourceTree = "<group>"; };
 		1CB5AC7620B43F57006CDDE3 /* PSChargeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSChargeInfo.swift; sourceTree = "<group>"; };
 		52D6D97C1BEFF229002C0205 /* PayseraAccountsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PayseraAccountsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9861BEFF229002C0205 /* PayseraAccountsSDK-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PayseraAccountsSDK-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,12 +137,13 @@
 		1CB5AC6B20B405B7006CDDE3 /* Cards */ = {
 			isa = PBXGroup;
 			children = (
-				1CB5AC6C20B4090E006CDDE3 /* PSCard.swift */,
-				1CB5AC7020B43635006CDDE3 /* PSCardAccount.swift */,
-				1CB5AC6E20B43186006CDDE3 /* PSCardShippingAddress.swift */,
+				1CB5AC6C20B4090E006CDDE3 /* PSPaymentCard.swift */,
+				1CB5AC7020B43635006CDDE3 /* PSPayemntCardAccount.swift */,
+				1CB5AC7420B43CCC006CDDE3 /* PSPaymentCardClient.swift */,
+				1CB5AC6E20B43186006CDDE3 /* PSPaymentCardShippingAddress.swift */,
 				1CB5AC7620B43F57006CDDE3 /* PSChargeInfo.swift */,
-				1CB5AC7420B43CCC006CDDE3 /* PSCardClient.swift */,
-				1C50616120B7F37E00F4CBE7 /* PSGetCardsFilter.swift */,
+				1C50616120B7F37E00F4CBE7 /* PSGetPaymentCardsFilter.swift */,
+				1C8E982020CE518B000770BB /* PSRequestPaymentCard.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -371,24 +374,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C50616220B7F37E00F4CBE7 /* PSGetCardsFilter.swift in Sources */,
+				1C50616220B7F37E00F4CBE7 /* PSGetPaymentCardsFilter.swift in Sources */,
 				88B25A52206A302800BE81C5 /* TokenRefresherProtocol.swift in Sources */,
 				880FCB9E206CF18500350F98 /* PSMoney.swift in Sources */,
 				1C50615E20B7EA8900F4CBE7 /* PSMetadataAwareResponse.swift in Sources */,
 				88B25A48206A23EB00BE81C5 /* AccountsApiClientFactory.swift in Sources */,
+				1C8E982120CE518B000770BB /* PSRequestPaymentCard.swift in Sources */,
 				88B25A50206A302800BE81C5 /* AccountsApiRequestRouter.swift in Sources */,
 				88B25A49206A23EB00BE81C5 /* AccountsApiCredentials.swift in Sources */,
 				88B25A4A206A23EB00BE81C5 /* AccountsApiClient.swift in Sources */,
 				1CB5AC7720B43F57006CDDE3 /* PSChargeInfo.swift in Sources */,
-				1CB5AC7120B43635006CDDE3 /* PSCardAccount.swift in Sources */,
+				1CB5AC7120B43635006CDDE3 /* PSPayemntCardAccount.swift in Sources */,
 				880FCB96206CC6F900350F98 /* PSBalanceInformation.swift in Sources */,
-				1CB5AC6D20B4090E006CDDE3 /* PSCard.swift in Sources */,
+				1CB5AC6D20B4090E006CDDE3 /* PSPaymentCard.swift in Sources */,
 				88B25A59206A4C6A00BE81C5 /* PSIbanInformation.swift in Sources */,
-				1CB5AC7520B43CCC006CDDE3 /* PSCardClient.swift in Sources */,
+				1CB5AC7520B43CCC006CDDE3 /* PSPaymentCardClient.swift in Sources */,
 				88B25A51206A302800BE81C5 /* AccountsApiRequest.swift in Sources */,
 				88B25A4B206A23EB00BE81C5 /* AuthenticationRequestAdapter.swift in Sources */,
 				880FCB9C206CEB0400350F98 /* PSAccountApiError.swift in Sources */,
-				1CB5AC6F20B43186006CDDE3 /* PSCardShippingAddress.swift in Sources */,
+				1CB5AC6F20B43186006CDDE3 /* PSPaymentCardShippingAddress.swift in Sources */,
 				1C50616020B7EB9500F4CBE7 /* PSMetaData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
