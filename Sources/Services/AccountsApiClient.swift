@@ -72,7 +72,37 @@ public class AccountsApiClient {
             .promise
             .then(createPromise)
     }
-
+    
+    /// deactivate payment card temporarily
+    ///
+    /// - Parameter cardId: required field
+    /// - Returns: PSPaymentCard
+    public func deactivatePaymentCard(cardId: Int) -> Promise<PSPaymentCard> {
+        let request = createRequest(.cancelPaymentCard(cardId: cardId))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+    
+    /// retrieves payment card PIN
+    ///
+    /// - Parameters:
+    ///   - cardId: required field
+    ///   - cvv: required field
+    /// - Returns: PSPaymentCardPIN
+    public func retrievePaymentCardPIN(cardId: Int, cvv: String) -> Promise<PSPaymentCardPIN> {
+        let request = createRequest(.retrievePaymentCardPIN(cardId: cardId, cvv: cvv))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+    
     /// Get cards endpoint
     ///
     /// - Parameter cardsFilter: PSGetPaymentCardsFilter entity should be filled.
@@ -80,6 +110,50 @@ public class AccountsApiClient {
     public func getPaymentCards(cardsFilter: PSGetPaymentCardsFilter) -> Promise<PSMetadataAwareResponse<PSPaymentCard>> {
         
         let request = createRequest(.getPaymentCards(cardsFilter: cardsFilter))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+    
+    /// set payment card spending amount limit
+    ///
+    /// - Parameters:
+    ///   - accountNumber: required field
+    ///   - cardLimit: optional field
+    /// - Returns: PSPaymentCardLimit with optional values inside
+    public func setPaymentCardLimit(accountNumber: String, cardLimit: PSPaymentCardLimit?) -> Promise<PSPaymentCardLimit> {
+        let request = createRequest(.setPaymentCardLimit(accountNumber: accountNumber, cardLimit: cardLimit))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+    
+    /// get payment card amount limits
+    ///
+    /// - Parameter accountNumber: required field
+    /// - Returns: PSPaymentCardLimit with optional values inside
+    public func getPaymentCardLimit(accountNumber: String) -> Promise<PSPaymentCardLimit> {
+        let request = createRequest(.getPaymentCardLimit(accountNumber: accountNumber))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+    
+    /// Cancels user card. It can not be restored later
+    ///
+    /// - Parameter cardId: required field
+    /// - Returns: PSPaymentCard
+    public func cancelPaymentCard(cardId: Int) -> Promise<PSPaymentCard> {
+        let request = createRequest(.cancelPaymentCard(cardId: cardId))
         makeRequest(apiRequest: request)
         
         return request
