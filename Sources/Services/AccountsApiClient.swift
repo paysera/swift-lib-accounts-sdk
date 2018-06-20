@@ -45,9 +45,9 @@ public class AccountsApiClient {
     
     /// Create a new payment card
     ///
-    /// - Parameter card: PSCreatePaymentCard entity should be filled.
+    /// - Parameter card: PSCreatePaymentCardRequest entity should be filled.
     /// - Returns: PSPaymentCard
-    public func createPaymentCard(_ card: PSCreatePaymentCard) -> Promise<PSPaymentCard> {
+    public func createPaymentCard(_ card: PSCreatePaymentCardRequest) -> Promise<PSPaymentCard> {
         
         let request = createRequest(.createCard(card))
         makeRequest(apiRequest: request)
@@ -75,10 +75,10 @@ public class AccountsApiClient {
     
     /// deactivate payment card temporarily
     ///
-    /// - Parameter cardId: required field
+    /// - Parameter id: payment card id - required field
     /// - Returns: PSPaymentCard
-    public func deactivatePaymentCard(cardId: Int) -> Promise<PSPaymentCard> {
-        let request = createRequest(.cancelPaymentCard(cardId: cardId))
+    public func deactivatePaymentCard(id: Int) -> Promise<PSPaymentCard> {
+        let request = createRequest(.cancelPaymentCard(id: id))
         makeRequest(apiRequest: request)
         
         return request
@@ -90,11 +90,11 @@ public class AccountsApiClient {
     /// retrieves payment card PIN
     ///
     /// - Parameters:
-    ///   - cardId: required field
+    ///   - id: payment card id - required field
     ///   - cvv: required field
     /// - Returns: PSPaymentCardPIN
-    public func retrievePaymentCardPIN(cardId: Int, cvv: String) -> Promise<PSPaymentCardPIN> {
-        let request = createRequest(.retrievePaymentCardPIN(cardId: cardId, cvv: cvv))
+    public func retrievePaymentCardPIN(id: Int, cvv: String) -> Promise<PSPaymentCardPIN> {
+        let request = createRequest(.retrievePaymentCardPIN(id: id, cvv: cvv))
         makeRequest(apiRequest: request)
         
         return request
@@ -105,9 +105,9 @@ public class AccountsApiClient {
     
     /// Get cards endpoint
     ///
-    /// - Parameter cardsFilter: PSGetPaymentCardsFilter entity should be filled.
+    /// - Parameter cardsFilter: PSGetPaymentCardsFilterRequest entity should be filled.
     /// - Returns: object PSMetadataAwareResponse with items array of PSCard
-    public func getPaymentCards(cardsFilter: PSGetPaymentCardsFilter) -> Promise<PSMetadataAwareResponse<PSPaymentCard>> {
+    public func getPaymentCards(cardsFilter: PSGetPaymentCardsFilterRequest) -> Promise<PSMetadataAwareResponse<PSPaymentCard>> {
         
         let request = createRequest(.getPaymentCards(cardsFilter: cardsFilter))
         makeRequest(apiRequest: request)
@@ -122,9 +122,9 @@ public class AccountsApiClient {
     ///
     /// - Parameters:
     ///   - accountNumber: required field
-    ///   - cardLimit: optional field
+    ///   - cardLimit: required field
     /// - Returns: PSPaymentCardLimit with optional values inside
-    public func setPaymentCardLimit(accountNumber: String, cardLimit: PSPaymentCardLimit?) -> Promise<PSPaymentCardLimit> {
+    public func setPaymentCardLimit(accountNumber: String, cardLimit: PSPaymentCardLimit) -> Promise<PSPaymentCardLimit> {
         let request = createRequest(.setPaymentCardLimit(accountNumber: accountNumber, cardLimit: cardLimit))
         makeRequest(apiRequest: request)
         
@@ -150,10 +150,10 @@ public class AccountsApiClient {
     
     /// Cancels user card. It can not be restored later
     ///
-    /// - Parameter cardId: required field
+    /// - Parameter id: payment card id - required field
     /// - Returns: PSPaymentCard
-    public func cancelPaymentCard(cardId: Int) -> Promise<PSPaymentCard> {
-        let request = createRequest(.cancelPaymentCard(cardId: cardId))
+    public func cancelPaymentCard(id: Int) -> Promise<PSPaymentCard> {
+        let request = createRequest(.cancelPaymentCard(id: id))
         makeRequest(apiRequest: request)
         
         return request

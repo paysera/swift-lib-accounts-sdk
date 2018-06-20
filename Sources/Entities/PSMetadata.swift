@@ -1,6 +1,6 @@
 import ObjectMapper
 
-public class PSMetaData: Mappable {
+public class PSMetadata: Mappable {
     public var total: Int?
     public var offset: Int?
     public var limit: Int?

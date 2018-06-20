@@ -3,10 +3,6 @@ import ObjectMapper
 public class PSPaymentCardPIN: Mappable {
     public var pinCode: String
     
-    public func mapping(map: Map) {
-        pinCode      <- map["pin_code"]
-    }
-    
     required public init?(map: Map) {
         do {
             pinCode = try map.value("pin_code")
@@ -15,5 +11,9 @@ public class PSPaymentCardPIN: Mappable {
             print(error)
             return nil
         }
+    }
+    
+    public func mapping(map: Map) {
+        pinCode      <- map["pin_code"]
     }
 }

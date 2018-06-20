@@ -1,7 +1,7 @@
 import ObjectMapper
 
 /// The entity class describing payment card info
-public class PSPayemntCardAccount: Mappable {
+public class PSPaymentCardAccount: Mappable {
     
     public var number: String
     public var clientId: Int
@@ -12,18 +12,6 @@ public class PSPayemntCardAccount: Mappable {
     public var type: String
     public var client: PSPaymentCardClient?
     public var ibanList: [String]?
-    
-    public func mapping(map: Map) {
-        number          <- map["number"]
-        clientId        <- map["client_id"]
-        ownerId         <- map["owner_id"]
-        createdAt       <- map["created_at"]
-        active          <- map["active"]
-        closed          <- map["closed"]
-        type            <- map["type"]
-        client          <- map["client"]
-        ibanList        <- map["iban_list"]
-    }
     
     required public init?(map: Map) {
         do {
@@ -39,5 +27,17 @@ public class PSPayemntCardAccount: Mappable {
             print(error)
             return nil
         }
+    }
+    
+    public func mapping(map: Map) {
+        number          <- map["number"]
+        clientId        <- map["client_id"]
+        ownerId         <- map["owner_id"]
+        createdAt       <- map["created_at"]
+        active          <- map["active"]
+        closed          <- map["closed"]
+        type            <- map["type"]
+        client          <- map["client"]
+        ibanList        <- map["iban_list"]
     }
 }

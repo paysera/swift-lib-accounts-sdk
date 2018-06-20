@@ -1,22 +1,22 @@
 import ObjectMapper
 
 /// The entity class to get payment cards
-public class PSGetPaymentCardsFilter: Mappable {
+public class PSGetPaymentCardsFilterRequest: Mappable {
     
-    public var limit: Int?
-    public var offset: Int?
-    public var orderBy: String?
-    public var orderDirection: String?
-    public var accountNumbers: [String]?
-    public var statuses: [String]?
-    public var cardOwnerId: String?
-    public var accountOwnerId: String?
+    public private(set) var limit: Int?
+    public private(set) var offset: Int?
+    public private(set) var orderBy: String?
+    public private(set) var orderDirection: String?
+    public private(set) var accountNumbers: [String]?
+    public private(set) var statuses: [String]?
+    public private(set) var cardOwnerId: String?
+    public private(set) var accountOwnerId: String?
     
     required public init?(map: Map) {
         
     }
     
-    /// init PSGetPaymentCardsFilter. One of account_numbers, card_owner_id or account_owner_id must be filled
+    /// init PSGetPaymentCardsFilterRequest. One of account_numbers, card_owner_id or account_owner_id must be filled
     ///
     /// - Parameters:
     ///   - accountNumbers: array of user payment cards numbers

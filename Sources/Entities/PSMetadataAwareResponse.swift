@@ -3,7 +3,7 @@ import ObjectMapper
 public class PSMetadataAwareResponse<T: Mappable>: Mappable  {
  
     public var items: [T]?
-    public var metaData: PSMetaData?
+    public var metaData: PSMetadata?
     
     private var itemsResponseKey: String {
         

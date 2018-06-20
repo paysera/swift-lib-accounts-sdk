@@ -11,15 +11,6 @@ public class PSPaymentCardClient: Mappable {
     public var displayName: String
     public var type: String
     
-    public func mapping(map: Map) {
-        id              <- map["id"]
-        userId          <- map["user_id"]
-        createdAt       <- map["created_at"]
-        enabled         <- map["enabled"]
-        displayName     <- map["display_name"]
-        type            <- map["type"]
-    }
-    
     required public init?(map: Map) {
         do {
             id = try map.value("id")
@@ -33,5 +24,15 @@ public class PSPaymentCardClient: Mappable {
             print(error)
             return nil
         }
+    }
+    
+    
+    public func mapping(map: Map) {
+        id              <- map["id"]
+        userId          <- map["user_id"]
+        createdAt       <- map["created_at"]
+        enabled         <- map["enabled"]
+        displayName     <- map["display_name"]
+        type            <- map["type"]
     }
 }

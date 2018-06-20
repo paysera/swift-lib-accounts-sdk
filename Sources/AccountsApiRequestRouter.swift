@@ -6,18 +6,18 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     // MARK: - GET
     case getIbanInformation(iban: String)
     case getBalance(accountNumber: String)
-    case getPaymentCards(cardsFilter: PSGetPaymentCardsFilter)
+    case getPaymentCards(cardsFilter: PSGetPaymentCardsFilterRequest)
     case getPaymentCardLimit(accountNumber: String)
     
     // MARK: - POST
-    case createCard(PSCreatePaymentCard)
+    case createCard(PSCreatePaymentCardRequest)
     
     // MARK: - PUT
     case activateCard(id: Int)
     case deactivateCard(id: Int)
-    case setPaymentCardLimit(accountNumber: String, cardLimit: PSPaymentCardLimit?)
-    case retrievePaymentCardPIN(cardId: Int, cvv: String)
-    case cancelPaymentCard(cardId: Int)
+    case setPaymentCardLimit(accountNumber: String, cardLimit: PSPaymentCardLimit)
+    case retrievePaymentCardPIN(id: Int, cvv: String)
+    case cancelPaymentCard(id: Int)
     
     // MARK: - Declarations
     static var baseURLString = "https://accounts.paysera.com/public"
@@ -84,8 +84,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .setPaymentCardLimit(let accountNumber, _):
             return "/payment-card/v1/accounts/\(accountNumber)/card-limit"
             
-        case .retrievePaymentCardPIN(let cardId, _):
-            return "/payment-card/v1/cards/\(String(cardId))/pin"
+        case .retrievePaymentCardPIN(let id, _):
+            return "/payment-card/v1/cards/\(String(id))/pin"
             
         case .cancelPaymentCard(let id):
             return "/payment-card/v1/cards/\(String(id))/cancel"
@@ -102,7 +102,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             return psCard.toJSON()
             
         case .setPaymentCardLimit(_, let cardLimit):
-            return cardLimit?.toJSON()
+            return cardLimit.toJSON()
             
         case .retrievePaymentCardPIN( _, let cvv):
             return ["cvv2" :cvv]

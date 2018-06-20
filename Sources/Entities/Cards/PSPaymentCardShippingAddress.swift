@@ -8,13 +8,6 @@ public class PSPaymentCardShippingAddress: Mappable {
     public var city: String
     public var country: String
     
-    public func mapping(map: Map) {
-        postalCode      <- map["postal_code"]
-        address         <- map["address"]
-        city            <- map["city"]
-        country         <- map["country"]
-    }
-    
     required public init?(map: Map) {
         do {
             postalCode = try map.value("postal_code")
@@ -28,7 +21,6 @@ public class PSPaymentCardShippingAddress: Mappable {
         }
     }
     
-    
     /// used this init, when payment card is requesting. All fields should be filled
     ///
     /// - Parameters:
@@ -41,5 +33,12 @@ public class PSPaymentCardShippingAddress: Mappable {
         self.address = address
         self.city = city
         self.country = country
+    }
+    
+    public func mapping(map: Map) {
+        postalCode      <- map["postal_code"]
+        address         <- map["address"]
+        city            <- map["city"]
+        country         <- map["country"]
     }
 }

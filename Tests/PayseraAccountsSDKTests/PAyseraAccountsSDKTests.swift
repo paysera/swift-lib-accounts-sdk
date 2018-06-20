@@ -3,6 +3,7 @@ import XCTest
 import PayseraAccountsSDK
 import PromiseKit
 import JWTDecode
+import ObjectMapper
 
 class AccountsSDKTests: XCTestCase {
     private var accountsApiClient: AccountsApiClient!
@@ -15,7 +16,7 @@ class AccountsSDKTests: XCTestCase {
     
     func createAccountsApiClient() -> AccountsApiClient {
         let credentials = AccountsApiCredentials()
-        let token = "eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJldnBiYW5rIiwiaXNzIjoibW9rZWppbWFpIiwicHNyOnMiOlsicGIiLCJhOkVWUDI4MTAwMDEyNDg2Mzc6bSIsImE6RVZQMTYxMDAwMTg0NTc0NDptIiwiYTpFVlA4NjEwMDAxNjcwMjM5Om0iLCJhOkVWUDkwMTAwMDE2NTAxMzY6bSJdLCJwc3I6dSI6NDUxNzQ1LCJleHAiOjE1Mjg3MjIxOTQsImlhdCI6MTUyODcxODU5NH0.PnZxhVGDjKnjRTzqsMR_bolN7Vx3-j9b0zqC7eXT_Uo3T3zFEGWvbFtA2FaJC4FJjkmYFXlYqysTbxKLvA79uE_af2hUGbqD0kkEZ4lrWkaHM0aNfplUyg8jkuYFLO05soSfwBCkP5GSSEHnSybNHoOyKzjyedGBHRWRVTKnXkV7Q7NPwG-AP_CKbt0XxUjdwD_QiQCgF_bodhRhPPuNaw0cBAJjqs_myccWn0GL43FqvEK9SLAAwrPoOUAiep7HKcxmDXPo_LNrWQd32Ae-Pxh8MTyeoIuNl2wBk3RMmiv6AYEgTXGXxq8V2mWDW70UXcfRkVbqeaDTubcqkrocW1bxI9Y9vEJy64ICpL0Qx5vM-M5PVY77g95eCvEPFNLMMT-F0Odn3Cp3yadQLpPqowzV2DdcmxB-i548DB6en2l3T7db_iR3KSSx0ccHi_vvOaSve1KFObOncAIFmWxDL0-aRHdViaChsj5Kj01LSyNgo-7oi3zyhq9FyjrPuSMukgZvffFl70koU7UZjW2r9WcXdPyApvGbFS3DnMJUK0SxbCvxL6JPzUg9S0KI_r4ZzPw2kiMwOJyUiwN3CPQAnTSThemVVftlzIGzvmvo02amC5vPykzfbqRcWsn1-37845G6Tp3obyDDXBepcp85nyGv8CNRQKGwlMYyaqZDxxk"
+        let token = "eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJldnBiYW5rIiwiaXNzIjoibW9rZWppbWFpIiwicHNyOnMiOlsicGIiLCJhOkVWUDI4MTAwMDEyNDg2Mzc6bSIsImE6RVZQMTYxMDAwMTg0NTc0NDptIiwiYTpFVlA4NjEwMDAxNjcwMjM5Om0iLCJhOkVWUDkwMTAwMDE2NTAxMzY6bSJdLCJwc3I6dSI6NDUxNzQ1LCJleHAiOjE1Mjk0ODc1MDMsImlhdCI6MTUyOTQ4MzkwM30.6YjMPptRkMnpMXwCveM1zvp44hNPl5uflhnOGCh-QPNMIqKcuga--YuWkEuPFTaq_IbcrhBNOLOSaFvBUrRYoU1_b9xj_fLEvilLOa8bWsLyXfxQkxJK03FJfUPsSvfpZ878BCRhg1Si0BoVUnhz7khMEpPYuY6tzDvt9A_T9Xh6yWUSjcCsT9AfMR7yQCT-v72NpSkkYqQ_kCpyLXMG2RggfhHkQS7ZoEH8LhOh4d8AYXonCupsWp11yS0h_tFlNICnbOQpZufXx33pNmS2Ixm1xJ77PpCRX0wxP5be_h9IgIKAxjT73fLn_E8Q1JzPvYlx-cS2dajSigX3fFV7_3uJYM4Vp5WBKkvuhtRNqejhu734g8bJPSi72paK3EFnSxtfRlOtGK6_RjER6lM_LnHZCDmU-8jDzDe4Z0TTcJ1Ew7E01mdeZKsAnI82C7sG_QMC_dpgwJh3Xl-V_ZlyEIqWG-PDD3OsH07-BRgkyQikZd4ULmDU--qqmaxpwtGc_CIiHhfYJYLp2eYGf7m0swurCm4FE5tNGfcgoxufSuNU0J3yjoOa2P7Q4iqZb9GbKxx688mAUuLCY21XxzSCj4c5pbadt1-9A-HI5c499h5HZ2YZVJWV_jKfpheo4tsmav7Zq1UW1uSaBKjZm7djvCI-vUL_ZuojNMax_INyWjk"
         
         credentials.token = try! decode(jwt: token)
         
@@ -26,6 +27,9 @@ class AccountsSDKTests: XCTestCase {
         
         var ibanInformation: PSIbanInformation?
         let expectation = XCTestExpectation(description: "iban information should be not nil")
+        
+        let aa = PSCreatePaymentCardRequest(map: Map.init(mappingType: .toJSON, JSON: [:]))
+
         
         accountsApiClient.getIbanInformation(iban: "LT383500010001845744").done { ibanInfo in
             ibanInformation = ibanInfo
@@ -46,11 +50,10 @@ class AccountsSDKTests: XCTestCase {
         
         var expectedCard: PSPaymentCard?
     
-        let createPaymentCard = PSCreatePaymentCard(cardOwnerId: 1001,
+        let createPaymentCard = PSCreatePaymentCardRequest(cardOwnerId: 1001,
                                                     shippingAddress: PSPaymentCardShippingAddress.init(postalCode: "9999999999", address: "test", city: "Kaunas", country: "Lithuania"),
-                                                    accountOwnerId: 1001,
-                                                    chargeInfo: PSChargeInfo.init(accountNumber: "EVP1610001845744"),
-                                                    deliveryType: "registered_post")
+                                                    deliveryType: "registered_post", accountOwnerId: 1001,
+                                                    chargeInfo: PSChargeInfo.init(accountNumber: "EVP1610001845744"))
 
         let expectation = XCTestExpectation(description: "cards should be not nil")
 
@@ -73,17 +76,8 @@ class AccountsSDKTests: XCTestCase {
     
     func testGetCards() {
         
-        var cardsFilter = PSGetPaymentCardsFilter()
+        let cardsFilter = PSGetPaymentCardsFilterRequest(accountOwnerId: "451745")
         var expectedCards: [PSPaymentCard]?
-        
-        //  cardsFilter.limit = 25
-        //  cardsFilter.offset = 0
-        //  cardsFilter.orderBy = "createdAt"
-        //  cardsFilter.accountNumbers = ["EVP1610001845744"]
-        //  cardsFilter.orderDirection = "asc"
-        //  cardsFilter.statuses = ["ordered"]
-        //  cardsFilter.cardOwnerId = "451745"
-        cardsFilter.accountOwnerId = "451745"
         
         let expectation = XCTestExpectation(description: "cards should be not nil")
         
