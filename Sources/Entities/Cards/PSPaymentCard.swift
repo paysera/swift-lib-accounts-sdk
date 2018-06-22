@@ -1,6 +1,5 @@
 import ObjectMapper
 
-/// The entity class describing payment card
 public class PSPaymentCard: Mappable {
     
     public var id: Int

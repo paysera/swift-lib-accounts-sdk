@@ -42,11 +42,6 @@ public class AccountsApiClient {
     
     
     // MARK: - Payment cards API
-    
-    /// Create a new payment card
-    ///
-    /// - Parameter card: PSCreatePaymentCardRequest entity should be filled.
-    /// - Returns: PSPaymentCard
     public func createPaymentCard(_ card: PSCreatePaymentCardRequest) -> Promise<PSPaymentCard> {
         
         let request = createRequest(.createCard(card))
@@ -57,11 +52,7 @@ public class AccountsApiClient {
             .promise
             .then(createPromise)
     }
-    
-    /// Activate payment card
-    ///
-    /// - Parameter id: requested card id
-    /// - Returns: PSPaymentCard
+
     public func activateCard(_ id: Int) -> Promise<PSPaymentCard> {
         
         let request = createRequest(.activateCard(id: id))
@@ -73,10 +64,6 @@ public class AccountsApiClient {
             .then(createPromise)
     }
     
-    /// deactivate payment card temporarily
-    ///
-    /// - Parameter id: payment card id - required field
-    /// - Returns: PSPaymentCard
     public func deactivatePaymentCard(id: Int) -> Promise<PSPaymentCard> {
         let request = createRequest(.cancelPaymentCard(id: id))
         makeRequest(apiRequest: request)
@@ -87,12 +74,6 @@ public class AccountsApiClient {
             .then(createPromise)
     }
     
-    /// retrieves payment card PIN
-    ///
-    /// - Parameters:
-    ///   - id: payment card id - required field
-    ///   - cvv: required field
-    /// - Returns: PSPaymentCardPIN
     public func retrievePaymentCardPIN(id: Int, cvv: String) -> Promise<PSPaymentCardPIN> {
         let request = createRequest(.retrievePaymentCardPIN(id: id, cvv: cvv))
         makeRequest(apiRequest: request)
@@ -103,10 +84,6 @@ public class AccountsApiClient {
             .then(createPromise)
     }
     
-    /// Get cards endpoint
-    ///
-    /// - Parameter cardsFilter: PSGetPaymentCardsFilterRequest entity should be filled.
-    /// - Returns: object PSMetadataAwareResponse with items array of PSCard
     public func getPaymentCards(cardsFilter: PSGetPaymentCardsFilterRequest) -> Promise<PSMetadataAwareResponse<PSPaymentCard>> {
         
         let request = createRequest(.getPaymentCards(cardsFilter: cardsFilter))
@@ -118,12 +95,6 @@ public class AccountsApiClient {
             .then(createPromise)
     }
     
-    /// set payment card spending amount limit
-    ///
-    /// - Parameters:
-    ///   - accountNumber: required field
-    ///   - cardLimit: required field
-    /// - Returns: PSPaymentCardLimit with optional values inside
     public func setPaymentCardLimit(accountNumber: String, cardLimit: PSPaymentCardLimit) -> Promise<PSPaymentCardLimit> {
         let request = createRequest(.setPaymentCardLimit(accountNumber: accountNumber, cardLimit: cardLimit))
         makeRequest(apiRequest: request)
@@ -134,10 +105,6 @@ public class AccountsApiClient {
             .then(createPromise)
     }
     
-    /// get payment card amount limits
-    ///
-    /// - Parameter accountNumber: required field
-    /// - Returns: PSPaymentCardLimit with optional values inside
     public func getPaymentCardLimit(accountNumber: String) -> Promise<PSPaymentCardLimit> {
         let request = createRequest(.getPaymentCardLimit(accountNumber: accountNumber))
         makeRequest(apiRequest: request)
@@ -148,10 +115,6 @@ public class AccountsApiClient {
             .then(createPromise)
     }
     
-    /// Cancels user card. It can not be restored later
-    ///
-    /// - Parameter id: payment card id - required field
-    /// - Returns: PSPaymentCard
     public func cancelPaymentCard(id: Int) -> Promise<PSPaymentCard> {
         let request = createRequest(.cancelPaymentCard(id: id))
         makeRequest(apiRequest: request)
@@ -164,7 +127,6 @@ public class AccountsApiClient {
     
     
     // MARK: - Private request methods
-    
     private func makeRequest(apiRequest: AccountsApiRequest) {
         let lockQueue = DispatchQueue(label: String(describing: tokenRefresher), attributes: [])
         lockQueue.sync {

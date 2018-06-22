@@ -1,6 +1,5 @@
 import ObjectMapper
 
-/// The payment card shipping address entity class
 public class PSPaymentCardShippingAddress: Mappable {
 
     public var postalCode: String
@@ -20,14 +19,7 @@ public class PSPaymentCardShippingAddress: Mappable {
             return nil
         }
     }
-    
-    /// used this init, when payment card is requesting. All fields should be filled
-    ///
-    /// - Parameters:
-    ///   - postalCode: required
-    ///   - address: required
-    ///   - city: required
-    ///   - country: required
+
     public init(postalCode: String, address: String, city: String, country: String) {
         self.postalCode = postalCode
         self.address = address
