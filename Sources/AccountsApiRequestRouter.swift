@@ -24,36 +24,21 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     
     private var method: HTTPMethod {
         switch self {
-        case .getIbanInformation( _):
-            return .get
-          
-        case .getBalance( _):
-            return .get
-        
-        case .getPaymentCards( _):
-            return .get
-            
-        case .getPaymentCardLimit( _):
+        case .getIbanInformation( _),
+             .getBalance( _),
+             .getPaymentCards( _),
+             .getPaymentCardLimit( _):
             return .get
             
         case .createCard( _):
             return .post
             
-        case .activateCard( _):
+        case .activateCard( _),
+             .deactivateCard( _),
+             .setPaymentCardLimit( _, _),
+             .retrievePaymentCardPIN( _, _),
+             .cancelPaymentCard( _):
             return .put
-            
-        case .deactivateCard( _):
-            return .put
-            
-        case .setPaymentCardLimit( _, _):
-            return .put
-            
-        case .retrievePaymentCardPIN( _, _):
-            return .put
-            
-        case .cancelPaymentCard( _):
-            return .put
-            
         }
     }
     

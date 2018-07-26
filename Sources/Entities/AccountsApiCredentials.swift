@@ -20,6 +20,6 @@ public class AccountsApiCredentials {
             return false
         }
         
-        return token.issuedAt!.timeIntervalSinceNow < 15
+        return abs(token.issuedAt!.timeIntervalSinceNow) < 15
     }
 }
