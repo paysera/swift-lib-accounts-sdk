@@ -10,7 +10,7 @@ public class AccountsApiCredentials {
     
     public func isExpired() -> Bool {
         if let token = token {
-            return abs(token.expiresAt!.timeIntervalSinceNow) < 120
+            return token.expiresAt!.timeIntervalSinceNow < 120
         }
         return true
     }
