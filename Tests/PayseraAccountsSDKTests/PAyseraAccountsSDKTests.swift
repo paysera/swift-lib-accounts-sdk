@@ -28,7 +28,7 @@ class AccountsSDKTests: XCTestCase {
         var ibanInformation: PSIbanInformation?
         let expectation = XCTestExpectation(description: "iban information should be not nil")
         
-        let aa = PSCreatePaymentCardRequest(map: Map.init(mappingType: .toJSON, JSON: [:]))
+        let aa = PSCreatePaymentCardRequest(map: Map(mappingType: .toJSON, JSON: [:]))
 
         
         accountsApiClient.getIbanInformation(iban: "LT383500010001845744").done { ibanInfo in
