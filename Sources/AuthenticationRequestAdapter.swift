@@ -11,9 +11,8 @@ public class AuthenticationRequestAdapter: RequestAdapter {
     public func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
         var urlRequest = urlRequest
         
-        if let token = accountsApiCredentials.token {
-            urlRequest.setValue("Bearer " + token.string, forHTTPHeaderField: "Authorization")
-        }
+        urlRequest.setValue("Bearer " + (accountsApiCredentials.token?.string ?? ""), forHTTPHeaderField: "Authorization")
+
         
         return urlRequest
     }
