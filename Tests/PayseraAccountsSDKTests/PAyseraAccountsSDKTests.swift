@@ -16,7 +16,7 @@ class AccountsSDKTests: XCTestCase {
     
     func createAccountsApiClient() -> AccountsApiClient {
         let credentials = AccountsApiCredentials()
-        let token =  "eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJldnBiYW5rIiwiaXNzIjoibW9rZWppbWFpIiwicHNyOnMiOlsicGIiLCJhOkVWUDI4MTAwMDEyNDg2Mzc6bSIsImE6RVZQMTYxMDAwMTg0NTc0NDptIiwiYTpFVlA4NjEwMDAxNjcwMjM5Om0iLCJhOkVWUDkwMTAwMDE2NTAxMzY6bSJdLCJwc3I6dSI6NDUxNzQ1LCJleHAiOjE1MzI2ODc5MTgsImlhdCI6MTUzMjY4NDMxOH0.foUJj-A5sCTKHnrJb_RGEd8QfXqRf74SsOzn_ZgFb7VSGyr_VvU-tjX98pfeuR2JbuRJGVQpFXoIGjyY-9sOajRjQ4Ln31DG5e5fukCNrrv7Mb2L1lexWN0j3s3-l5mdaF2-9lc7BHar6tPR5YRiLx-929V9GUNZ47FH-G1mkTf8iMjRTc3gGtJRRrYbgiGbgobxqVU16rK50s1jNQhni8Jwz5kbUhfU0-Wz8HtF-CkTWHljn3By037nSt6Q2hY7vVx4kyNlsIIh8VkJGmAxnicBKPcJ_c4uS3Vb6E_ugKcXk_SIROy7GHifoitmkc7ERJ4hj4CbRt2rJbMX0pS93tRGbu7PwtxMaFLcBmZ5QW6lIBbp9oV-_vVenvBPRv5m1F8fTlnIOCum17iPZSGAyHBEzU-hStpwflzlwXvRKUCGfcyaDZdmh80zwQUx5PP_Mr7tUMSiJ2c2JiWEdPN-Dw6h_DVJSezj-IJ7eFHaFOf9pXVidUwbgSmeY-qsK39szad5OjYGTwbWvKg2lBKg-SljRCEI4K_hc1wIcQ-HSf7TqKvShDaYO5cuuC28sBMFHiPSnM6mR--MVr3cTk2tHnCkQm1eMtMZPv5fxq65nxv_2pKvARhLWhkrQf4DQM-ojx_EhLAoMoo76Veq5_7WXvuvwiwybH33Y1dmJ2qimjQ"
+        let token =  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJldnBiYW5rIiwiaXNzIjoiYXV0aF9hcGkiLCJleHAiOjE1MzM3Nzc2NzEsImp0aSI6ImhPZE9JM05kMkZvbVB3YzFKODNVelBOT2dkQkRnM1NiIiwicHNyOnMiOlsibG9nZ2VkX2luIl0sInBzcjp1IjoiNDUxNzQ1IiwicHNyOnNpZCI6Ik9BNmpYMHFtUUZkQmRoVHQ3OVc1clMtbThLbnYxOXNZIiwicHNyOmEiOnsidXNlcl9pZCI6IjQ1MTc0NSJ9LCJpYXQiOjE1MzM3MzQ0NzF9.RcpUQDIjRjmjrMzE_pdW0y87npLqBvGGhG2lUBLtasXoZhYD79D2Csu_L0i3gWQAQuPyMRdTs3ZaZLybF05j4kkSm7-j34lQMTMmatkWv_aiS-vm5qTVZLL3OeJ_knGHmQ7Vyo2OwjBfemYP1Rr2gt2_XM3syPeGs8-SgHZKGvd0by04xAsr_QibiFq1ikjbicbTOv-rNqE-v8PLQbVKExt7I3pVwUHnENi4_rmbA6rxwmcAsNjfEnmuJCzifZmwDTSf2KHAotwKQtS2NBgbbOaE2i_--kwVCT6WXwK357058nqYRB-DgmWDe1SMzFpCZtBOQntPJlNgUsGhf9PUZR6mFVlpEe316fjVNRXlX6gIP1iwN3Z6bLpEolftH5UWf4f2OourrIEAr0O1byRs8gXnthaX2FHWts3sr32EtZbeFbRV1QroYTKEPOHp6V-mQz3833n2QQMo4pCtTNQ53w6viFh4dGl-Lwi1uRvWhEbDw0l6grpme9gk95tIYC7AWinvjmpzUV-1A_T3vijxwH04nmJ6E9_ksAbwnR-5ZJqx4P0_S5SujLWJbemMmb2XEwZpZh6_JvOr9iqSn6EOzK10ZayTWLXgYcJHl2sLqW6lhdfFSVa7I-VdTx4bYqZdErxd6ebJSxFn7LbVAmbJg6Td5swjKxC1havaUQTEWMc"
         
         credentials.token = try! decode(jwt: token)
         
@@ -96,6 +96,29 @@ class AccountsSDKTests: XCTestCase {
         
         wait(for: [expectation], timeout: 15.0)
         XCTAssertNotNil(expectedCards)
+    }
+    
+    
+    func testGetCardLimit() {
+        
+        var cardLimit: PSPaymentCardLimit?
+        let expectation = XCTestExpectation(description: "balance information should be not nil")
+        
+        accountsApiClient.getPaymentCardLimit(accountNumber: "EVP1610001845744").done { paymentCardLimit in
+            cardLimit = paymentCardLimit
+            
+            print("\n")
+            print(paymentCardLimit.toJSON())
+            expectation.fulfill()
+            }.catch { error in
+                print("\n")
+                print((error as! PSAccountApiError).error)
+                print((error as! PSAccountApiError).description)
+                expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(cardLimit)
     }
     
     func testGetBalanceInformation() {

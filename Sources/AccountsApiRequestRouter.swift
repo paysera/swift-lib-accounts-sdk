@@ -55,7 +55,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             return "/payment-card/v1/cards"
             
         case .getPaymentCardLimit(let accountNumber):
-            return "/account/rest/v1/accounts/\(accountNumber)/card-limit"
+            return "/payment-card/v1/accounts/\(accountNumber)/card-limit"
             
         case .createCard( _):
             return "/payment-card/v1/cards"
