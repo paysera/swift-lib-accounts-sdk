@@ -15,7 +15,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     // MARK: - PUT
     case activateCard(id: Int)
     case deactivateCard(id: Int)
-    case setPaymentCardLimit(accountNumber: String, cardLimit: PSPaymentCardLimit)
+    case setPaymentCardLimit(accountNumber: String, cardLimit: PSUpdatePaymentCardLimirRequest)
     case retrievePaymentCardPIN(id: Int, cvv: String)
     case cancelPaymentCard(id: Int)
     

@@ -26,6 +26,7 @@
 		1C7A2F7220D8E6C000195C0F /* PSPaymentCardLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7A2F7120D8E6C000195C0F /* PSPaymentCardLimit.swift */; };
 		1C7A2F7420D8EF0200195C0F /* PSPaymentCardPIN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7A2F7320D8EF0200195C0F /* PSPaymentCardPIN.swift */; };
 		1C8E982120CE518B000770BB /* PSCreatePaymentCardRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8E982020CE518B000770BB /* PSCreatePaymentCardRequest.swift */; };
+		1C9E7F73212D890300B6A66D /* PSUpdatePaymentCardLimirRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9E7F72212D890300B6A66D /* PSUpdatePaymentCardLimirRequest.swift */; };
 		1CB5AC6D20B4090E006CDDE3 /* PSPaymentCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB5AC6C20B4090E006CDDE3 /* PSPaymentCard.swift */; };
 		1CB5AC6F20B43186006CDDE3 /* PSPaymentCardShippingAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB5AC6E20B43186006CDDE3 /* PSPaymentCardShippingAddress.swift */; };
 		1CB5AC7120B43635006CDDE3 /* PSPaymentCardAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB5AC7020B43635006CDDE3 /* PSPaymentCardAccount.swift */; };
@@ -85,6 +86,7 @@
 		1C7A2F7120D8E6C000195C0F /* PSPaymentCardLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardLimit.swift; sourceTree = "<group>"; };
 		1C7A2F7320D8EF0200195C0F /* PSPaymentCardPIN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardPIN.swift; sourceTree = "<group>"; };
 		1C8E982020CE518B000770BB /* PSCreatePaymentCardRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSCreatePaymentCardRequest.swift; sourceTree = "<group>"; };
+		1C9E7F72212D890300B6A66D /* PSUpdatePaymentCardLimirRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSUpdatePaymentCardLimirRequest.swift; sourceTree = "<group>"; };
 		1CB5AC6C20B4090E006CDDE3 /* PSPaymentCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCard.swift; sourceTree = "<group>"; };
 		1CB5AC6E20B43186006CDDE3 /* PSPaymentCardShippingAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardShippingAddress.swift; sourceTree = "<group>"; };
 		1CB5AC7020B43635006CDDE3 /* PSPaymentCardAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardAccount.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				1C8E982020CE518B000770BB /* PSCreatePaymentCardRequest.swift */,
 				1C50616120B7F37E00F4CBE7 /* PSGetPaymentCardsFilterRequest.swift */,
+				1C9E7F72212D890300B6A66D /* PSUpdatePaymentCardLimirRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				88B25A50206A302800BE81C5 /* AccountsApiRequestRouter.swift in Sources */,
 				88B25A49206A23EB00BE81C5 /* AccountsApiCredentials.swift in Sources */,
 				88B25A4A206A23EB00BE81C5 /* AccountsApiClient.swift in Sources */,
+				1C9E7F73212D890300B6A66D /* PSUpdatePaymentCardLimirRequest.swift in Sources */,
 				1CB5AC7720B43F57006CDDE3 /* PSChargeInfo.swift in Sources */,
 				1C7A2F7420D8EF0200195C0F /* PSPaymentCardPIN.swift in Sources */,
 				1CB5AC7120B43635006CDDE3 /* PSPaymentCardAccount.swift in Sources */,
