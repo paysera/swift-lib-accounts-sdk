@@ -17,6 +17,5 @@ public class PSUpdatePaymentCardLimirRequest: Mappable {
     public func mapping(map: Map) {
         amount    <- map["amount.amount"]
         currency  <- map["amount.currency"]
-        period    <- map["period"]
     }
 }
