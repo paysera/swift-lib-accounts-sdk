@@ -1,4 +1,4 @@
 github "Alamofire/Alamofire" ~> 4.4
-github "mxcl/PromiseKit" "6.2.9"
+github "mxcl/PromiseKit"
 github "Hearst-DD/ObjectMapper" ~> 3.1
 github "auth0/JWTDecode.swift" ~> 2.1
