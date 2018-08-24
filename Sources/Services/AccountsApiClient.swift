@@ -65,7 +65,7 @@ public class AccountsApiClient {
     }
     
     public func deactivatePaymentCard(id: Int) -> Promise<PSPaymentCard> {
-        let request = createRequest(.cancelPaymentCard(id: id))
+        let request = createRequest(.deactivateCard(id: id))
         makeRequest(apiRequest: request)
         
         return request
