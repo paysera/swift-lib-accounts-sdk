@@ -1,6 +1,6 @@
 import ObjectMapper
 
-public class PSUpdatePaymentCardLimirRequest: Mappable {
+public class PSUpdatePaymentCardLimitRequest: Mappable {
     public var amount: Float?
     public var currency: String?
     public var period: Int?

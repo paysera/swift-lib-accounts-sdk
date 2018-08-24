@@ -127,7 +127,7 @@ class AccountsSDKTests: XCTestCase {
         let expectation = XCTestExpectation(description: "balance information should be not nil")
         
         accountsApiClient.setPaymentCardLimit(accountNumber: "EVP1610001845744",
-                                              cardLimit: PSUpdatePaymentCardLimirRequest.init(amount: 850, currency: "EUR"))
+                                              cardLimit: PSUpdatePaymentCardLimitRequest.init(amount: 850, currency: "EUR"))
             .done { paymentCardLimit in
             cardLimit = paymentCardLimit
             

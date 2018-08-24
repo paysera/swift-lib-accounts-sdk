@@ -95,7 +95,7 @@ public class AccountsApiClient {
             .then(createPromise)
     }
     
-    public func setPaymentCardLimit(accountNumber: String, cardLimit: PSUpdatePaymentCardLimirRequest) -> Promise<PSPaymentCardLimit> {
+    public func setPaymentCardLimit(accountNumber: String, cardLimit: PSUpdatePaymentCardLimitRequest) -> Promise<PSPaymentCardLimit> {
         let request = createRequest(.setPaymentCardLimit(accountNumber: accountNumber, cardLimit: cardLimit))
         makeRequest(apiRequest: request)
         
