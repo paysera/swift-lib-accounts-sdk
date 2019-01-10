@@ -16,5 +16,7 @@ public class PSCategorizedAccountNumbers: Mappable {
     }
     
     public func mapping(map: Map) {
+        category    <- map["category"]
+        items       <- map["items"]
     }
 }
