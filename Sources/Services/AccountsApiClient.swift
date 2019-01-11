@@ -19,6 +19,16 @@ public class AccountsApiClient {
         self.credentials = credentials
     }
     
+    public func getTransfer(id: String) -> Promise<PSTransfer> {
+        let request = createRequest(.getTransfer(id: id))
+        makeRequest(apiRequest: request)
+
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+
     public func activateAccount(accountNumber: String) -> Promise<PSAccount> {
         let request = createRequest(.activateAccount(accountNumber: accountNumber))
         makeRequest(apiRequest: request)

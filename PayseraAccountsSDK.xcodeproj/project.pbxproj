@@ -52,6 +52,15 @@
 		ED1091FE21A99BC400C78C79 /* PSQuestionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1091FD21A99BC400C78C79 /* PSQuestionnaire.swift */; };
 		ED6413E021DE4BE300A35417 /* PSCategorizedAccountNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6413DF21DE4BE300A35417 /* PSCategorizedAccountNumbers.swift */; };
 		ED6413E221DE4D1700A35417 /* PSGetCategorizedAccountNumbersFilterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6413E121DE4D1700A35417 /* PSGetCategorizedAccountNumbersFilterRequest.swift */; };
+		ED6937DC21E880240008A1BD /* PSTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6937DB21E880240008A1BD /* PSTransfer.swift */; };
+		ED6937DE21E880390008A1BD /* PSTransferNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6937DD21E880390008A1BD /* PSTransferNotification.swift */; };
+		ED6937E021E8804D0008A1BD /* PSTransferBeneficiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6937DF21E8804D0008A1BD /* PSTransferBeneficiary.swift */; };
+		ED6937E221E881100008A1BD /* PSTransferInitiator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6937E121E881100008A1BD /* PSTransferInitiator.swift */; };
+		ED6937E421E881340008A1BD /* PSTransferFailureStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6937E321E881340008A1BD /* PSTransferFailureStatus.swift */; };
+		ED6937E621E8828C0008A1BD /* PSTransferPurpose.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6937E521E8828C0008A1BD /* PSTransferPurpose.swift */; };
+		ED6937E821E882A70008A1BD /* PSTransferPayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6937E721E882A70008A1BD /* PSTransferPayer.swift */; };
+		ED6937EB21E882D20008A1BD /* Mappable+EnumeratedMapping.swift .swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6937EA21E882D20008A1BD /* Mappable+EnumeratedMapping.swift .swift */; };
+		ED6937ED21E882F90008A1BD /* PSTransferStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6937EC21E882F90008A1BD /* PSTransferStatus.swift */; };
 		ED753919206A8ADA004EA953 /* JWTDecode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B25A55206A361200BE81C5 /* JWTDecode.framework */; };
 		ED75391A206A8ADA004EA953 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B25A53206A315100BE81C5 /* ObjectMapper.framework */; };
 		ED75391B206A8ADA004EA953 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88774BC5205FE5A300AC5048 /* Alamofire.framework */; };
@@ -124,6 +133,15 @@
 		ED1091FD21A99BC400C78C79 /* PSQuestionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSQuestionnaire.swift; sourceTree = "<group>"; };
 		ED6413DF21DE4BE300A35417 /* PSCategorizedAccountNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSCategorizedAccountNumbers.swift; sourceTree = "<group>"; };
 		ED6413E121DE4D1700A35417 /* PSGetCategorizedAccountNumbersFilterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSGetCategorizedAccountNumbersFilterRequest.swift; sourceTree = "<group>"; };
+		ED6937DB21E880240008A1BD /* PSTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSTransfer.swift; sourceTree = "<group>"; };
+		ED6937DD21E880390008A1BD /* PSTransferNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSTransferNotification.swift; sourceTree = "<group>"; };
+		ED6937DF21E8804D0008A1BD /* PSTransferBeneficiary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSTransferBeneficiary.swift; sourceTree = "<group>"; };
+		ED6937E121E881100008A1BD /* PSTransferInitiator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSTransferInitiator.swift; sourceTree = "<group>"; };
+		ED6937E321E881340008A1BD /* PSTransferFailureStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSTransferFailureStatus.swift; sourceTree = "<group>"; };
+		ED6937E521E8828C0008A1BD /* PSTransferPurpose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSTransferPurpose.swift; sourceTree = "<group>"; };
+		ED6937E721E882A70008A1BD /* PSTransferPayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSTransferPayer.swift; sourceTree = "<group>"; };
+		ED6937EA21E882D20008A1BD /* Mappable+EnumeratedMapping.swift .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mappable+EnumeratedMapping.swift .swift"; sourceTree = "<group>"; };
+		ED6937EC21E882F90008A1BD /* PSTransferStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSTransferStatus.swift; sourceTree = "<group>"; };
 		ED77A6FC2179B39B00723CD3 /* PSPaymentCardDeliveryDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardDeliveryDate.swift; sourceTree = "<group>"; };
 		EDC33BB7216E0E4B001C1925 /* PSPaymentCardIssuePrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardIssuePrice.swift; sourceTree = "<group>"; };
 		EDC33BB9216E0F0B001C1925 /* PSPaymentCardDeliveryPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardDeliveryPrice.swift; sourceTree = "<group>"; };
@@ -226,6 +244,7 @@
 		88B25A57206A4C6A00BE81C5 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				ED6937DA21E8801B0008A1BD /* Transfers */,
 				1CB5AC6B20B405B7006CDDE3 /* Cards */,
 				88B25A45206A23EB00BE81C5 /* AccountsApiCredentials.swift */,
 				88B25A4E206A302800BE81C5 /* AccountsApiRequest.swift */,
@@ -253,6 +272,7 @@
 		8933C7811EB5B7E0000D00A4 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				ED6937E921E882CC0008A1BD /* Extensions */,
 				88B25A57206A4C6A00BE81C5 /* Entities */,
 				88B25A5A206A4C9400BE81C5 /* Services */,
 				88B25A4D206A302800BE81C5 /* AccountsApiRequestRouter.swift */,
@@ -287,6 +307,29 @@
 				880FCB91206CB29700350F98 /* PayseraAccountsSDK.plist */,
 			);
 			name = Tests;
+			sourceTree = "<group>";
+		};
+		ED6937DA21E8801B0008A1BD /* Transfers */ = {
+			isa = PBXGroup;
+			children = (
+				ED6937DB21E880240008A1BD /* PSTransfer.swift */,
+				ED6937DD21E880390008A1BD /* PSTransferNotification.swift */,
+				ED6937DF21E8804D0008A1BD /* PSTransferBeneficiary.swift */,
+				ED6937E121E881100008A1BD /* PSTransferInitiator.swift */,
+				ED6937E321E881340008A1BD /* PSTransferFailureStatus.swift */,
+				ED6937E521E8828C0008A1BD /* PSTransferPurpose.swift */,
+				ED6937E721E882A70008A1BD /* PSTransferPayer.swift */,
+				ED6937EC21E882F90008A1BD /* PSTransferStatus.swift */,
+			);
+			path = Transfers;
+			sourceTree = "<group>";
+		};
+		ED6937E921E882CC0008A1BD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ED6937EA21E882D20008A1BD /* Mappable+EnumeratedMapping.swift .swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -410,6 +453,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED6413E221DE4D1700A35417 /* PSGetCategorizedAccountNumbersFilterRequest.swift in Sources */,
+				ED6937ED21E882F90008A1BD /* PSTransferStatus.swift in Sources */,
 				1C50616220B7F37E00F4CBE7 /* PSGetPaymentCardsFilterRequest.swift in Sources */,
 				88B25A52206A302800BE81C5 /* TokenRefresherProtocol.swift in Sources */,
 				1C7A2F7220D8E6C000195C0F /* PSPaymentCardLimit.swift in Sources */,
@@ -419,13 +463,18 @@
 				1C8E982120CE518B000770BB /* PSCreatePaymentCardRequest.swift in Sources */,
 				ED6413E021DE4BE300A35417 /* PSCategorizedAccountNumbers.swift in Sources */,
 				EDC33BBA216E0F0B001C1925 /* PSPaymentCardDeliveryPrice.swift in Sources */,
+				ED6937DE21E880390008A1BD /* PSTransferNotification.swift in Sources */,
 				EDC33BB8216E0E4B001C1925 /* PSPaymentCardIssuePrice.swift in Sources */,
 				88B25A50206A302800BE81C5 /* AccountsApiRequestRouter.swift in Sources */,
 				88B25A49206A23EB00BE81C5 /* AccountsApiCredentials.swift in Sources */,
+				ED6937DC21E880240008A1BD /* PSTransfer.swift in Sources */,
 				88B25A4A206A23EB00BE81C5 /* AccountsApiClient.swift in Sources */,
+				ED6937EB21E882D20008A1BD /* Mappable+EnumeratedMapping.swift .swift in Sources */,
 				1C9E7F73212D890300B6A66D /* PSUpdatePaymentCardLimitRequest.swift in Sources */,
+				ED6937E221E881100008A1BD /* PSTransferInitiator.swift in Sources */,
 				1CB5AC7720B43F57006CDDE3 /* PSChargeInfo.swift in Sources */,
 				1C7A2F7420D8EF0200195C0F /* PSPaymentCardPIN.swift in Sources */,
+				ED6937E421E881340008A1BD /* PSTransferFailureStatus.swift in Sources */,
 				ED77A6FD2179B39B00723CD3 /* PSPaymentCardDeliveryDate.swift in Sources */,
 				1CB5AC7120B43635006CDDE3 /* PSAccount.swift in Sources */,
 				880FCB96206CC6F900350F98 /* PSBalanceInformation.swift in Sources */,
@@ -434,10 +483,13 @@
 				ED1091FE21A99BC400C78C79 /* PSQuestionnaire.swift in Sources */,
 				1CB5AC7520B43CCC006CDDE3 /* PSPaymentCardClient.swift in Sources */,
 				88B25A51206A302800BE81C5 /* AccountsApiRequest.swift in Sources */,
+				ED6937E821E882A70008A1BD /* PSTransferPayer.swift in Sources */,
+				ED6937E621E8828C0008A1BD /* PSTransferPurpose.swift in Sources */,
 				88B25A4B206A23EB00BE81C5 /* AuthenticationRequestAdapter.swift in Sources */,
 				880FCB9C206CEB0400350F98 /* PSAccountApiError.swift in Sources */,
 				1CB5AC6F20B43186006CDDE3 /* PSPaymentCardShippingAddress.swift in Sources */,
 				1C50616020B7EB9500F4CBE7 /* PSMetadata.swift in Sources */,
+				ED6937E021E8804D0008A1BD /* PSTransferBeneficiary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
