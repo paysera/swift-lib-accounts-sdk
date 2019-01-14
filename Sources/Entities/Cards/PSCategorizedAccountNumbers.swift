@@ -17,8 +17,8 @@ public class PSCategorizedAccountNumbers: Mappable {
     
     public func mapping(map: Map) {
         if map.mappingType == .toJSON {
-            let category = self.category
-            let items = self.items
+            var category = self.category
+            var items = self.items
             category    <- map["category"]
             items       <- map["items"]
         }
