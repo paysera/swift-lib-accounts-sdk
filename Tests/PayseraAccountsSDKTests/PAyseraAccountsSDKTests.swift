@@ -104,7 +104,6 @@ class AccountsSDKTests: XCTestCase {
     }
     
     func testCreateAccount() {
-        var object: PSPaymentCardIssuePrice?
         let expectation = XCTestExpectation(description: "")
         accountsApiClient.createAccount(userId: 1706186).done { result in
             print(result)
