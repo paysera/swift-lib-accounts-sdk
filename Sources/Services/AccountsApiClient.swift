@@ -96,6 +96,16 @@ public class AccountsApiClient {
             .then(createPromise)
     }
     
+    public func createAccount(userId: Int) -> Promise<Any> {
+        let request = createRequest(.createAccount(userId: userId))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
+    
     // MARK: - Payment cards API
     public func createPaymentCard(_ card: PSCreatePaymentCardRequest) -> Promise<PSPaymentCard> {
         let request = createRequest(.createCard(card))

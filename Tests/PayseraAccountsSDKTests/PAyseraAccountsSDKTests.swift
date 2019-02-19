@@ -26,7 +26,7 @@ class AccountsSDKTests: XCTestCase {
     func testGetIbanInformation() {
         var object: PSIbanInformation?
         let expectation = XCTestExpectation(description: "")
-
+        
         accountsApiClient
             .getIbanInformation(iban: "LT383500010001845744")
             .done { ibanInfo in
@@ -34,7 +34,7 @@ class AccountsSDKTests: XCTestCase {
             }.catch { error in
                 print(error)
             }.finally { expectation.fulfill() }
-
+        
         wait(for: [expectation], timeout: 3.0)
         XCTAssertNotNil(object)
     }
@@ -98,6 +98,19 @@ class AccountsSDKTests: XCTestCase {
             }.catch { error in
                 print(error)
             }.finally { expectation.fulfill() }
+        
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(object)
+    }
+    
+    func testCreateAccount() {
+        var object: PSPaymentCardIssuePrice?
+        let expectation = XCTestExpectation(description: "")
+        accountsApiClient.createAccount(userId: 1706186).done { result in
+            print(result)
+            }.catch { error in
+                print(error)
+        }.finally { expectation.fulfill() }
         
         wait(for: [expectation], timeout: 3.0)
         XCTAssertNotNil(object)

@@ -17,8 +17,10 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getTransfer(id: String)
     case setAccountDefaultDescription(accountNumber: String, description: String)
     
+    
     // MARK: - POST
     case createCard(PSCreatePaymentCardRequest)
+    case createAccount(userId: Int)
     
     // MARK: - PUT
     case deactivateAccount(accountNumber: String)
@@ -48,7 +50,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getTransfer( _):
             return .get
             
-        case .createCard( _):
+        case .createCard( _),
+             .createAccount( _):
             return .post
             
         case .activateCard( _),
@@ -129,6 +132,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .cancelPaymentCard(let id):
             return "/issued-payment-card/v1/cards/\(String(id))/cancel"
+            
+        case .createAccount(let userId):
+            return "https://accounts.paysera.com/public/account/rest/v1/users/\(String(userId))/accounts"
         }
     }
     
