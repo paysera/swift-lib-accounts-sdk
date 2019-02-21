@@ -134,7 +134,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             return "/issued-payment-card/v1/cards/\(String(id))/cancel"
             
         case .createAccount(let userId):
-            return "https://accounts.paysera.com/public/account/rest/v1/users/\(String(userId))/accounts"
+            return "/public/account/rest/v1/users/\(String(userId))/accounts"
         }
     }
     

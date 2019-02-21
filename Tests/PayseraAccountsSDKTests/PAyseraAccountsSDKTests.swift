@@ -105,8 +105,10 @@ class AccountsSDKTests: XCTestCase {
     
     func testCreateAccount() {
         let expectation = XCTestExpectation(description: "")
-        accountsApiClient.createAccount(userId: 1706186).done { result in
-            print(result)
+        var object: Any?
+        //insert user id
+        accountsApiClient.createAccount(userId: 111111).done { result in
+            object = result
             }.catch { error in
                 print(error)
         }.finally { expectation.fulfill() }
