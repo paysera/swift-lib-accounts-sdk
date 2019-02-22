@@ -12,7 +12,8 @@ class AccountsSDKTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        self.token = "change_me"
+        self.token = "change me"
+        
         self.accountsApiClient = createAccountsApiClient()
     }
     
@@ -111,7 +112,25 @@ class AccountsSDKTests: XCTestCase {
             object = result
             }.catch { error in
                 print(error)
-        }.finally { expectation.fulfill() }
+            }.finally { expectation.fulfill() }
+        
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(object)
+    }
+    
+    func testSetAccountDescription() {
+        let expectation = XCTestExpectation(description: "")
+        var object: Any?
+        //insert user id and account number
+        accountsApiClient.setAccountDescription(userId: 1111111,
+                                                accountNumber: "change me",
+                                                description: "modric").done { result in
+                                                    object = result
+            }.catch { error in
+                print(error)
+            }.finally {
+                expectation.fulfill()
+        }
         
         wait(for: [expectation], timeout: 3.0)
         XCTAssertNotNil(object)
