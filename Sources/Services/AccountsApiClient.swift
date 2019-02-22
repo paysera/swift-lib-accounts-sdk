@@ -29,7 +29,7 @@ public class AccountsApiClient {
             .then(createPromise)
     }
 
-    public func setDefaultAccountDescription(accountNumber: String, description: String) -> Promise<Any> {
+    public func setDefaultAccountDescription(accountNumber: String, description: String) -> Promise<PSAccount> {
         let request = createRequest(.setAccountDefaultDescription(accountNumber: accountNumber, description: description))
         makeRequest(apiRequest: request)
 

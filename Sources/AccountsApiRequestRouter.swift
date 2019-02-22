@@ -149,7 +149,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             return ["show_historical_currencies": showHistoricalCurrencies ? 1 : 0]
             
         case .getPaymentCardDeliveryDate(let country, let deliveryType):
-            return ["country": country, "delivery_type": deliveryType]
+            return ["country": country, "deglivery_type": deliveryType]
             
         case .getPaymentCards(let cardsFilter):
             return cardsFilter.toJSON()
