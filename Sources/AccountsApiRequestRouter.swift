@@ -15,7 +15,6 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getPaymentCardDeliveryDate(country: String, deliveryType: String)
     case getCategorizedAccountNumbers(filter: PSGetCategorizedAccountNumbersFilterRequest)
     case getTransfer(id: String)
-    case setAccountDefaultDescription(accountNumber: String, description: String)
     
     
     // MARK: - POST
@@ -31,6 +30,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case setPaymentCardLimit(accountNumber: String, cardLimit: PSUpdatePaymentCardLimitRequest)
     case retrievePaymentCardPIN(id: Int, cvv: String)
     case cancelPaymentCard(id: Int)
+    case setAccountDefaultDescription(accountNumber: String, description: String)
+    case setAccountDescription(userId: Int, accountNumber: String, description: String)
     
     // MARK: - Declarations
     static var baseURLString = "https://accounts.paysera.com/public"
@@ -62,20 +63,21 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .cancelPaymentCard( _),
              .deactivateAccount( _),
              .activateAccount( _),
-             .setAccountDefaultDescription( _, _):
+             .setAccountDefaultDescription( _, _),
+             .setAccountDescription( _, _, _):
             return .put
         }
     }
     
     private var path: String {
         switch self {
-        
+            
         case .activateAccount(let accountNumber):
             return "/account/rest/v1/accounts/\(accountNumber)/activate"
-        
+            
         case .deactivateAccount(let accountNumber):
             return "/account/rest/v1/accounts/\(accountNumber)/deactivate"
-
+            
         case .setAccountDefaultDescription(let accountNumber, _):
             return "/account/rest/v1/accounts/\(accountNumber)/descriptions"
             
@@ -84,7 +86,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .getIbanInformation(let iban):
             return "/transfer/rest/v1/bank-information/\(iban)"
-
+            
         case .getTransfer(let id):
             return "/transfer/rest/v1/transfers/\(id)"
             
@@ -102,7 +104,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .getPaymentCardDeliveryPrices(let country):
             return "/issued-payment-card/v1/card-delivery-prices/\(country)"
-        
+            
         case .getPaymentCardIssuePrice(let country, let clientType, let cardOwnerId):
             return "/issued-payment-card/v1/card-issue-price/\(country)/\(clientType)/\(cardOwnerId)"
             
@@ -117,7 +119,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .activateCard(let id):
             return "/issued-payment-card/v1/cards/\(String(id))/activate"
-        
+            
         case .enableCard(let id):
             return "/issued-payment-card/v1/cards/\(String(id))/enable"
             
@@ -134,38 +136,45 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             return "/issued-payment-card/v1/cards/\(String(id))/cancel"
             
         case .createAccount(let userId):
-            return "/public/account/rest/v1/users/\(String(userId))/accounts"
+            return "/account/rest/v1/users/\(String(userId))/accounts"
+            
+            
+        case .setAccountDescription(let userID ,let accountNumber, _):
+            return "/account/rest/v1/accounts/\(accountNumber)/descriptions?user_id=\(userID)"
         }
     }
     
     private var parameters: Parameters? {
         switch self {
-            case .getBalance( _, let showHistoricalCurrencies):
-                return ["show_historical_currencies": showHistoricalCurrencies ? 1 : 0]
- 
-            case .getPaymentCardDeliveryDate(let country, let deliveryType):
-                return ["country": country, "delivery_type": deliveryType]
+        case .getBalance( _, let showHistoricalCurrencies):
+            return ["show_historical_currencies": showHistoricalCurrencies ? 1 : 0]
             
-            case .getPaymentCards(let cardsFilter):
-                return cardsFilter.toJSON()
+        case .getPaymentCardDeliveryDate(let country, let deliveryType):
+            return ["country": country, "delivery_type": deliveryType]
             
-            case .getCategorizedAccountNumbers(let filter):
-                return filter.toJSON()
+        case .getPaymentCards(let cardsFilter):
+            return cardsFilter.toJSON()
             
-            case .createCard(let psCard):
-                return psCard.toJSON()
+        case .getCategorizedAccountNumbers(let filter):
+            return filter.toJSON()
             
-            case .setPaymentCardLimit(_, let cardLimit):
-                return cardLimit.toJSON()
+        case .createCard(let psCard):
+            return psCard.toJSON()
             
-            case .retrievePaymentCardPIN( _, let cvv):
-                return ["cvv2" :cvv]
+        case .setPaymentCardLimit(_, let cardLimit):
+            return cardLimit.toJSON()
             
-            case .setAccountDefaultDescription( _, let description):
-                return ["description": description]
-
-            default:
-                return nil
+        case .retrievePaymentCardPIN( _, let cvv):
+            return ["cvv2" :cvv]
+            
+        case .setAccountDefaultDescription( _, let description):
+            return ["description": description]
+            
+        case .setAccountDescription(_ ,_, let description):
+            return ["description" : description]
+            
+        default:
+            return nil
         }
     }
     
@@ -177,7 +186,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         urlRequest.httpMethod = method.rawValue
         
         switch self {
-        
+            
         case (_) where method == .get:
             urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
             

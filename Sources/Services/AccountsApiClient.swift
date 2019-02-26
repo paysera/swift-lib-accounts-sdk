@@ -38,6 +38,16 @@ public class AccountsApiClient {
             .promise
             .then(createPromise)
     }
+    
+    public func setAccountDescription(userId: Int, accountNumber: String, description: String) -> Promise<Any> {
+        let request = createRequest(.setAccountDescription(userId: userId, accountNumber: accountNumber, description: description))
+        makeRequest(apiRequest: request)
+        
+        return request
+            .pendingPromise
+            .promise
+            .then(createPromise)
+    }
 
     public func activateAccount(accountNumber: String) -> Promise<PSAccount> {
         let request = createRequest(.activateAccount(accountNumber: accountNumber))
@@ -96,7 +106,7 @@ public class AccountsApiClient {
             .then(createPromise)
     }
     
-    public func createAccount(userId: Int) -> Promise<Any> {
+    public func createAccount(userId: Int) -> Promise<PSAccount> {
         let request = createRequest(.createAccount(userId: userId))
         makeRequest(apiRequest: request)
         
