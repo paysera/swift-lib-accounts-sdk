@@ -140,7 +140,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
             
         case .setAccountDescription(let userID ,let accountNumber, _):
-            return "/account/rest/v1/accounts/\(accountNumber)/descriptions?user_id=\(userID)"
+            return "/account/rest/v1/accounts/\(accountNumber)/descriptions"
         }
     }
     
@@ -170,8 +170,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .setAccountDefaultDescription( _, let description):
             return ["description": description]
             
-        case .setAccountDescription(_ ,_, let description):
-            return ["description" : description]
+        case .setAccountDescription(let userId, _, let description):
+            return ["body": ["description" : description], "query": ["user_id": userId]]
             
         default:
             return nil
@@ -186,6 +186,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         urlRequest.httpMethod = method.rawValue
         
         switch self {
+        case .setAccountDescription(_, _, _):
+            urlRequest = try CompositeEncoding.default.encode(urlRequest, with: parameters)
             
         case (_) where method == .get:
             urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)

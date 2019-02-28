@@ -49,6 +49,7 @@
 		88B25A52206A302800BE81C5 /* TokenRefresherProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B25A4F206A302800BE81C5 /* TokenRefresherProtocol.swift */; };
 		88B25A59206A4C6A00BE81C5 /* PSIbanInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B25A58206A4C6A00BE81C5 /* PSIbanInformation.swift */; };
 		8933C7901EB5B82D000D00A4 /* PayseraAccountsSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* PayseraAccountsSDKTests.swift */; };
+		C47644DD222800AA00E10BD8 /* CompositeEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47644DC222800AA00E10BD8 /* CompositeEncoding.swift */; };
 		ED1091FE21A99BC400C78C79 /* PSQuestionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1091FD21A99BC400C78C79 /* PSQuestionnaire.swift */; };
 		ED6413E021DE4BE300A35417 /* PSCategorizedAccountNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6413DF21DE4BE300A35417 /* PSCategorizedAccountNumbers.swift */; };
 		ED6413E221DE4D1700A35417 /* PSGetCategorizedAccountNumbersFilterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6413E121DE4D1700A35417 /* PSGetCategorizedAccountNumbersFilterRequest.swift */; };
@@ -130,6 +131,7 @@
 		88B25A58206A4C6A00BE81C5 /* PSIbanInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PSIbanInformation.swift; sourceTree = "<group>"; };
 		8933C7891EB5B82A000D00A4 /* PayseraAccountsSDKTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayseraAccountsSDKTests.swift; sourceTree = "<group>"; };
 		AD2FAA261CD0B6D800659CF4 /* PayseraAccountsSDK.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PayseraAccountsSDK.plist; sourceTree = "<group>"; };
+		C47644DC222800AA00E10BD8 /* CompositeEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeEncoding.swift; sourceTree = "<group>"; };
 		ED1091FD21A99BC400C78C79 /* PSQuestionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSQuestionnaire.swift; sourceTree = "<group>"; };
 		ED6413DF21DE4BE300A35417 /* PSCategorizedAccountNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSCategorizedAccountNumbers.swift; sourceTree = "<group>"; };
 		ED6413E121DE4D1700A35417 /* PSGetCategorizedAccountNumbersFilterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSGetCategorizedAccountNumbersFilterRequest.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 		8933C7811EB5B7E0000D00A4 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				C47644DE2228028F00E10BD8 /* Common */,
 				ED6937E921E882CC0008A1BD /* Extensions */,
 				88B25A57206A4C6A00BE81C5 /* Entities */,
 				88B25A5A206A4C9400BE81C5 /* Services */,
@@ -289,6 +292,22 @@
 			);
 			name = Tests;
 			path = Tests/PayseraAccountsSDKTests;
+			sourceTree = "<group>";
+		};
+		C47644DE2228028F00E10BD8 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C47644DF2228029800E10BD8 /* Services */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		C47644DF2228029800E10BD8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C47644DC222800AA00E10BD8 /* CompositeEncoding.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		DD7502721C68FC1B006590AF /* Frameworks */ = {
@@ -452,6 +471,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C47644DD222800AA00E10BD8 /* CompositeEncoding.swift in Sources */,
 				ED6413E221DE4D1700A35417 /* PSGetCategorizedAccountNumbersFilterRequest.swift in Sources */,
 				ED6937ED21E882F90008A1BD /* PSTransferStatus.swift in Sources */,
 				1C50616220B7F37E00F4CBE7 /* PSGetPaymentCardsFilterRequest.swift in Sources */,
