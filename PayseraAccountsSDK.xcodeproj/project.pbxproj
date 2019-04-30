@@ -50,8 +50,7 @@
 		88B25A59206A4C6A00BE81C5 /* PSIbanInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B25A58206A4C6A00BE81C5 /* PSIbanInformation.swift */; };
 		8933C7901EB5B82D000D00A4 /* PayseraAccountsSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* PayseraAccountsSDKTests.swift */; };
 		C47644DD222800AA00E10BD8 /* CompositeEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47644DC222800AA00E10BD8 /* CompositeEncoding.swift */; };
-		C49F7692227855AC00C333E1 /* PSCanUserOrderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49F7691227855AC00C333E1 /* PSCanUserOrderCard.swift */; };
-		C49F76942278566C00C333E1 /* PSCanUserFillQuestionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49F76932278566C00C333E1 /* PSCanUserFillQuestionnaire.swift */; };
+		C49F76942278566C00C333E1 /* PSClientAllowance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49F76932278566C00C333E1 /* PSClientAllowance.swift */; };
 		ED1091FE21A99BC400C78C79 /* PSQuestionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1091FD21A99BC400C78C79 /* PSQuestionnaire.swift */; };
 		ED6413E021DE4BE300A35417 /* PSCategorizedAccountNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6413DF21DE4BE300A35417 /* PSCategorizedAccountNumbers.swift */; };
 		ED6413E221DE4D1700A35417 /* PSGetCategorizedAccountNumbersFilterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6413E121DE4D1700A35417 /* PSGetCategorizedAccountNumbersFilterRequest.swift */; };
@@ -134,8 +133,7 @@
 		8933C7891EB5B82A000D00A4 /* PayseraAccountsSDKTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayseraAccountsSDKTests.swift; sourceTree = "<group>"; };
 		AD2FAA261CD0B6D800659CF4 /* PayseraAccountsSDK.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PayseraAccountsSDK.plist; sourceTree = "<group>"; };
 		C47644DC222800AA00E10BD8 /* CompositeEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeEncoding.swift; sourceTree = "<group>"; };
-		C49F7691227855AC00C333E1 /* PSCanUserOrderCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSCanUserOrderCard.swift; sourceTree = "<group>"; };
-		C49F76932278566C00C333E1 /* PSCanUserFillQuestionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSCanUserFillQuestionnaire.swift; sourceTree = "<group>"; };
+		C49F76932278566C00C333E1 /* PSClientAllowance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSClientAllowance.swift; sourceTree = "<group>"; };
 		ED1091FD21A99BC400C78C79 /* PSQuestionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSQuestionnaire.swift; sourceTree = "<group>"; };
 		ED6413DF21DE4BE300A35417 /* PSCategorizedAccountNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSCategorizedAccountNumbers.swift; sourceTree = "<group>"; };
 		ED6413E121DE4D1700A35417 /* PSGetCategorizedAccountNumbersFilterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSGetCategorizedAccountNumbersFilterRequest.swift; sourceTree = "<group>"; };
@@ -190,7 +188,6 @@
 				EDC33BB9216E0F0B001C1925 /* PSPaymentCardDeliveryPrice.swift */,
 				ED77A6FC2179B39B00723CD3 /* PSPaymentCardDeliveryDate.swift */,
 				ED6413DF21DE4BE300A35417 /* PSCategorizedAccountNumbers.swift */,
-				C49F7691227855AC00C333E1 /* PSCanUserOrderCard.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -263,7 +260,7 @@
 				1C50615D20B7EA8900F4CBE7 /* PSMetadataAwareResponse.swift */,
 				880FCB9D206CF18500350F98 /* PSMoney.swift */,
 				ED1091FD21A99BC400C78C79 /* PSQuestionnaire.swift */,
-				C49F76932278566C00C333E1 /* PSCanUserFillQuestionnaire.swift */,
+				C49F76932278566C00C333E1 /* PSClientAllowance.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -437,6 +434,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 52D6D9721BEFF229002C0205;
@@ -482,7 +480,6 @@
 				ED6937ED21E882F90008A1BD /* PSTransferStatus.swift in Sources */,
 				1C50616220B7F37E00F4CBE7 /* PSGetPaymentCardsFilterRequest.swift in Sources */,
 				88B25A52206A302800BE81C5 /* TokenRefresherProtocol.swift in Sources */,
-				C49F7692227855AC00C333E1 /* PSCanUserOrderCard.swift in Sources */,
 				1C7A2F7220D8E6C000195C0F /* PSPaymentCardLimit.swift in Sources */,
 				880FCB9E206CF18500350F98 /* PSMoney.swift in Sources */,
 				1C50615E20B7EA8900F4CBE7 /* PSMetadataAwareResponse.swift in Sources */,
@@ -512,7 +509,7 @@
 				88B25A51206A302800BE81C5 /* AccountsApiRequest.swift in Sources */,
 				ED6937E821E882A70008A1BD /* PSTransferPayer.swift in Sources */,
 				ED6937E621E8828C0008A1BD /* PSTransferPurpose.swift in Sources */,
-				C49F76942278566C00C333E1 /* PSCanUserFillQuestionnaire.swift in Sources */,
+				C49F76942278566C00C333E1 /* PSClientAllowance.swift in Sources */,
 				88B25A4B206A23EB00BE81C5 /* AuthenticationRequestAdapter.swift in Sources */,
 				880FCB9C206CEB0400350F98 /* PSAccountApiError.swift in Sources */,
 				1CB5AC6F20B43186006CDDE3 /* PSPaymentCardShippingAddress.swift in Sources */,

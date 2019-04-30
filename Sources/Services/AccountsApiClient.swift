@@ -116,7 +116,7 @@ public class AccountsApiClient {
             .then(createPromise)
     }
     
-    public func canUserOrderCard(userId: Int) -> Promise<PSCanUserOrderCard> {
+    public func canUserOrderCard(userId: Int) -> Promise<PSClientAllowance> {
         let request = createRequest(.canUserOrderCard(userId: userId))
         makeRequest(apiRequest: request)
         
@@ -126,7 +126,7 @@ public class AccountsApiClient {
             .then(createPromise)
     }
     
-    public func canUserFillQuestionnaire(userId: Int) -> Promise<PSCanUserFillQuestionnaire> {
+    public func canUserFillQuestionnaire(userId: Int) -> Promise<PSClientAllowance> {
         let request = createRequest(.canUserFillQuestionnaire(userId: userId))
         makeRequest(apiRequest: request)
         

@@ -1,7 +1,7 @@
 import Foundation
 import ObjectMapper
 
-public class PSCanUserOrderCard: Mappable {
+public class PSClientAllowance: Mappable {
     
     public var allowed: Bool
     
@@ -16,3 +16,4 @@ public class PSCanUserOrderCard: Mappable {
     
     public func mapping(map: Map) {}
 }
+
