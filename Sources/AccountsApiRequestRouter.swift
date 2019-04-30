@@ -15,7 +15,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getPaymentCardDeliveryDate(country: String, deliveryType: String)
     case getCategorizedAccountNumbers(filter: PSGetCategorizedAccountNumbersFilterRequest)
     case getTransfer(id: String)
-    
+    case canUserOrderCard(userId: Int)
+    case canUserFillQuestionnaire(userId: Int)
     
     // MARK: - POST
     case createCard(PSCreatePaymentCardRequest)
@@ -48,7 +49,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getPaymentCardIssuePrice( _, _, _),
              .getPaymentCardDeliveryDate( _, _),
              .getCategorizedAccountNumbers( _),
-             .getTransfer( _):
+             .getTransfer( _),
+             .canUserOrderCard( _),
+             .canUserFillQuestionnaire( _):
             return .get
             
         case .createCard( _),
@@ -138,9 +141,14 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .createAccount(let userId):
             return "/account/rest/v1/users/\(String(userId))/accounts"
             
-            
-        case .setAccountDescription(let userID ,let accountNumber, _):
+        case .setAccountDescription( _,let accountNumber, _):
             return "/account/rest/v1/accounts/\(accountNumber)/descriptions"
+            
+        case .canUserOrderCard( _):
+            return "/client-allowance/rest/v1/client-allowances/can-order-card"
+            
+        case .canUserFillQuestionnaire( _):
+            return "/client-allowance/rest/v1/client-allowances/can-fill-questionnaire"
         }
     }
     
@@ -172,6 +180,12 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .setAccountDescription(let userId, _, let description):
             return ["body": ["description" : description], "query": ["user_id": userId]]
+            
+        case .canUserOrderCard(let userId):
+            return ["user_id": userId]
+            
+        case .canUserFillQuestionnaire(let userId):
+            return ["user_id": userId]
             
         default:
             return nil

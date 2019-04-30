@@ -135,4 +135,36 @@ class AccountsSDKTests: XCTestCase {
         wait(for: [expectation], timeout: 3.0)
         XCTAssertNotNil(object)
     }
+    
+    func testCanUserOrderCard() {
+        let expectation = XCTestExpectation(description: "")
+        var object: Any?
+        //insert user id
+        accountsApiClient.canUserOrderCard(userId: 1111111).done { result in
+            object = result
+            }.catch { error in
+                print(error)
+            }.finally {
+                expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(object)
+    }
+    
+    func testCanUserFillQuestionnaire() {
+        let expectation = XCTestExpectation(description: "")
+        var object: Any?
+        //insert user id
+        accountsApiClient.canUserFillQuestionnaire(userId: 1111111).done { result in
+            object = result
+            }.catch { error in
+                print(error)
+            }.finally {
+                expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(object)
+    }
 }
