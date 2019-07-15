@@ -4,12 +4,12 @@ import PayseraCommonSDK
 
 public class AccountsApiClientFactory {
     public static func createAccountsApiClient(
-        credentials: AccountsApiCredentials,
-        tokenRefresher: TokenRefresherProtocol? = nil,
+        credentials: PSApiJWTCredentials,
+        tokenRefresher: PSTokenRefresherProtocol? = nil,
         logger: PSLoggerProtocol? = nil
     ) -> AccountsApiClient {
         let sessionManager = SessionManager()
-        sessionManager.adapter = AuthenticationRequestAdapter.init(accountsApiCredentials: credentials)
+        sessionManager.adapter = PSRequestAdapter(credentials: credentials)
     
         return AccountsApiClient(
             sessionManager: sessionManager,

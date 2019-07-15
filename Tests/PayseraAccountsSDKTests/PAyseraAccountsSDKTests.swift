@@ -1,27 +1,23 @@
 import Foundation
 import XCTest
 import PayseraAccountsSDK
+import PayseraCommonSDK
 import PromiseKit
 import JWTDecode
 import ObjectMapper
 
 class AccountsSDKTests: XCTestCase {
     private var accountsApiClient: AccountsApiClient!
-    private var token: String!
     
     override func setUp() {
         super.setUp()
         
-        self.token = "change me"
+        let token = "insert_me"
         
-        self.accountsApiClient = createAccountsApiClient()
-    }
-    
-    private func createAccountsApiClient() -> AccountsApiClient {
-        let credentials = AccountsApiCredentials()
-        credentials.token = try! decode(jwt: self.token)
+        let credentials = PSApiJWTCredentials()
+        credentials.token = try! decode(jwt: token)
         
-        return AccountsApiClientFactory.createAccountsApiClient(credentials: credentials)
+        accountsApiClient = AccountsApiClientFactory.createAccountsApiClient(credentials: credentials)
     }
     
     func testGetIbanInformation() {
@@ -96,6 +92,27 @@ class AccountsSDKTests: XCTestCase {
             .getPaymentCardIssuePrice(country: "lt", clientType: "natural", cardOwnerId: "165660")
             .done { issuePrice in
                 object = issuePrice
+            }.catch { error in
+                print(error)
+            }.finally { expectation.fulfill() }
+        
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(object)
+    }
+    
+    func testGetPaymentCardDeliveryCountries() {
+        var object: PSPaymentCardDeliveryCountries?
+        let expectation = XCTestExpectation(description: "")
+        
+        let filter = PSBaseFilter()
+        filter.limit = 200
+        
+        accountsApiClient
+            .getPaymentCardDeliveryCountries(filter: filter)
+            .done { response in
+                object = response
+                
+                print(object)
             }.catch { error in
                 print(error)
             }.finally { expectation.fulfill() }

@@ -1,5 +1,6 @@
 import Foundation
 import Alamofire
+import PayseraCommonSDK
 
 public enum AccountsApiRequestRouter: URLRequestConvertible {
     
@@ -13,6 +14,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getPaymentCardDeliveryPrices(country: String)
     case getPaymentCardIssuePrice(country: String, clientType: String, cardOwnerId: String)
     case getPaymentCardDeliveryDate(country: String, deliveryType: String)
+    case getPaymentCardDeliveryCountries(filter: PSBaseFilter)
     case getCategorizedAccountNumbers(filter: PSGetCategorizedAccountNumbersFilterRequest)
     case getTransfer(id: String)
     case canUserOrderCard(userId: Int)
@@ -51,7 +53,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getCategorizedAccountNumbers( _),
              .getTransfer( _),
              .canUserOrderCard( _),
-             .canUserFillQuestionnaire( _):
+             .canUserFillQuestionnaire( _),
+             .getPaymentCardDeliveryCountries( _):
             return .get
             
         case .createCard( _),
@@ -98,6 +101,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .getPaymentCards( _):
             return "/issued-payment-card/v1/cards"
+            
+        case .getPaymentCardDeliveryCountries( _):
+            return "/issued-payment-card/v1/card-delivery-countries"
             
         case .getPaymentCardLimit(let accountNumber):
             return "/issued-payment-card/v1/accounts/\(accountNumber)/card-limit"
@@ -159,6 +165,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .getPaymentCardDeliveryDate(let country, let deliveryType):
             return ["country": country, "delivery_type": deliveryType]
+            
+        case .getPaymentCardDeliveryCountries(let filter):
+            return filter.toJSON()
             
         case .getPaymentCards(let cardsFilter):
             return cardsFilter.toJSON()

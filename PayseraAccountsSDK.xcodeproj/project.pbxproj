@@ -37,12 +37,8 @@
 		88774BCD205FE5F700AC5048 /* Cartfile.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 88774BCB205FE5F700AC5048 /* Cartfile.resolved */; };
 		88774BCE205FE5F700AC5048 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 88774BCC205FE5F700AC5048 /* Cartfile */; };
 		88B25A48206A23EB00BE81C5 /* AccountsApiClientFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B25A44206A23EB00BE81C5 /* AccountsApiClientFactory.swift */; };
-		88B25A49206A23EB00BE81C5 /* AccountsApiCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B25A45206A23EB00BE81C5 /* AccountsApiCredentials.swift */; };
 		88B25A4A206A23EB00BE81C5 /* AccountsApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B25A46206A23EB00BE81C5 /* AccountsApiClient.swift */; };
-		88B25A4B206A23EB00BE81C5 /* AuthenticationRequestAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B25A47206A23EB00BE81C5 /* AuthenticationRequestAdapter.swift */; };
 		88B25A50206A302800BE81C5 /* AccountsApiRequestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B25A4D206A302800BE81C5 /* AccountsApiRequestRouter.swift */; };
-		88B25A51206A302800BE81C5 /* AccountsApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B25A4E206A302800BE81C5 /* AccountsApiRequest.swift */; };
-		88B25A52206A302800BE81C5 /* TokenRefresherProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B25A4F206A302800BE81C5 /* TokenRefresherProtocol.swift */; };
 		88B25A59206A4C6A00BE81C5 /* PSIbanInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B25A58206A4C6A00BE81C5 /* PSIbanInformation.swift */; };
 		8933C7901EB5B82D000D00A4 /* PayseraAccountsSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* PayseraAccountsSDKTests.swift */; };
 		C47644DD222800AA00E10BD8 /* CompositeEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47644DC222800AA00E10BD8 /* CompositeEncoding.swift */; };
@@ -67,6 +63,7 @@
 		ED8FAFFE22BA66FF00792600 /* PayseraCommonSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED8FAFFD22BA66FF00792600 /* PayseraCommonSDK.framework */; };
 		EDC33BB8216E0E4B001C1925 /* PSPaymentCardIssuePrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC33BB7216E0E4B001C1925 /* PSPaymentCardIssuePrice.swift */; };
 		EDC33BBA216E0F0B001C1925 /* PSPaymentCardDeliveryPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC33BB9216E0F0B001C1925 /* PSPaymentCardDeliveryPrice.swift */; };
+		EDF44FAF22DC685D002F4522 /* PSPaymentCardDeliveryCountries.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF44FAE22DC685D002F4522 /* PSPaymentCardDeliveryCountries.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,12 +111,8 @@
 		88774BCB205FE5F700AC5048 /* Cartfile.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = "<group>"; };
 		88774BCC205FE5F700AC5048 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		88B25A44206A23EB00BE81C5 /* AccountsApiClientFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsApiClientFactory.swift; sourceTree = "<group>"; };
-		88B25A45206A23EB00BE81C5 /* AccountsApiCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsApiCredentials.swift; sourceTree = "<group>"; };
 		88B25A46206A23EB00BE81C5 /* AccountsApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsApiClient.swift; sourceTree = "<group>"; };
-		88B25A47206A23EB00BE81C5 /* AuthenticationRequestAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationRequestAdapter.swift; sourceTree = "<group>"; };
 		88B25A4D206A302800BE81C5 /* AccountsApiRequestRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsApiRequestRouter.swift; sourceTree = "<group>"; };
-		88B25A4E206A302800BE81C5 /* AccountsApiRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsApiRequest.swift; sourceTree = "<group>"; };
-		88B25A4F206A302800BE81C5 /* TokenRefresherProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenRefresherProtocol.swift; sourceTree = "<group>"; };
 		88B25A53206A315100BE81C5 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		88B25A55206A361200BE81C5 /* JWTDecode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWTDecode.framework; path = Carthage/Build/iOS/JWTDecode.framework; sourceTree = "<group>"; };
 		88B25A58206A4C6A00BE81C5 /* PSIbanInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PSIbanInformation.swift; sourceTree = "<group>"; };
@@ -143,6 +136,7 @@
 		ED8FAFFD22BA66FF00792600 /* PayseraCommonSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayseraCommonSDK.framework; path = Carthage/Build/iOS/PayseraCommonSDK.framework; sourceTree = "<group>"; };
 		EDC33BB7216E0E4B001C1925 /* PSPaymentCardIssuePrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardIssuePrice.swift; sourceTree = "<group>"; };
 		EDC33BB9216E0F0B001C1925 /* PSPaymentCardDeliveryPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardDeliveryPrice.swift; sourceTree = "<group>"; };
+		EDF44FAE22DC685D002F4522 /* PSPaymentCardDeliveryCountries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardDeliveryCountries.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,13 +240,12 @@
 			children = (
 				ED6937DA21E8801B0008A1BD /* Transfers */,
 				1CB5AC6B20B405B7006CDDE3 /* Cards */,
-				88B25A45206A23EB00BE81C5 /* AccountsApiCredentials.swift */,
-				88B25A4E206A302800BE81C5 /* AccountsApiRequest.swift */,
 				1CB5AC7020B43635006CDDE3 /* PSAccount.swift */,
 				880FCB95206CC6F900350F98 /* PSBalanceInformation.swift */,
 				88B25A58206A4C6A00BE81C5 /* PSIbanInformation.swift */,
 				ED1091FD21A99BC400C78C79 /* PSQuestionnaire.swift */,
 				C49F76932278566C00C333E1 /* PSClientAllowance.swift */,
+				EDF44FAE22DC685D002F4522 /* PSPaymentCardDeliveryCountries.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -274,8 +267,6 @@
 				88B25A57206A4C6A00BE81C5 /* Entities */,
 				88B25A5A206A4C9400BE81C5 /* Services */,
 				88B25A4D206A302800BE81C5 /* AccountsApiRequestRouter.swift */,
-				88B25A47206A23EB00BE81C5 /* AuthenticationRequestAdapter.swift */,
-				88B25A4F206A302800BE81C5 /* TokenRefresherProtocol.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -469,9 +460,9 @@
 			files = (
 				C47644DD222800AA00E10BD8 /* CompositeEncoding.swift in Sources */,
 				ED6413E221DE4D1700A35417 /* PSGetCategorizedAccountNumbersFilterRequest.swift in Sources */,
+				EDF44FAF22DC685D002F4522 /* PSPaymentCardDeliveryCountries.swift in Sources */,
 				ED6937ED21E882F90008A1BD /* PSTransferStatus.swift in Sources */,
 				1C50616220B7F37E00F4CBE7 /* PSGetPaymentCardsFilterRequest.swift in Sources */,
-				88B25A52206A302800BE81C5 /* TokenRefresherProtocol.swift in Sources */,
 				1C7A2F7220D8E6C000195C0F /* PSPaymentCardLimit.swift in Sources */,
 				88B25A48206A23EB00BE81C5 /* AccountsApiClientFactory.swift in Sources */,
 				1C8E982120CE518B000770BB /* PSCreatePaymentCardRequest.swift in Sources */,
@@ -480,7 +471,6 @@
 				ED6937DE21E880390008A1BD /* PSTransferNotification.swift in Sources */,
 				EDC33BB8216E0E4B001C1925 /* PSPaymentCardIssuePrice.swift in Sources */,
 				88B25A50206A302800BE81C5 /* AccountsApiRequestRouter.swift in Sources */,
-				88B25A49206A23EB00BE81C5 /* AccountsApiCredentials.swift in Sources */,
 				ED6937DC21E880240008A1BD /* PSTransfer.swift in Sources */,
 				88B25A4A206A23EB00BE81C5 /* AccountsApiClient.swift in Sources */,
 				ED6937EB21E882D20008A1BD /* Mappable+EnumeratedMapping.swift .swift in Sources */,
@@ -496,11 +486,9 @@
 				88B25A59206A4C6A00BE81C5 /* PSIbanInformation.swift in Sources */,
 				ED1091FE21A99BC400C78C79 /* PSQuestionnaire.swift in Sources */,
 				1CB5AC7520B43CCC006CDDE3 /* PSPaymentCardClient.swift in Sources */,
-				88B25A51206A302800BE81C5 /* AccountsApiRequest.swift in Sources */,
 				ED6937E821E882A70008A1BD /* PSTransferPayer.swift in Sources */,
 				ED6937E621E8828C0008A1BD /* PSTransferPurpose.swift in Sources */,
 				C49F76942278566C00C333E1 /* PSClientAllowance.swift in Sources */,
-				88B25A4B206A23EB00BE81C5 /* AuthenticationRequestAdapter.swift in Sources */,
 				1CB5AC6F20B43186006CDDE3 /* PSPaymentCardShippingAddress.swift in Sources */,
 				ED6937E021E8804D0008A1BD /* PSTransferBeneficiary.swift in Sources */,
 			);
