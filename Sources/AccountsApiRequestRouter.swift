@@ -19,9 +19,11 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getTransfer(id: String)
     case canUserOrderCard(userId: Int)
     case canUserFillQuestionnaire(userId: Int)
+    case getAuthorizations(PSGetAuthorizationsFilterRequest)
     
     // MARK: - POST
     case createCard(PSCreatePaymentCardRequest)
+    case createAuthorization(PSCreateAuthorizationRequest)
     case createAccount(userId: Int)
     
     // MARK: - PUT
@@ -35,6 +37,10 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case cancelPaymentCard(id: Int)
     case setAccountDefaultDescription(accountNumber: String, description: String)
     case setAccountDescription(userId: Int, accountNumber: String, description: String)
+    case updateAuthorization(id: String, createAuthorizationRequest: PSCreateAuthorizationRequest)
+    
+    // MARK: - Delete
+    case deleteAuthorization(id: String)
     
     // MARK: - Declarations
     static var baseURLString = "https://accounts.paysera.com/public"
@@ -54,11 +60,14 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getTransfer( _),
              .canUserOrderCard( _),
              .canUserFillQuestionnaire( _),
-             .getPaymentCardDeliveryCountries( _):
+             .getPaymentCardDeliveryCountries( _),
+             .getAuthorizations( _):
+            
             return .get
             
         case .createCard( _),
-             .createAccount( _):
+             .createAccount( _),
+             .createAuthorization( _):
             return .post
             
         case .activateCard( _),
@@ -70,8 +79,12 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .deactivateAccount( _),
              .activateAccount( _),
              .setAccountDefaultDescription( _, _),
+             .updateAuthorization(_, _),
              .setAccountDescription( _, _, _):
             return .put
+            
+        case .deleteAuthorization( _):
+            return .delete
         }
     }
     
@@ -155,6 +168,18 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .canUserFillQuestionnaire( _):
             return "/client-allowance/rest/v1/client-allowances/can-fill-questionnaire"
+            
+        case .getAuthorizations( _):
+            return "/permission/rest/v1/authorizations"
+            
+        case .createAuthorization( _):
+            return "/permission/rest/v1/authorizations"
+            
+        case .deleteAuthorization(let id):
+            return "/permission/rest/v1/authorizations/\(id)"
+            
+        case .updateAuthorization(let id, _):
+            return "/permission/rest/v1/authorizations/\(id)"
         }
     }
     
@@ -195,6 +220,15 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .canUserFillQuestionnaire(let userId):
             return ["user_id": userId]
+            
+        case .getAuthorizations(let psGetAuthorizationsRequest):
+            return psGetAuthorizationsRequest.toJSON()
+            
+        case .createAuthorization(let psCreateAuthorizationRequest):
+            return psCreateAuthorizationRequest.toJSON()
+        
+        case .updateAuthorization( _, let psCreateAuthorizationRequest):
+            return psCreateAuthorizationRequest.toJSON()
             
         default:
             return nil

@@ -115,4 +115,21 @@ public class AccountsApiClient: PSBaseApiClient {
     public func cancelPaymentCard(id: Int) -> Promise<PSPaymentCard> {
         return doRequest(requestRouter: AccountsApiRequestRouter.cancelPaymentCard(id: id))
     }
+    
+    // MARK: - Authorizations API
+    public func getAuthorizations(filter: PSGetAuthorizationsFilterRequest) -> Promise<PSMetadataAwareResponse<PSAuthorization>> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.getAuthorizations(filter))
+    }
+    
+    public func deleteAuthorization(id: String) -> Promise<Void> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.deleteAuthorization(id: id))
+    }
+    
+    public func createAuthorization(authorization: PSCreateAuthorizationRequest) -> Promise<PSAuthorization> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.createAuthorization(authorization))
+    }
+    
+    public func updateAuthorization(id: String, authorization: PSCreateAuthorizationRequest) -> Promise<PSAuthorization> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.updateAuthorization(id: id, createAuthorizationRequest: authorization))
+    }
 }
