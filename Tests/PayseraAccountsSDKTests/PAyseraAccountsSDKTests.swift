@@ -12,7 +12,7 @@ class AccountsSDKTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJldnBiYW5rIiwiaXNzIjoiYXV0aF9hcGkiLCJleHAiOjE1NjM0Nzc4NTAsImp0aSI6ImJKempWU3Bab1Q3YWRFcjhKSWQ3WEVUTTcwSy1SOUhWIiwicHNyOnMiOlsibG9nZ2VkX2luIiwiY29uZmlybWVkX2xvZ19pbiJdLCJwc3I6dSI6IjE3MDYxODYiLCJwc3I6c2lkIjoiVU5WTVZ5WDRXbzdvS2tvY3hTcGp0TzlXRXNFaVhxdkEiLCJwc3I6YSI6eyJ1c2VyX2lkIjoiMTcwNjE4NiJ9LCJpYXQiOjE1NjM0MzQ2NTB9.N36XBifACvtyR9BtlSjPuMutP1mEi7OXmYvw4MrGmwLUNEGzB_3ktCLrmQkyWi6Rk1mOrnE3550rk_IfxsmfvV6bOUjKO1ekG3nqyC1t9pTkKUUxo8R3Y8h3OYfLQjR5m283Lw_dVsFjZjwNz5bxBHsf9zDnBUcDJ5IEZjWriwqsLjHQnPU3QH-ETRmlNOchhNHSpVPaqo6BKI6XYCazqi_k45L5UJ1qW9-bHPvbTmyWcmxTKH3fEii6RJH88uT61llwP9mGd7HsiYB2nljpLBAE1GNhMHw8fUWoigdu_7QTsj9uo-eDmH1zpA6nsJvw7EIbGZXoeWEkI_hzU3XFA-XxLw20O1XvQxBqzLPYFjjN15JsxwC0cUHNhAgw2-KVhw4_fwD_nHf4CbwjU7nA0SBHHftbEidcpPjLRhvVfWRm1yl2jw_I-H7CnosIu94X9fc4Ep056TLbFdVRs3YHNf3ht9KFbLgGr1aOxaasdCTtWjwTIGB8HZPu9zJCqLGcGW3heGfO7EOCAT3CbAdYH_Wrzcfn5kHh3uKjGN5A_smjxrHB7z5VYwH8CY69UmX5d416iGxFhtPHam2EHYPDECvimqcCgieO8R0sKDsJSdRwFzNt4xLmj_NRTD-cttcbY1-QV30o8upccuiSHY6Dc-p7gqvv0czrv-C51do9BXE"
+        let token = "insert_me"
         
         let credentials = PSApiJWTCredentials()
         credentials.token = try! decode(jwt: token)
@@ -111,6 +111,7 @@ class AccountsSDKTests: XCTestCase {
             .getPaymentCardDeliveryCountries(filter: filter)
             .done { response in
                 object = response
+                
                 print(object)
             }.catch { error in
                 print(error)
@@ -128,7 +129,7 @@ class AccountsSDKTests: XCTestCase {
             object = result
             }.catch { error in
                 print(error)
-            }.finally { expectation.fulfill() }
+        }.finally { expectation.fulfill() }
         
         wait(for: [expectation], timeout: 3.0)
         XCTAssertNotNil(object)
