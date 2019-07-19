@@ -7,7 +7,7 @@ public class PSSignPermission: Mappable {
     public var dayLimit: PSMoney?
     public var monthLimit: PSMoney?
     public var yearLimit: PSMoney?
-    public var forAutomaticTransfers: Bool?
+    public var forAutomaticTransfers = false
     
     required public init?(map: Map) {
         do {

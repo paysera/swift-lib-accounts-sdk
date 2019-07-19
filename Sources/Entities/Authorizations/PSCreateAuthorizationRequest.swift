@@ -5,8 +5,8 @@ public class PSCreateAuthorizationRequest: Mappable {
     
     public var accountNumber: String!
     public var userIds: [String]!
-    public var readPermission: Bool!
-    public var writePermission: Bool?
+    public var readPermission = false
+    public var writePermission = false
     public var signPermission: PSSignPermission?
     
     required public init?(map: Map) {
@@ -16,14 +16,10 @@ public class PSCreateAuthorizationRequest: Mappable {
     public init(
         accountNumber: String,
         userIds: [String],
-        readPermission: Bool,
-        writePermission: Bool? = nil,
         signPermission: PSSignPermission? = nil
         ) {
         self.accountNumber = accountNumber
         self.userIds = userIds
-        self.readPermission = readPermission
-        self.writePermission = writePermission
         self.signPermission = signPermission
     }
     

@@ -7,20 +7,24 @@ public class PSAuthorization: Mappable {
     public var id: String
     public var accountNumber: String
     public var users: [PSAuthorizationUser]
-    public var readPermission: Bool
-    public var writePermission: Bool
+    public var readPermission = false
+    public var writePermission = false
     public var signPermission: PSSignPermission?
     public var validFrom: Date?
     public var validTo: Date?
     public var replacedAuthorizationId: String?
+    
+    public init(id: String, accountNumber: String, users: [PSAuthorizationUser]){
+        self.id = id
+        self.accountNumber = accountNumber
+        self.users = users
+    }
     
     required public init?(map: Map) {
         do {
             id = try map.value("id")
             accountNumber = try map.value("account_number")
             users = try map.value("users")
-            readPermission = try map.value("read_permission")
-            writePermission = try map.value("write_permission")
         } catch {
             print(error)
             return nil
