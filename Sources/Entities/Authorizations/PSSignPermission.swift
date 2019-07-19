@@ -9,13 +9,9 @@ public class PSSignPermission: Mappable {
     public var yearLimit: PSMoney?
     public var forAutomaticTransfers = false
     
+    public init() {}
+    
     required public init?(map: Map) {
-        do {
-            level = try map.value("level")
-        } catch {
-            print(error)
-            return nil
-        }
     }
     
     public func mapping(map: Map) {
@@ -25,4 +21,5 @@ public class PSSignPermission: Mappable {
         yearLimit               <- map["year_limit"]
         forAutomaticTransfers   <- map["for_automatic_transfers"]
     }
+    
 }
