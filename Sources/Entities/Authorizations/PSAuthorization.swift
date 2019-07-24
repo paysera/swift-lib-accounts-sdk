@@ -4,9 +4,9 @@ import PayseraCommonSDK
 
 public class PSAuthorization: Mappable {
     
-    public var id: String
-    public var accountNumber: String
-    public var users: [PSAuthorizationUser]
+    public var id: String!
+    public var accountNumber: String!
+    public var users: [PSAuthorizationUser]!
     public var readPermission = false
     public var writePermission = false
     public var signPermission: PSSignPermission?
@@ -14,22 +14,9 @@ public class PSAuthorization: Mappable {
     public var validTo: Date?
     public var replacedAuthorizationId: String?
     
-    public init(id: String, accountNumber: String, users: [PSAuthorizationUser]){
-        self.id = id
-        self.accountNumber = accountNumber
-        self.users = users
-    }
+    public init(){ }
     
-    required public init?(map: Map) {
-        do {
-            id = try map.value("id")
-            accountNumber = try map.value("account_number")
-            users = try map.value("users")
-        } catch {
-            print(error)
-            return nil
-        }
-    }
+    required public init?(map: Map) { }
     
     public func mapping(map: Map) {
         id                         <- map["id"]
