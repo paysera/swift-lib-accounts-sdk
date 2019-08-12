@@ -2,40 +2,28 @@ import ObjectMapper
 import PayseraCommonSDK
 
 public class PSTransfer: Mappable {
-    public let id: String
-    public let status: String
-    public let beneficiary: PSTransferBeneficiary
+    public var id: String!
+    public var status: String!
+    public var beneficiary: PSTransferBeneficiary!
     public var initiator: PSTransferInitiator?
-    public let createdAt: TimeInterval
-    public let performAt: TimeInterval
+    public var createdAt: TimeInterval!
+    public var performAt: TimeInterval?
     public var failureStatus: PSTransferFailureStatus?
     public var outCommission: PSMoney?
     public var urgency: String?
-    public var amount: PSMoney
-    public var payer: PSTransferPayer
+    public var amount: PSMoney!
+    public var payer: PSTransferPayer!
     public var purpose: PSTransferPurpose?
-    public var allowedToCancel: Bool
-    public var cancelable: Bool
+    public var allowedToCancel: Bool!
+    public var cancelable: Bool!
     public var notifications: [PSTransferNotification]?
 
     required public init?(map: Map) {
-        do {
-            id = try map.value("id")
-            status = try map.value("status")
-            beneficiary = try map.value("beneficiary")
-            createdAt = try map.value("created_at")
-            performAt = try map.value("perform_at")
-            amount = try map.value("amount")
-            payer = try map.value("payer")
-            allowedToCancel = try map.value("allowed_to_cancel")
-            cancelable = try map.value("cancelable")
-        } catch {
-            return nil
-        }
         notifications = mapEnumeratedJSON(json: map.JSON["notifications"] as? [String: Any], enumeratedElementKey: "status")
     }
 
     public func mapping(map: Map) {
+        id              <- map["id"]
         failureStatus   <- map["failure_status"]
         urgency         <- map["urgency"]
         amount          <- map["amount"]
@@ -45,6 +33,10 @@ public class PSTransfer: Mappable {
         allowedToCancel <- map["allowed_to_cancel"]
         cancelable      <- map["cancelable"]
         initiator       <- map["initiator"]
+        performAt       <- map["perform_at"]
+        createdAt       <- map["created_at"]
+        status          <- map["status"]
+        beneficiary     <- map["beneficiary"]
     }
 
     public func isSigned() -> Bool {

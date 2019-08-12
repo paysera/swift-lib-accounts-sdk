@@ -3,6 +3,11 @@ import Alamofire
 import PayseraCommonSDK
 
 public enum AccountsApiRequestRouter: URLRequestConvertible {
+    case get(path: String, parameters: [String: Any]?)
+    case post(path: String, parameters: [String: Any]?)
+    case put(path: String, parameters: [String: Any]?)
+    case putWithData(path: String, data: Data, contentType: String)
+    case delete(path: String, parameters: [String: Any]?)
     
     // MARK: - GET
     case getLastUserQuestionnaire(userId: Int)
@@ -47,7 +52,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     
     private var method: HTTPMethod {
         switch self {
-        case .getIbanInformation( _),
+        case .get(_),
+             .getIbanInformation( _),
              .getLastUserQuestionnaire( _),
              .getBalance( _, _),
              .getPaymentCards( _),
@@ -70,7 +76,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .createAuthorization( _):
             return .post
             
-        case .activateCard( _),
+        case .put(_),
+             .putWithData(_, _, _),
+             .activateCard( _),
              .enableCard(_ ),
              .deactivateCard( _),
              .setPaymentCardLimit( _, _),
@@ -84,12 +92,19 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             return .put
             
         case .deleteAuthorization( _):
+        case .delete(_):
             return .delete
         }
     }
     
     private var path: String {
         switch self {
+        case .get(let path, _),
+             .post(let path, _),
+             .put(let path, _),
+             .putWithData(let path, _, _),
+             .delete(let path, _):
+            return path
             
         case .activateAccount(let accountNumber):
             return "/account/rest/v1/accounts/\(accountNumber)/activate"
@@ -185,6 +200,12 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     
     private var parameters: Parameters? {
         switch self {
+        case .get(_, let parameters),
+             .post(_, let parameters),
+             .put(_, let parameters),
+             .delete(_, let parameters):
+            return parameters
+            
         case .getBalance( _, let showHistoricalCurrencies):
             return ["show_historical_currencies": showHistoricalCurrencies ? 1 : 0]
             

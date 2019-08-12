@@ -5,6 +5,26 @@ import PromiseKit
 import PayseraCommonSDK
 
 public class AccountsApiClient: PSBaseApiClient {
+    public func get(path: String, parameters: [String: Any]? = nil) -> Promise<Any> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.get(path: path, parameters: parameters))
+    }
+    
+    public func post(path: String, parameters: [String: Any]? = nil) -> Promise<Any> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.post(path: path, parameters: parameters))
+    }
+    
+    public func put(path: String, parameters: [String: Any]? = nil) -> Promise<Any> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.put(path: path, parameters: parameters))
+    }
+    
+    public func put(path: String, data: Data, contentType: String) -> Promise<Any> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.putWithData(path: path, data: data, contentType: contentType))
+    }
+    
+    public func delete(path: String, parameters: [String: Any]? = nil) -> Promise<Any> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.delete(path: path, parameters: parameters))
+    }
+    
     public func getTransfer(id: String) -> Promise<PSTransfer> {
         return doRequest(requestRouter: AccountsApiRequestRouter.getTransfer(id: id))
     }
