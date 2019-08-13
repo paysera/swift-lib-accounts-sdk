@@ -71,7 +71,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
             return .get
             
-        case .createCard( _),
+        case .post(_),
+             .createCard( _),
              .createAccount( _),
              .createAuthorization( _):
             return .post
@@ -91,8 +92,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .setAccountDescription( _, _, _):
             return .put
             
-        case .deleteAuthorization( _):
-        case .delete(_):
+        case .delete(_),
+             .deleteAuthorization( _):
             return .delete
         }
     }

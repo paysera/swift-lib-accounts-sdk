@@ -1,4 +1,5 @@
 import Foundation
+import PayseraCommonSDK
 import ObjectMapper
 
 public class PSCreateAuthorizationRequest: Mappable {
@@ -7,7 +8,7 @@ public class PSCreateAuthorizationRequest: Mappable {
     public var userIds: [String]!
     public var readPermission = false
     public var writePermission = false
-    public var signPermission: PSSignPermission?
+    public var signPermission: PSCreateAuthorizationRequestSignPermission?
     
     required public init?(map: Map) {
         
@@ -16,7 +17,7 @@ public class PSCreateAuthorizationRequest: Mappable {
     public init(
         accountNumber: String,
         userIds: [String],
-        signPermission: PSSignPermission? = nil
+        signPermission: PSCreateAuthorizationRequestSignPermission? = nil
         ) {
         self.accountNumber = accountNumber
         self.userIds = userIds
@@ -30,4 +31,29 @@ public class PSCreateAuthorizationRequest: Mappable {
         writePermission     <- map["write_permission"]
         signPermission      <- map["sign_permission"]
     }
+}
+
+public class PSCreateAuthorizationRequestSignPermission {
+    
+    public var level: String!
+    public var dayLimit: PSMoney?
+    public var monthLimit: PSMoney?
+    public var yearLimit: PSMoney?
+    public var forAutomaticTransfers = false
+    
+    public init(level: String) {
+        self.level = level
+    }
+    
+    required public init?(map: Map) {
+    }
+    
+    public func mapping(map: Map) {
+        level                   <- map["level"]
+        dayLimit                <- map["day_limit"]
+        monthLimit              <- map["month_limit"]
+        yearLimit               <- map["year_limit"]
+        forAutomaticTransfers   <- map["for_automatic_transfers"]
+    }
+    
 }
