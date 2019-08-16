@@ -4,6 +4,7 @@ import ObjectMapper
 
 public class PSCreateAuthorizationRequest: Mappable {
     
+    public var id: String?
     public var accountNumber: String!
     public var userIds: [String]!
     public var readPermission = false
