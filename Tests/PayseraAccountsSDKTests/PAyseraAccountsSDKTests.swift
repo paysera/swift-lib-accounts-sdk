@@ -12,7 +12,7 @@ class AccountsSDKTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJldnBiYW5rIiwiaXNzIjoiYXV0aF9hcGkiLCJleHAiOjE1NjU5NzkyNzYsImp0aSI6IkRyNWhpeTRkMzdfQkpOa3RzMU5wUXk0czNrRzR2UnJSIiwicHNyOnMiOlsibG9nZ2VkX2luIiwiY29uZmlybWVkX2xvZ19pbiJdLCJwc3I6dSI6IjE3MDYxODYiLCJwc3I6c2lkIjoiMGpJZlZrY3FQZjNCbndCZFdReHF5VEVfODhoQmtmaC0iLCJwc3I6YSI6eyJ1c2VyX2lkIjoiMTcwNjE4NiJ9LCJpYXQiOjE1NjU5MzYwNzZ9.iwX9g7ocCLvHotsjrb9r_e0wpwVeFeNjazbqSEnZGo3b0Z3qBvFPC3YeJpJydfUZHx6PwsnDsv5vz0AgG2i5vSSXCIzx-azgkUqYmNutpq0_XzJDofH9nKy1PHwFfPZTvbK6egPn2MQmu700Q1m80fq9fQ07WvX_OrtoTmycj8hnSp6IhDRuVswqOXIQC9qoYH6leCghmv27QBzzDEMOnAM6heaWBtD1Equ4ATUBlmpjOMpJG5WXsWka_7PwvVthl4Xg3l1uW8dK5kn6J5JS_9o2XAwsyGpkrH36yHD2T8b4uhkwA8OuNiFjDWCFPBgIExAWXldThUCAVKnaQzxvkrFw1x4ALh65rlaGS4sBtL2-RRhsb5E6DUWnDVEZmHAHiRi_ibevYtdpk56vv91mGOedNGe63KRSPV2yE2W1o9Fq2pHrE--9GkKRsSlYUpzejngSqV1SffLEQebiR3Q6ZcGI4zLvyLGCspCZeYEK4YOea-T95dwnJ2IqULgTYYjKLV_sPmxuwvzxLnTVYXQvqRniDq_Do1EyIAkf73-AsieznwKOCXN056WROzfyrz8PezJTQ0a8giB08ShFI6Wu738NUvHPQEBd8RSvjfv4W8IGWZw_U27qDdHxGx9nykOLvQMaBQ1gFpbIfWCXC0P6tAf7IUbz5sDZMtMqCLnHeko"
+        let token = "change me"
         
         let credentials = PSApiJWTCredentials()
         credentials.token = try! decode(jwt: token)
@@ -189,7 +189,7 @@ class AccountsSDKTests: XCTestCase {
         let expectation = XCTestExpectation(description: "")
         var object: Any?
         //insert accountNumbers
-        let fitler = PSGetAuthorizationsFilterRequest(accountNumbers: ["EVP1210004305300"])
+        let fitler = PSGetAuthorizationsFilterRequest(accountNumbers: [""])
         accountsApiClient.getAuthorizations(filter: fitler).done { result in
             object = result
             print(result.items)
