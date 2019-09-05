@@ -4,6 +4,7 @@ import ObjectMapper
 
 public class PSCreateAuthorizationRequest: Mappable {
     
+    public var id: String?
     public var accountNumber: String!
     public var userIds: [String]!
     public var readPermission = false
@@ -33,7 +34,7 @@ public class PSCreateAuthorizationRequest: Mappable {
     }
 }
 
-public class PSCreateAuthorizationRequestSignPermission {
+public class PSCreateAuthorizationRequestSignPermission: Mappable {
     
     public var level: String!
     public var dayLimit: PSMoney?
