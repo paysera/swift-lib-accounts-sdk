@@ -12,7 +12,7 @@ class AccountsSDKTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let token = "change me"
+        let token = "insert me"
         
         let credentials = PSApiJWTCredentials()
         credentials.token = try! decode(jwt: token)
@@ -194,9 +194,7 @@ class AccountsSDKTests: XCTestCase {
             object = result
             print(result.items)
             }.catch { error in
-                if let errorGeras = error as? PSApiError {
-                     print(errorGeras)
-                }
+                print(error)
             }.finally {
                 expectation.fulfill()
         }
