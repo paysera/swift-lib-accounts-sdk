@@ -250,8 +250,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             return psCreateAuthorizationRequest.toJSON()
         
         case .updateAuthorization( _, let psCreateAuthorizationRequest):
-            return psCreateAuthorizationRequest.toJSON()
-            
+            return ["body": psCreateAuthorizationRequest.toJSON()]
+
         default:
             return nil
         }
@@ -266,6 +266,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         
         switch self {
         case .setAccountDescription(_, _, _):
+            urlRequest = try CompositeEncoding.default.encode(urlRequest, with: parameters)
+            
+        case .updateAuthorization(_, _):
             urlRequest = try CompositeEncoding.default.encode(urlRequest, with: parameters)
             
         case (_) where method == .get:

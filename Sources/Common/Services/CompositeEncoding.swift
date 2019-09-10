@@ -10,14 +10,18 @@ struct CompositeEncoding: ParameterEncoding {
             return try urlRequest.asURLRequest()
         }
         
-        let queryParamters = (parameters["query"] as! Parameters)
-        let bodyParameters = (parameters["body"] as! Parameters)
+        var compositeRequest: URLRequest!
         
-        let queryRequest = try URLEncoding(destination: .queryString).encode(urlRequest, with: queryParamters)
-        let bodyRequest = try JSONEncoding().encode(urlRequest, with: bodyParameters)
+        if let bodyParameters = parameters["body"] as? Parameters {
+            compositeRequest = try JSONEncoding().encode(urlRequest, with: bodyParameters)
+        } else {
+            compositeRequest = try JSONEncoding().encode(urlRequest)
+        }
         
-        var compositeRequest = bodyRequest
-        compositeRequest.url = queryRequest.url
+        if let queryParamters = (parameters["query"] as? Parameters) {
+            compositeRequest.url = try URLEncoding(destination: .queryString).encode(urlRequest, with: queryParamters).url
+        }
+        
         return compositeRequest
     }
 }

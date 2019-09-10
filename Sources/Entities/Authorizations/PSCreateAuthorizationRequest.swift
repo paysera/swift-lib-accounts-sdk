@@ -33,7 +33,7 @@ public class PSCreateAuthorizationRequest: Mappable {
     }
 }
 
-public class PSCreateAuthorizationRequestSignPermission {
+public class PSCreateAuthorizationRequestSignPermission: Mappable {
     
     public var level: String!
     public var dayLimit: PSMoney?
