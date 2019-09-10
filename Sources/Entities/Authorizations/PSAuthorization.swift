@@ -10,8 +10,8 @@ public class PSAuthorization: Mappable {
     public var readPermission = false
     public var writePermission = false
     public var signPermission: PSSignPermission?
-    public var validFrom: Double?
-    public var validTo: Double?
+    public var validFrom: Date?
+    public var validTo: Date?
     public var replacedAuthorizationId: String?
     
     required public init?(map: Map) { }
@@ -23,8 +23,8 @@ public class PSAuthorization: Mappable {
         readPermission             <- map["read_permission"]
         writePermission            <- map["write_permission"]
         signPermission             <- map["sign_permission"]
-        validFrom                  <- map["valid_from"]
-        validTo                    <- map["valid_to"]
+        validFrom                  <- (map["valid_from"], DateTransform())
+        validTo                    <- (map["valid_to"], DateTransform())
         replacedAuthorizationId    <- map["replaced_authorization_id"]
     }
 }
