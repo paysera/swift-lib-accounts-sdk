@@ -22,7 +22,6 @@ public class PSCreatePaymentCardRequest: Mappable {
         chargeInfo: PSChargeInfo? = nil,
         visualType: String? = nil
     ) {
-        
         self.cardOwnerId = cardOwnerId
         self.shippingAddress = shippingAddress
         self.accountOwnerId = accountOwnerId
