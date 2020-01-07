@@ -8,11 +8,20 @@ public class PSCreatePaymentCardRequest: Mappable {
     public var accountNumber: String?
     public var accountOwnerId: Int?
     public var chargeInfo: PSChargeInfo?
+    public var visualType: String?
     
     required public init?(map: Map) {
     }
     
-    public init(cardOwnerId: Int, shippingAddress: PSPaymentCardShippingAddress, deliveryType: String, accountOwnerId:  Int? = nil, accountNumber: String? = nil, chargeInfo: PSChargeInfo?) {
+    public init(
+        cardOwnerId: Int,
+        shippingAddress: PSPaymentCardShippingAddress,
+        deliveryType: String,
+        accountOwnerId: Int? = nil,
+        accountNumber: String? = nil,
+        chargeInfo: PSChargeInfo? = nil,
+        visualType: String? = nil
+    ) {
         
         self.cardOwnerId = cardOwnerId
         self.shippingAddress = shippingAddress
@@ -20,6 +29,7 @@ public class PSCreatePaymentCardRequest: Mappable {
         self.accountNumber = accountNumber
         self.chargeInfo = chargeInfo
         self.deliveryType = deliveryType
+        self.visualType = visualType
     }
     
     public func mapping(map: Map) {
@@ -29,5 +39,6 @@ public class PSCreatePaymentCardRequest: Mappable {
         chargeInfo      <- map["charge_info"]
         shippingAddress <- map["shipping_address"]
         deliveryType    <- map["delivery_type"]
+        visualType      <- map["visual_type"]
     }
 }
