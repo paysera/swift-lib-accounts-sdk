@@ -152,4 +152,12 @@ public class AccountsApiClient: PSBaseApiClient {
     public func updateAuthorization(id: String, authorization: PSCreateAuthorizationRequest) -> Promise<PSAuthorization> {
         return doRequest(requestRouter: AccountsApiRequestRouter.updateAuthorization(id: id, createAuthorizationRequest: authorization))
     }
+    
+    public func getPaymentCardDeliveryPreference(accountNumber: String) -> Promise<PSPaymentCardDeliveryPreference> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardDeliveryPreference(accountNumber: accountNumber))
+    }
+    
+    public func setPaymentCardDeliveryPreference(accountNumber: String, preference: PSPaymentCardDeliveryPreference) -> Promise<PSPaymentCardDeliveryPreference> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.setPaymentCardDeliveryPreference(accountNumber: accountNumber, preference: preference))
+    }
 }
