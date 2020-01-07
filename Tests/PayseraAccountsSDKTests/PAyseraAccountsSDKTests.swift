@@ -20,6 +20,24 @@ class AccountsSDKTests: XCTestCase {
         accountsApiClient = AccountsApiClientFactory.createAccountsApiClient(credentials: credentials)
     }
     
+    func testGetPaymentCardDesigns() {
+        var object: PSMetadataAwareResponse<PSPaymentCardDesign>?
+        let expectation = XCTestExpectation(description: "")
+        
+        let filter = PSPaymentCardDesignFilter()
+        filter.accountOwnerId = 165660
+        accountsApiClient
+            .getPaymentCardDesigns(filter: filter)
+            .done { designs in
+                object = designs
+            }.catch { error in
+                print(error)
+            }.finally { expectation.fulfill() }
+        
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(object)
+    }
+    
     func testGetIbanInformation() {
         var object: PSIbanInformation?
         let expectation = XCTestExpectation(description: "")
@@ -206,7 +224,8 @@ class AccountsSDKTests: XCTestCase {
     func testCreateAuthorizations() {
         let expectation = XCTestExpectation(description: "")
         var object: Any?
-        let authorization = PSCreateAuthorizationRequest(accountNumber: "", userIds: [""], readPermission: true)
+        let authorization = PSCreateAuthorizationRequest(accountNumber: "", userIds: [""])
+        authorization.readPermission = true
         accountsApiClient.createAuthorization(authorization: authorization).done { result in
             object = result
             print(result)
@@ -240,7 +259,7 @@ class AccountsSDKTests: XCTestCase {
         let expectation = XCTestExpectation(description: "")
         var object: Any?
       
-        let authorization = PSCreateAuthorizationRequest(accountNumber: "", userIds: [""], readPermission: false)
+        let authorization = PSCreateAuthorizationRequest(accountNumber: "", userIds: [""])
         accountsApiClient
             .updateAuthorization(id: "insert authorization id", authorization: authorization)
             .done { result in

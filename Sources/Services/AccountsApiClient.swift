@@ -103,7 +103,7 @@ public class AccountsApiClient: PSBaseApiClient {
     public func getPaymentCardDeliveryCountries(filter: PSBaseFilter) -> Promise<PSPaymentCardDeliveryCountries> {
         return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardDeliveryCountries(filter: filter))
     }
-    
+        
     public func getPaymentCards(cardsFilter: PSGetPaymentCardsFilterRequest) -> Promise<PSMetadataAwareResponse<PSPaymentCard>> {
         return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCards(cardsFilter: cardsFilter))
     }
@@ -114,6 +114,10 @@ public class AccountsApiClient: PSBaseApiClient {
     
     public func getPaymentCardLimit(accountNumber: String) -> Promise<PSPaymentCardLimit> {
         return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardLimit(accountNumber: accountNumber))
+    }
+    
+    public func getPaymentCardDesigns(filter: PSPaymentCardDesignFilter) -> Promise<PSMetadataAwareResponse<PSPaymentCardDesign>> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardDesigns(filter: filter))
     }
     
     public func getPaymentCardShippingAddress(accountNumber: String) -> Promise<PSPaymentCardShippingAddress> {

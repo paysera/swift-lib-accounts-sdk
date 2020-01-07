@@ -67,6 +67,8 @@
 		ED75391C206A8ADA004EA953 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88774BC6205FE5A300AC5048 /* PromiseKit.framework */; };
 		ED77A6FD2179B39B00723CD3 /* PSPaymentCardDeliveryDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED77A6FC2179B39B00723CD3 /* PSPaymentCardDeliveryDate.swift */; };
 		ED8FAFFE22BA66FF00792600 /* PayseraCommonSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED8FAFFD22BA66FF00792600 /* PayseraCommonSDK.framework */; };
+		ED93B7BB23C38FE2006CD25C /* PSPaymentCardDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED93B7BA23C38FE2006CD25C /* PSPaymentCardDesign.swift */; };
+		ED93B7BD23C3B830006CD25C /* PSPaymentCardDesignFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED93B7BC23C3B830006CD25C /* PSPaymentCardDesignFilter.swift */; };
 		EDADCD4622FAD27A00F96D4B /* PSTransfersResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDADCD4522FAD27A00F96D4B /* PSTransfersResult.swift */; };
 		EDADCD4822FAD2BF00F96D4B /* PSTransferFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDADCD4722FAD2BF00F96D4B /* PSTransferFilter.swift */; };
 		EDC33BB8216E0E4B001C1925 /* PSPaymentCardIssuePrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC33BB7216E0E4B001C1925 /* PSPaymentCardIssuePrice.swift */; };
@@ -148,6 +150,8 @@
 		ED6937EC21E882F90008A1BD /* PSTransferStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSTransferStatus.swift; sourceTree = "<group>"; };
 		ED77A6FC2179B39B00723CD3 /* PSPaymentCardDeliveryDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardDeliveryDate.swift; sourceTree = "<group>"; };
 		ED8FAFFD22BA66FF00792600 /* PayseraCommonSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayseraCommonSDK.framework; path = Carthage/Build/iOS/PayseraCommonSDK.framework; sourceTree = "<group>"; };
+		ED93B7BA23C38FE2006CD25C /* PSPaymentCardDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardDesign.swift; sourceTree = "<group>"; };
+		ED93B7BC23C3B830006CD25C /* PSPaymentCardDesignFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardDesignFilter.swift; sourceTree = "<group>"; };
 		EDADCD4522FAD27A00F96D4B /* PSTransfersResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSTransfersResult.swift; sourceTree = "<group>"; };
 		EDADCD4722FAD2BF00F96D4B /* PSTransferFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSTransferFilter.swift; sourceTree = "<group>"; };
 		EDC33BB7216E0E4B001C1925 /* PSPaymentCardIssuePrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardIssuePrice.swift; sourceTree = "<group>"; };
@@ -194,6 +198,8 @@
 				ED77A6FC2179B39B00723CD3 /* PSPaymentCardDeliveryDate.swift */,
 				ED6413DF21DE4BE300A35417 /* PSCategorizedAccountNumbers.swift */,
 				A71C4E4F23C4798C008C6F22 /* PSPaymentCardDeliveryPreference.swift */,
+				ED93B7BA23C38FE2006CD25C /* PSPaymentCardDesign.swift */,
+				ED93B7BC23C3B830006CD25C /* PSPaymentCardDesignFilter.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -491,6 +497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDADCD4622FAD27A00F96D4B /* PSTransfersResult.swift in Sources */,
+				ED93B7BB23C38FE2006CD25C /* PSPaymentCardDesign.swift in Sources */,
 				C47644DD222800AA00E10BD8 /* CompositeEncoding.swift in Sources */,
 				ED6413E221DE4D1700A35417 /* PSGetCategorizedAccountNumbersFilterRequest.swift in Sources */,
 				EDF44FAF22DC685D002F4522 /* PSPaymentCardDeliveryCountries.swift in Sources */,
@@ -500,6 +507,7 @@
 				88B25A48206A23EB00BE81C5 /* AccountsApiClientFactory.swift in Sources */,
 				C438A73822DF3E56002B3640 /* PSAuthorizationUser.swift in Sources */,
 				1C8E982120CE518B000770BB /* PSCreatePaymentCardRequest.swift in Sources */,
+				ED93B7BD23C3B830006CD25C /* PSPaymentCardDesignFilter.swift in Sources */,
 				ED6413E021DE4BE300A35417 /* PSCategorizedAccountNumbers.swift in Sources */,
 				EDC33BBA216E0F0B001C1925 /* PSPaymentCardDeliveryPrice.swift in Sources */,
 				ED6937DE21E880390008A1BD /* PSTransferNotification.swift in Sources */,
