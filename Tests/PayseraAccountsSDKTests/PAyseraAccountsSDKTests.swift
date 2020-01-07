@@ -277,13 +277,14 @@ class AccountsSDKTests: XCTestCase {
         var object: Any?
         let expectation = XCTestExpectation(description: "")
         
+        let preference = PSPaymentCardDeliveryPreference()
+        preference.ownerId = 9007334
+        preference.shippingAddress = PSPaymentCardShippingAddress(postalCode: "08426", address: "address", city: "Vilnius", country: "lt")
+        preference.deliveryType = "regular"
+        
         accountsApiClient
             .setPaymentCardDeliveryPreference(accountNumber: "EVP9410007208697",
-                                              preference: PSPaymentCardDeliveryPreference(
-                                                ownerId: 9007334,
-                                                shippingAddress: PSPaymentCardShippingAddress(postalCode: "08426", address: "Bajoru sodu 4-oji g. 3", city: "Vilnius", country: "lt"),
-                                                deliveryType: "regular"
-                )
+                                              preference: preference
         )
             .done { result in
                 object = result
