@@ -18,6 +18,7 @@ public class PSPaymentCard: Mappable {
     public var deliveryType: String?
     public var deliveryPrice: PSMoney?
     public var account: PSAccount?
+    public var visualType: String?
     
     required public init?(map: Map) {
         do {
@@ -46,5 +47,6 @@ public class PSPaymentCard: Mappable {
         deliveryType    <- map["delivery_type"]
         deliveryPrice   <- map["delivery_price_amount"]
         account         <- map["account"]
+        visualType      <- map["visual_type"]
     }
 }
