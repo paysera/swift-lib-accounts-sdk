@@ -73,6 +73,7 @@
 		EDADCD4822FAD2BF00F96D4B /* PSTransferFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDADCD4722FAD2BF00F96D4B /* PSTransferFilter.swift */; };
 		EDC33BB8216E0E4B001C1925 /* PSPaymentCardIssuePrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC33BB7216E0E4B001C1925 /* PSPaymentCardIssuePrice.swift */; };
 		EDC33BBA216E0F0B001C1925 /* PSPaymentCardDeliveryPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC33BB9216E0F0B001C1925 /* PSPaymentCardDeliveryPrice.swift */; };
+		EDE54C5F23E2DA780099E8F5 /* PSPaymentCardExpiringCardOrderRestriction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE54C5E23E2DA780099E8F5 /* PSPaymentCardExpiringCardOrderRestriction.swift */; };
 		EDF44FAF22DC685D002F4522 /* PSPaymentCardDeliveryCountries.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF44FAE22DC685D002F4522 /* PSPaymentCardDeliveryCountries.swift */; };
 /* End PBXBuildFile section */
 
@@ -156,6 +157,7 @@
 		EDADCD4722FAD2BF00F96D4B /* PSTransferFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSTransferFilter.swift; sourceTree = "<group>"; };
 		EDC33BB7216E0E4B001C1925 /* PSPaymentCardIssuePrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardIssuePrice.swift; sourceTree = "<group>"; };
 		EDC33BB9216E0F0B001C1925 /* PSPaymentCardDeliveryPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardDeliveryPrice.swift; sourceTree = "<group>"; };
+		EDE54C5E23E2DA780099E8F5 /* PSPaymentCardExpiringCardOrderRestriction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardExpiringCardOrderRestriction.swift; sourceTree = "<group>"; };
 		EDF44FAE22DC685D002F4522 /* PSPaymentCardDeliveryCountries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardDeliveryCountries.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,6 +202,7 @@
 				A71C4E4F23C4798C008C6F22 /* PSPaymentCardDeliveryPreference.swift */,
 				ED93B7BA23C38FE2006CD25C /* PSPaymentCardDesign.swift */,
 				ED93B7BC23C3B830006CD25C /* PSPaymentCardDesignFilter.swift */,
+				EDE54C5E23E2DA780099E8F5 /* PSPaymentCardExpiringCardOrderRestriction.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				88B25A48206A23EB00BE81C5 /* AccountsApiClientFactory.swift in Sources */,
 				C438A73822DF3E56002B3640 /* PSAuthorizationUser.swift in Sources */,
 				1C8E982120CE518B000770BB /* PSCreatePaymentCardRequest.swift in Sources */,
+				EDE54C5F23E2DA780099E8F5 /* PSPaymentCardExpiringCardOrderRestriction.swift in Sources */,
 				ED93B7BD23C3B830006CD25C /* PSPaymentCardDesignFilter.swift in Sources */,
 				ED6413E021DE4BE300A35417 /* PSCategorizedAccountNumbers.swift in Sources */,
 				EDC33BBA216E0F0B001C1925 /* PSPaymentCardDeliveryPrice.swift in Sources */,

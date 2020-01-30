@@ -291,6 +291,22 @@ class AccountsSDKTests: XCTestCase {
         XCTAssertNotNil(object)
     }
     
+    func testGetPaymentCardExpiringCardOrderRestriction() {
+        var object: PSPaymentCardExpiringCardOrderRestriction?
+        let expectation = XCTestExpectation(description: "")
+        
+        accountsApiClient
+            .getPaymentPaymentCardExpiringCardOrderRestriction(accountNumber: "EVP3710004041407")
+            .done { r in
+                object = r
+            }.catch { error in
+                print(error)
+            }.finally { expectation.fulfill() }
+        
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(object)
+    }
+    
     func testSetPaymentCardDeliveryPreference() {
         
         var object: Any?
