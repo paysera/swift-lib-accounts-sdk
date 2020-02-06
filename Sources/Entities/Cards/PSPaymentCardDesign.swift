@@ -9,6 +9,7 @@ public class PSPaymentCardDesign: Mappable {
     public var priority: Int!
     public var active: Bool!
     public var visualUrl: String!
+    public var visualBackUrl: String!
 
     public init() {}
     
@@ -22,5 +23,6 @@ public class PSPaymentCardDesign: Mappable {
         priority      <- map["priority"]
         active        <- map["active"]
         visualUrl     <- map["visual_url"]
+        visualBackUrl <- map["visual_back_url"]
     }
 }
