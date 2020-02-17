@@ -12,7 +12,7 @@ class AccountsSDKTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let token = "insert_me"
+        let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJldnBiYW5rIiwiaXNzIjoiYXV0aF9hcGkiLCJleHAiOjE1ODE5NzUwNTcsImp0aSI6Ik0xWmYzWmxvc2xVdGRRV0h4U1dtQ3NzanVjaUs2aUlyIiwicHNyOnMiOlsibG9nZ2VkX2luIiwiY29uZmlybWVkX2xvZ19pbiJdLCJwc3I6dSI6IjY3MjA2OTEiLCJwc3I6c2lkIjoiaDhqeHY1eU5oQkRvVVIxalpiVGVFb0h3Q3ZzV29lZXkiLCJwc3I6YSI6eyJ1c2VyX2lkIjoiNjcyMDY5MSJ9LCJpYXQiOjE1ODE5MzE4NTd9.eFJp5E-FEEdO75CSC9gm2Nu_e1nDjAo3MYmL0ltM2ss7qQXYPPOFXPi8t_C3O1tX2Lz9FnmPfsT3XDEwkAWz-4k-ABxx_8mS4zLhT45ujrTsLZPlT2bwLUli8lUR_IYjbCtsE-ZkC9MMTAHa85hGZdpZi9isJb0tphXwc_BJVTVFnI1YtjpLt_eFeIl-BE-yz0aagODuCDyYnxVgrR19pGy4FmKvni9CfmT7vxYPJwpy-hUX60o6Co8ZvxynnDl1wP5M3fIwKPbE_YIfSD4x-Za7VT2EE-znH__ssUgqbTCNsM9w1K19RFEu3zTYl4QyAAmsi24RfxMf0MDdsFrHPAsNtbGoUDZnAD-nUpcuckr1-JytQlY3IFyP8owgwFk4qUGmN4gjwn9QiS9h52UsMTC6QvUpLaGUJFM6KpXDHjvkecVkalE4SFswMJhigLePXmJuXod8LPwUA4iv4eJrrb-dMzi-b3i2ca9feyrIsOozR0Egprasu5kmMqKnbjf2LmwIoloEw04Yfi0h4l_wx7WeheMFcdTrmmb6eRLJ9ON7a2NRRSIpXSBK3BHjhJBLNqISaybjijs0CM-J8-21IwpOVLLqjcUOU5uXlcvuE2Z-Z069MUppC-nbzvjx0CI9rLkGx71Gm7aDGiBdjd-WEgINgX6QHmqoe7RASWcMZyQ"
         
         let credentials = PSApiJWTCredentials()
         credentials.token = try! decode(jwt: token)
@@ -106,8 +106,12 @@ class AccountsSDKTests: XCTestCase {
         var object: PSPaymentCardIssuePrice?
         let expectation = XCTestExpectation(description: "")
         
+        let filter = PSPaymentCardIssuePriceFilter()
+        filter.cardAccountOwnerId = 6720691
+        filter.cardOwnerId = 6720691
+        
         accountsApiClient
-            .getPaymentCardIssuePrice(country: "lt", clientType: "natural", cardOwnerId: "165660")
+            .getPaymentCardIssuePrice(filter: filter)
             .done { issuePrice in
                 object = issuePrice
             }.catch { error in
