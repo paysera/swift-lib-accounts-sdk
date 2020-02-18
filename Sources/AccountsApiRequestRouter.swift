@@ -18,7 +18,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getPaymentCardLimit(accountNumber: String)
     case getPaymentCardShippingAddress(accountNumber: String)
     case getPaymentCardDeliveryPrices(country: String)
-//    case getPaymentCardIssuePrice(country: String, clientType: String, cardOwnerId: String)
+    case getPaymentCardIssuePrice(filter: PSPaymentCardIssuePriceFilter)
     case getPaymentCardDeliveryDate(country: String, deliveryType: String)
     case getPaymentCardDeliveryCountries(filter: PSBaseFilter)
     case getCategorizedAccountNumbers(filter: PSGetCategorizedAccountNumbersFilterRequest)
@@ -28,7 +28,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getAuthorizations(PSGetAuthorizationsFilterRequest)
     case getPaymentPaymentCardExpiringCardOrderRestriction(accountNumber: String)
     case getPaymentCardDeliveryPreference(accountNumber: String)
-    case getPaymentCardIssuePrice(filter: PSPaymentCardIssuePriceFilter)
+    
     
     // MARK: - POST
     case createCard(PSCreatePaymentCardRequest)
@@ -66,7 +66,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getPaymentCardLimit( _),
              .getPaymentCardShippingAddress( _),
              .getPaymentCardDeliveryPrices( _),
-//             .getPaymentCardIssuePrice( _, _, _),
+             .getPaymentCardIssuePrice( _),
              .getPaymentCardDeliveryDate( _, _),
              .getCategorizedAccountNumbers( _),
              .getTransfer( _),
@@ -75,8 +75,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getPaymentCardDeliveryCountries( _),
              .getAuthorizations( _),
              .getPaymentCardDeliveryPreference( _),
-             .getPaymentPaymentCardExpiringCardOrderRestriction( _),
-             .getPaymentCardIssuePrice( _):
+             .getPaymentPaymentCardExpiringCardOrderRestriction( _):             
             
             return .get
             
