@@ -127,11 +127,7 @@ public class AccountsApiClient: PSBaseApiClient {
     public func getPaymentCardDeliveryPrices(country: String) -> Promise<[PSPaymentCardDeliveryPrice]> {
         return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardDeliveryPrices(country: country))
     }
-    
-//    public func getPaymentCardIssuePrice(country: String, clientType: String, cardOwnerId: String) -> Promise<PSPaymentCardIssuePrice> {
-//        return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardIssuePrice(country: country, clientType: clientType, cardOwnerId: cardOwnerId))
-//    }
-    
+
     public func getPaymentCardIssuePrice(filter: PSPaymentCardIssuePriceFilter) -> Promise<PSPaymentCardIssuePrice> {
         return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardIssuePrice(filter: filter))
     }

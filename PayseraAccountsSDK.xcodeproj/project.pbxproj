@@ -212,6 +212,7 @@
 		1CFE792620D939AF00366CF8 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				7CAB9EC523F691060043CEF9 /* PSPaymentCardIssuePriceFilter.swift */,
 				1C8E982020CE518B000770BB /* PSCreatePaymentCardRequest.swift */,
 				1C50616120B7F37E00F4CBE7 /* PSGetPaymentCardsFilterRequest.swift */,
 				1C9E7F72212D890300B6A66D /* PSUpdatePaymentCardLimitRequest.swift */,
@@ -275,7 +276,6 @@
 				ED1091FD21A99BC400C78C79 /* PSQuestionnaire.swift */,
 				C49F76932278566C00C333E1 /* PSClientAllowance.swift */,
 				EDF44FAE22DC685D002F4522 /* PSPaymentCardDeliveryCountries.swift */,
-				7CAB9EC523F691060043CEF9 /* PSPaymentCardIssuePriceFilter.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
