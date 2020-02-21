@@ -107,8 +107,8 @@ class AccountsSDKTests: XCTestCase {
         let expectation = XCTestExpectation(description: "")
         
         let filter = PSPaymentCardIssuePriceFilter()
-        filter.cardAccountOwnerId = 6720691
-        filter.cardOwnerId = 6720691
+        filter.cardAccountOwnerId = "6720691"
+        filter.cardOwnerId = "6720691"
         
         accountsApiClient
             .getPaymentCardIssuePrice(filter: filter)
