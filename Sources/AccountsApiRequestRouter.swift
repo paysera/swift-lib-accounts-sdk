@@ -77,7 +77,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getPaymentCardDeliveryPreference( _),
              .getPaymentPaymentCardExpiringCardOrderRestriction( _):
             return .get
-            
+
         case .post(_),
              .createCard( _),
              .createAccount( _),
