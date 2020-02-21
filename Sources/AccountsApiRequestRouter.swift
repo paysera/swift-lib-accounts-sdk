@@ -75,7 +75,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getPaymentCardDeliveryCountries( _),
              .getAuthorizations( _),
              .getPaymentCardDeliveryPreference( _),
-             .getPaymentPaymentCardExpiringCardOrderRestriction( _):            
+             .getPaymentPaymentCardExpiringCardOrderRestriction( _):
             return .get
             
         case .post(_),
