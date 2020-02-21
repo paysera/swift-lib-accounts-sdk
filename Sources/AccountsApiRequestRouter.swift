@@ -237,7 +237,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .getPaymentCardDesigns(let filter):
             return filter.toJSON()
 
-        case .getPaymentCardIssuePrice( let filter):
+        case .getPaymentCardIssuePrice(let filter):
             return filter.toJSON()
             
         case .getPaymentCardDeliveryCountries(let filter):
