@@ -18,6 +18,7 @@ public class PSTransfer: Mappable {
     public var allowedToCancel: Bool!
     public var cancelable: Bool!
     public var notifications: [PSTransferNotification]?
+    public var password: PSPassword?
 
     public init() {}
     
@@ -41,6 +42,7 @@ public class PSTransfer: Mappable {
         createdAt       <- map["created_at"]
         status          <- map["status"]
         beneficiary     <- map["beneficiary"]
+        password        <- map["password"]
     }
 
     public func isSigned() -> Bool {
