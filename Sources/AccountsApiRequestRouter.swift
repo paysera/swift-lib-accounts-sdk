@@ -52,6 +52,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     
     // MARK: - Delete
     case deleteAuthorization(id: String)
+    case deleteUserFromAuthorization(authorizationId: String, userId: Int)
     
     // MARK: - Declarations
     static var baseURLString = "https://accounts.paysera.com/public"
@@ -103,7 +104,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             return .put
             
         case .delete(_),
-             .deleteAuthorization( _):
+             .deleteAuthorization( _),
+             .deleteUserFromAuthorization(_, _):
             return .delete
         }
     }
@@ -221,6 +223,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
 
         case .getAvailableCurrencies( _):
             return "/currency/rest/v1/available-currencies"
+            
+        case .deleteUserFromAuthorization(let authorizationId, let userId):
+            return "/permission/rest/v1/authorizations/\(authorizationId)/users/\(userId)"
         }
     }
     
