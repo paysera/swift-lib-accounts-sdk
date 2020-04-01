@@ -80,7 +80,6 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getPaymentPaymentCardExpiringCardOrderRestriction,
              .getAvailableCurrencies,
              .getPurposeCodes:
-            
             return .get
 
         case .post,
