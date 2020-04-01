@@ -20,6 +20,20 @@ class AccountsSDKTests: XCTestCase {
         accountsApiClient = AccountsApiClientFactory.createAccountsApiClient(credentials: credentials)
     }
     
+    func testGetPurposeCodes() {
+        var actual: PSPurposeCodeCollection?
+        let expectation = XCTestExpectation(description: "Purpose codes field must exist")
+        
+        accountsApiClient
+            .getPurposeCodes()
+            .done { actual = $0 }
+            .catch { print($0) }
+            .finally { expectation.fulfill() }
+        
+        wait(for: [expectation], timeout: 10)
+        XCTAssertNotNil(actual)
+    }
+    
     func testGetAvailableCurrencies() {
        var object: PSMetadataAwareResponse<PSAvailableCurrency>?
        let expectation = XCTestExpectation(description: "")

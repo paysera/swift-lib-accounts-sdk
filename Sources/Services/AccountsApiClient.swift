@@ -172,4 +172,8 @@ public class AccountsApiClient: PSBaseApiClient {
     public func updateAuthorization(id: String, authorization: PSCreateAuthorizationRequest) -> Promise<PSAuthorization> {
         return doRequest(requestRouter: AccountsApiRequestRouter.updateAuthorization(id: id, createAuthorizationRequest: authorization))
     }
+    
+    public func getPurposeCodes() -> Promise<PSPurposeCodeCollection> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.getPurposeCodes)
+    }
 }

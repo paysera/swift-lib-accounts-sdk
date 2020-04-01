@@ -29,6 +29,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getPaymentPaymentCardExpiringCardOrderRestriction(accountNumber: String)
     case getPaymentCardDeliveryPreference(accountNumber: String)
     case getAvailableCurrencies(filter: PSAvailableCurrencyFilter)
+    case getPurposeCodes
     
     
     // MARK: - POST
@@ -58,52 +59,54 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     
     private var method: HTTPMethod {
         switch self {
-        case .get(_),
-             .getIbanInformation( _),
-             .getLastUserQuestionnaire( _),
-             .getBalance( _, _),
-             .getPaymentCards( _),
-             .getPaymentCardDesigns( _),
-             .getPaymentCardLimit( _),
-             .getPaymentCardShippingAddress( _),
-             .getPaymentCardDeliveryPrices( _),
-             .getPaymentCardIssuePrice( _),
-             .getPaymentCardDeliveryDate( _, _),
-             .getCategorizedAccountNumbers( _),
-             .getTransfer( _),
-             .canUserOrderCard( _),
-             .canUserFillQuestionnaire( _),
-             .getPaymentCardDeliveryCountries( _),
-             .getAuthorizations( _),
-             .getPaymentCardDeliveryPreference( _),
-             .getPaymentPaymentCardExpiringCardOrderRestriction( _),
-             .getAvailableCurrencies( _):
+        case .get,
+             .getIbanInformation,
+             .getLastUserQuestionnaire,
+             .getBalance,
+             .getPaymentCards,
+             .getPaymentCardDesigns,
+             .getPaymentCardLimit,
+             .getPaymentCardShippingAddress,
+             .getPaymentCardDeliveryPrices,
+             .getPaymentCardIssuePrice,
+             .getPaymentCardDeliveryDate,
+             .getCategorizedAccountNumbers,
+             .getTransfer,
+             .canUserOrderCard,
+             .canUserFillQuestionnaire,
+             .getPaymentCardDeliveryCountries,
+             .getAuthorizations,
+             .getPaymentCardDeliveryPreference,
+             .getPaymentPaymentCardExpiringCardOrderRestriction,
+             .getAvailableCurrencies,
+             .getPurposeCodes:
+            
             return .get
 
-        case .post(_),
-             .createCard( _),
-             .createAccount( _),
-             .createAuthorization( _):
+        case .post,
+             .createCard,
+             .createAccount,
+             .createAuthorization:
             return .post
             
-        case .put(_),
-             .putWithData(_, _, _),
-             .activateCard( _),
-             .enableCard(_ ),
-             .deactivateCard( _),
-             .setPaymentCardLimit( _, _),
-             .retrievePaymentCardPIN( _, _),
-             .cancelPaymentCard( _),
-             .deactivateAccount( _),
-             .activateAccount( _),
-             .setAccountDefaultDescription( _, _),
-             .updateAuthorization(_, _),
-             .setAccountDescription( _, _, _),
-             .setPaymentCardDeliveryPreference( _, _):
+        case .put,
+             .putWithData,
+             .activateCard,
+             .enableCard,
+             .deactivateCard,
+             .setPaymentCardLimit,
+             .retrievePaymentCardPIN,
+             .cancelPaymentCard,
+             .deactivateAccount,
+             .activateAccount,
+             .setAccountDefaultDescription,
+             .updateAuthorization,
+             .setAccountDescription,
+             .setPaymentCardDeliveryPreference:
             return .put
             
-        case .delete(_),
-             .deleteAuthorization( _):
+        case .delete,
+             .deleteAuthorization:
             return .delete
         }
     }
@@ -138,13 +141,13 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .getBalance(let accountNumber, _):
             return "/account/rest/v1/accounts/\(accountNumber)/full-balance"
             
-        case .getPaymentCards( _):
+        case .getPaymentCards:
             return "/issued-payment-card/v1/cards"
             
-        case .getPaymentCardDesigns( _):
+        case .getPaymentCardDesigns:
             return "/issued-payment-card/v1/card-designs"
             
-        case .getPaymentCardDeliveryCountries( _):
+        case .getPaymentCardDeliveryCountries:
             return "/issued-payment-card/v1/card-delivery-countries"
             
         case .getPaymentCardLimit(let accountNumber):
@@ -162,16 +165,16 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .getPaymentCardDeliveryPrices(let country):
             return "/issued-payment-card/v1/card-delivery-prices/\(country)"
             
-        case .getPaymentCardIssuePrice( _):
+        case .getPaymentCardIssuePrice:
             return "/issued-payment-card/v1/card-account-issue-price"
             
-        case .getPaymentCardDeliveryDate( _, _):
+        case .getPaymentCardDeliveryDate:
             return "/issued-payment-card/v1/card-delivery-date"
             
-        case .getCategorizedAccountNumbers( _):
+        case .getCategorizedAccountNumbers:
             return "/transfer/rest/v1/categorized-account-numbers"
             
-        case .createCard( _):
+        case .createCard:
             return "/issued-payment-card/v1/cards"
             
         case .activateCard(let id):
@@ -198,16 +201,16 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .setAccountDescription( _,let accountNumber, _):
             return "/account/rest/v1/accounts/\(accountNumber)/descriptions"
             
-        case .canUserOrderCard( _):
+        case .canUserOrderCard:
             return "/client-allowance/rest/v1/client-allowances/can-order-card"
             
-        case .canUserFillQuestionnaire( _):
+        case .canUserFillQuestionnaire:
             return "/client-allowance/rest/v1/client-allowances/can-fill-questionnaire"
             
-        case .getAuthorizations( _):
+        case .getAuthorizations:
             return "/permission/rest/v1/authorizations"
             
-        case .createAuthorization( _):
+        case .createAuthorization:
             return "/permission/rest/v1/authorizations"
             
         case .deleteAuthorization(let id):
@@ -219,8 +222,11 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .setPaymentCardDeliveryPreference(let accountNumber, _):
             return "/issued-payment-card/v1/accounts/\(accountNumber)/card-delivery-preference"
 
-        case .getAvailableCurrencies( _):
+        case .getAvailableCurrencies:
             return "/currency/rest/v1/available-currencies"
+            
+        case .getPurposeCodes:
+            return "/transfer/rest/v1/purpose-codes"
         }
     }
     
