@@ -176,4 +176,8 @@ public class AccountsApiClient: PSBaseApiClient {
     public func getPurposeCodes() -> Promise<PSPurposeCodeCollection> {
         return doRequest(requestRouter: AccountsApiRequestRouter.getPurposeCodes)
     }
+    
+    public func deleteUserFromAuthorization(authorizationId: String, userId: String) -> Promise<Void> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.deleteUserFromAuthorization(authorizationId: authorizationId, userId: userId))
+    }
 }
