@@ -173,7 +173,7 @@ public class AccountsApiClient: PSBaseApiClient {
         return doRequest(requestRouter: AccountsApiRequestRouter.updateAuthorization(id: id, createAuthorizationRequest: authorization))
     }
     
-    public func deleteUserFromAuthorization(authorizationId: String, userId: Int) -> Promise<Void> {
+    public func deleteUserFromAuthorization(authorizationId: String, userId: String) -> Promise<Void> {
         return doRequest(requestRouter: AccountsApiRequestRouter.deleteUserFromAuthorization(authorizationId: authorizationId, userId: userId))
     }
 }

@@ -52,7 +52,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     
     // MARK: - Delete
     case deleteAuthorization(id: String)
-    case deleteUserFromAuthorization(authorizationId: String, userId: Int)
+    case deleteUserFromAuthorization(authorizationId: String, userId: String)
     
     // MARK: - Declarations
     static var baseURLString = "https://accounts.paysera.com/public"
