@@ -9,7 +9,7 @@ public class PSIbanInformation: Mappable {
     public var branchCode: String?
     public var sepaParticipant = false
     public var sepaInstantParticipant = false
-    public var isTarget2Participant = false
+    public var target2Participant = false
     
     required public init?(map: Map) {
 
@@ -23,6 +23,6 @@ public class PSIbanInformation: Mappable {
         branchCode             <- map["branch_code"]
         sepaParticipant        <- map["sepa_participant"]
         sepaInstantParticipant <- map["sepa_instant_participant"]
-        isTarget2Participant <- map["target2_participant"]
+        target2Participant <- map["target2_participant"]
     }
 }

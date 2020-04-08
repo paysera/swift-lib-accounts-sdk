@@ -12,7 +12,7 @@ class AccountsSDKTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let token = "insert_me"
+        let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJldnBiYW5rIiwiaXNzIjoiYXV0aF9hcGkiLCJleHAiOjE1ODYyODUzMzEsImp0aSI6ImllLVF2YW9HdEtWYkVBTFBzZmstc01tYWp6Rjd3aGFPIiwicHNyOnMiOlsibG9nZ2VkX2luIiwiY29uZmlybWVkX2xvZ19pbiJdLCJwc3I6dSI6Ijk2NDg5OTQiLCJwc3I6c2lkIjoieU8xbTNTR1ZMUHRFUkZWNFFFSThzVnJLaWFicjIxQnkiLCJwc3I6YSI6eyJ1c2VyX2lkIjoiOTY0ODk5NCJ9LCJpYXQiOjE1ODYyNDIxMzF9.qiWReLIozen3pXltoCUyrW73QQMKmylqcafniZaTbxu0Pr_O4goJeFkDYHch-yhA497JWOltUe98pRHPJYH2se-Unn3Pv2buCt-bWYWK7fBTihjJ3i6vix46ZEv0AI5j6q0-0M-wE903mjRdRU30ZaI8VQ5eiL4s5K3nLR3lHF5iQcK4XAdg8YP_MG_eZe7vzQTRdkcoKbPnXzV7DxDXRdyh0g16uHX4ASxV-FgnneBsod3OkONmNMuPChr85jhgM79AL9QaAECPMwqBSzRFr6o0sHqdeT_nKO6lRFQruTVU_JV3yz9CsTlgn1lJi3qiFvuyaYB5spyuz0CNzbTsctcR7q68zSpLu2tgjEtayHs8oa5HSbqSxpNeos4zzsIaTwZNSKvXoSDLAl-KIM8dxToO5KjakNDyEQCNrkkouVfSqCoOHTosVWXHI8YimIMSixycxhIkIpTf4WuMv7m0Oe-vGOmuNcCAY4HBLFcrTXXc8cSUYr86WfTsy2Mjphsjz5oP6gqETIkP3VEXmwif8wIy3tNDkCbmy53H5QyjgIaaK-htmZsqLwalglxt4W2jWx4Rg9e5FRwHySShazQ5dF-y7kaX3llreC9Xpy-hWJpypAoImSKUfgbCrfDlNqaVKo3aYLgdnagKJTzPyD3DVb7SbIC1AOoSEP3H7IbwBag"
         
         let credentials = PSApiJWTCredentials()
         credentials.token = try! decode(jwt: token)
@@ -99,7 +99,7 @@ class AccountsSDKTests: XCTestCase {
             }.finally { expectation.fulfill() }
         
         wait(for: [expectation], timeout: 3.0)
-        XCTAssertTrue((object?.isTarget2Participant ?? false), "IbanInformation must be a target2Participant")
+        XCTAssertTrue((object?.target2Participant ?? false), "IbanInformation must be a target2Participant")
     }
     
     func testGetPaymentCardShippingAddress() {
