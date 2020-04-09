@@ -22,9 +22,7 @@ public class PSTransfer: Mappable {
 
     public init() {}
     
-    required public init?(map: Map) {
-        notifications = mapEnumeratedJSON(json: map.JSON["notifications"] as? [String: Any], enumeratedElementKey: "status")
-    }
+    required public init?(map: Map) { }
 
     public func mapping(map: Map) {
         id              <- map["id"]
@@ -43,6 +41,7 @@ public class PSTransfer: Mappable {
         status          <- map["status"]
         beneficiary     <- map["beneficiary"]
         password        <- map["password"]
+        notifications   <- (map["notifications"], ObjectFromKeyTransform<PSTransferNotification>(rootKeyPath: \.status))
     }
 
     public func isSigned() -> Bool {

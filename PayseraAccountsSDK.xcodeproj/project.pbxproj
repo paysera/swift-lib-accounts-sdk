@@ -32,6 +32,7 @@
 		1CB5AC7720B43F57006CDDE3 /* PSChargeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB5AC7620B43F57006CDDE3 /* PSChargeInfo.swift */; };
 		52D6D9871BEFF229002C0205 /* PayseraAccountsSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* PayseraAccountsSDK.framework */; };
 		6068EF3D24168CDE00496B4A /* PSPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6068EF3C24168CDE00496B4A /* PSPassword.swift */; };
+		60AA35D9243F6AA900F857CD /* ObjectFromKeyTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AA35D8243F6AA900F857CD /* ObjectFromKeyTransform.swift */; };
 		745D4FE224345FB3002403D9 /* PSPurposeCodeCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745D4FE124345FB3002403D9 /* PSPurposeCodeCollection.swift */; };
 		7CAB9EC623F691060043CEF9 /* PSPaymentCardIssuePriceFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAB9EC523F691060043CEF9 /* PSPaymentCardIssuePriceFilter.swift */; };
 		880FCB92206CB29700350F98 /* PayseraAccountsSDK.plist in Resources */ = {isa = PBXBuildFile; fileRef = 880FCB91206CB29700350F98 /* PayseraAccountsSDK.plist */; };
@@ -63,7 +64,6 @@
 		ED6937E421E881340008A1BD /* PSTransferFailureStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6937E321E881340008A1BD /* PSTransferFailureStatus.swift */; };
 		ED6937E621E8828C0008A1BD /* PSTransferPurpose.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6937E521E8828C0008A1BD /* PSTransferPurpose.swift */; };
 		ED6937E821E882A70008A1BD /* PSTransferPayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6937E721E882A70008A1BD /* PSTransferPayer.swift */; };
-		ED6937EB21E882D20008A1BD /* Mappable+EnumeratedMapping.swift .swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6937EA21E882D20008A1BD /* Mappable+EnumeratedMapping.swift .swift */; };
 		ED6937ED21E882F90008A1BD /* PSTransferStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6937EC21E882F90008A1BD /* PSTransferStatus.swift */; };
 		ED753919206A8ADA004EA953 /* JWTDecode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B25A55206A361200BE81C5 /* JWTDecode.framework */; };
 		ED75391A206A8ADA004EA953 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B25A53206A315100BE81C5 /* ObjectMapper.framework */; };
@@ -120,6 +120,7 @@
 		52D6D97C1BEFF229002C0205 /* PayseraAccountsSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PayseraAccountsSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9861BEFF229002C0205 /* PayseraAccountsSDK-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PayseraAccountsSDK-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6068EF3C24168CDE00496B4A /* PSPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPassword.swift; sourceTree = "<group>"; };
+		60AA35D8243F6AA900F857CD /* ObjectFromKeyTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectFromKeyTransform.swift; sourceTree = "<group>"; };
 		745D4FE124345FB3002403D9 /* PSPurposeCodeCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPurposeCodeCollection.swift; sourceTree = "<group>"; };
 		7CAB9EC523F691060043CEF9 /* PSPaymentCardIssuePriceFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardIssuePriceFilter.swift; sourceTree = "<group>"; };
 		880FCB91206CB29700350F98 /* PayseraAccountsSDK.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PayseraAccountsSDK.plist; sourceTree = "<group>"; };
@@ -156,7 +157,6 @@
 		ED6937E321E881340008A1BD /* PSTransferFailureStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSTransferFailureStatus.swift; sourceTree = "<group>"; };
 		ED6937E521E8828C0008A1BD /* PSTransferPurpose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSTransferPurpose.swift; sourceTree = "<group>"; };
 		ED6937E721E882A70008A1BD /* PSTransferPayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSTransferPayer.swift; sourceTree = "<group>"; };
-		ED6937EA21E882D20008A1BD /* Mappable+EnumeratedMapping.swift .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mappable+EnumeratedMapping.swift .swift"; sourceTree = "<group>"; };
 		ED6937EC21E882F90008A1BD /* PSTransferStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSTransferStatus.swift; sourceTree = "<group>"; };
 		ED77A6FC2179B39B00723CD3 /* PSPaymentCardDeliveryDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPaymentCardDeliveryDate.swift; sourceTree = "<group>"; };
 		ED8FAFFD22BA66FF00792600 /* PayseraCommonSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayseraCommonSDK.framework; path = Carthage/Build/iOS/PayseraCommonSDK.framework; sourceTree = "<group>"; };
@@ -260,6 +260,14 @@
 			path = Configs;
 			sourceTree = "<group>";
 		};
+		60AA35D7243F6A8800F857CD /* Transforms */ = {
+			isa = PBXGroup;
+			children = (
+				60AA35D8243F6AA900F857CD /* ObjectFromKeyTransform.swift */,
+			);
+			path = Transforms;
+			sourceTree = "<group>";
+		};
 		88774BC0205FE53C00AC5048 /* Carthage */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,8 +311,8 @@
 		8933C7811EB5B7E0000D00A4 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				60AA35D7243F6A8800F857CD /* Transforms */,
 				C47644DE2228028F00E10BD8 /* Common */,
-				ED6937E921E882CC0008A1BD /* Extensions */,
 				88B25A57206A4C6A00BE81C5 /* Entities */,
 				88B25A5A206A4C9400BE81C5 /* Services */,
 				88B25A4D206A302800BE81C5 /* AccountsApiRequestRouter.swift */,
@@ -383,14 +391,6 @@
 				6068EF3C24168CDE00496B4A /* PSPassword.swift */,
 			);
 			path = Transfers;
-			sourceTree = "<group>";
-		};
-		ED6937E921E882CC0008A1BD /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				ED6937EA21E882D20008A1BD /* Mappable+EnumeratedMapping.swift .swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -525,6 +525,7 @@
 				88B25A48206A23EB00BE81C5 /* AccountsApiClientFactory.swift in Sources */,
 				C438A73822DF3E56002B3640 /* PSAuthorizationUser.swift in Sources */,
 				1C8E982120CE518B000770BB /* PSCreatePaymentCardRequest.swift in Sources */,
+				60AA35D9243F6AA900F857CD /* ObjectFromKeyTransform.swift in Sources */,
 				EDE54C5F23E2DA780099E8F5 /* PSPaymentCardExpiringCardOrderRestriction.swift in Sources */,
 				ED93B7BD23C3B830006CD25C /* PSPaymentCardDesignFilter.swift in Sources */,
 				ED6413E021DE4BE300A35417 /* PSCategorizedAccountNumbers.swift in Sources */,
@@ -536,7 +537,6 @@
 				ED6937DC21E880240008A1BD /* PSTransfer.swift in Sources */,
 				C438A73A22DF3E8F002B3640 /* PSCreateAuthorizationRequest.swift in Sources */,
 				88B25A4A206A23EB00BE81C5 /* AccountsApiClient.swift in Sources */,
-				ED6937EB21E882D20008A1BD /* Mappable+EnumeratedMapping.swift .swift in Sources */,
 				6068EF3D24168CDE00496B4A /* PSPassword.swift in Sources */,
 				1C9E7F73212D890300B6A66D /* PSUpdatePaymentCardLimitRequest.swift in Sources */,
 				ED6937E221E881100008A1BD /* PSTransferInitiator.swift in Sources */,
