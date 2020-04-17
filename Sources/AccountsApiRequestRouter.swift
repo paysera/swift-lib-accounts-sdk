@@ -51,7 +51,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case setAccountDescription(userId: Int, accountNumber: String, description: String)
     case updateAuthorization(id: String, createAuthorizationRequest: PSCreateAuthorizationRequest)
     case setPaymentCardDeliveryPreference(accountNumber: String, preference: PSPaymentCardDeliveryPreference)
-    case validateAuthorization(accountNumber: String, userIds: [Int])
+    case validateAuthorization(accountNumber: String, userIds: [String])
     
     // MARK: - Delete
     case deleteAuthorization(id: String)
@@ -312,7 +312,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case let .validateAuthorization(accountNumber, userIds):
             return [
                 "account_number": accountNumber,
-                "user_ids": userIds.compactMap(String.init)
+                "user_ids": userIds
             ]
         default:
             return nil

@@ -185,7 +185,7 @@ public class AccountsApiClient: PSBaseApiClient {
         return doRequest(requestRouter: AccountsApiRequestRouter.getSigningLimits(userId: userId))
     }
     
-    public func validateAuthorization(accountNumber: String, userIds: [Int]) -> Promise<Void> {
+    public func validateAuthorization(accountNumber: String, userIds: [String]) -> Promise<Void> {
         return doRequest(requestRouter: AccountsApiRequestRouter.validateAuthorization(accountNumber: accountNumber, userIds: userIds))
     }
 }
