@@ -396,4 +396,29 @@ class AccountsSDKTests: XCTestCase {
         wait(for: [expectation], timeout: 3.0)
         XCTAssertNotNil(object)
     }
+    
+    func testGetSigningLimits() {
+        let expectation = XCTestExpectation(description: "Should return signing limits for a given user")
+        var limits: PSAuthorizationUserLimits?
+        
+        accountsApiClient
+            .getSigningLimits(userId: 138776)
+            .done { signingLimits in limits = signingLimits }
+            .catch { error in XCTFail(error.localizedDescription) }
+            .finally { expectation.fulfill() }
+        
+        wait(for: [expectation], timeout: 5.0)
+        XCTAssertNotNil(limits)
+    }
+    
+    func testValidatingAuthorization() {
+        let expectation = XCTestExpectation(description: "Should validate if users can be added to an authorization")
+        
+        accountsApiClient
+            .validateAuthorization(accountNumber: "", userIds: [])
+            .catch { error in XCTFail(error.localizedDescription) }
+            .finally { expectation.fulfill() }
+        
+        wait(for: [expectation], timeout: 5.0)
+    }
 }

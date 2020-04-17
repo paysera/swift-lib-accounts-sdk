@@ -180,4 +180,12 @@ public class AccountsApiClient: PSBaseApiClient {
     public func deleteUserFromAuthorization(authorizationId: String, userId: String) -> Promise<Void> {
         return doRequest(requestRouter: AccountsApiRequestRouter.deleteUserFromAuthorization(authorizationId: authorizationId, userId: userId))
     }
+    
+    public func getSigningLimits(userId: Int) -> Promise<PSAuthorizationUserLimits> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.getSigningLimits(userId: userId))
+    }
+    
+    public func validateAuthorization(accountNumber: String, userIds: [Int]) -> Promise<Void> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.validateAuthorization(accountNumber: accountNumber, userIds: userIds))
+    }
 }

@@ -30,6 +30,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getPaymentCardDeliveryPreference(accountNumber: String)
     case getAvailableCurrencies(filter: PSAvailableCurrencyFilter)
     case getPurposeCodes
+    case getSigningLimits(userId: Int)
     
     
     // MARK: - POST
@@ -50,6 +51,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case setAccountDescription(userId: Int, accountNumber: String, description: String)
     case updateAuthorization(id: String, createAuthorizationRequest: PSCreateAuthorizationRequest)
     case setPaymentCardDeliveryPreference(accountNumber: String, preference: PSPaymentCardDeliveryPreference)
+    case validateAuthorization(accountNumber: String, userIds: [Int])
     
     // MARK: - Delete
     case deleteAuthorization(id: String)
@@ -80,7 +82,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getPaymentCardDeliveryPreference,
              .getPaymentPaymentCardExpiringCardOrderRestriction,
              .getAvailableCurrencies,
-             .getPurposeCodes:
+             .getPurposeCodes,
+             .getSigningLimits:
             return .get
 
         case .post,
@@ -102,7 +105,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .setAccountDefaultDescription,
              .updateAuthorization,
              .setAccountDescription,
-             .setPaymentCardDeliveryPreference:
+             .setPaymentCardDeliveryPreference,
+             .validateAuthorization:
             return .put
 
         case .delete,
@@ -231,6 +235,12 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
 
         case .deleteUserFromAuthorization(let authorizationId, let userId):
             return "/permission/rest/v1/authorizations/\(authorizationId)/users/\(userId)"
+        
+        case .getSigningLimits(let userId):
+            return "/permission/rest/v1/users/\(userId)/limits"
+            
+        case .validateAuthorization:
+            return "/permission/rest/v1/authorizations/authorization-validation"
         }
     }
     
@@ -299,6 +309,11 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .getAvailableCurrencies(let filter):
             return filter.toJSON()
             
+        case let .validateAuthorization(accountNumber, userIds):
+            return [
+                "account_number": accountNumber,
+                "user_ids": userIds.compactMap(String.init)
+            ]
         default:
             return nil
         }
