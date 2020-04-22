@@ -8,6 +8,7 @@ public class PSTransferBeneficiary: Mappable {
     public var beneficiaryTaxAccount: PSTransferBeneficiaryTaxAccount?
     public var beneficiaryWebmoneyAccount: PSTransferBeneficiaryWebmoneyAccount?
     public var beneficiaryIdentifiers: PSTransferBeneficiaryIdentifiers?
+    public var beneficiaryAdditionalInformation: PSTransferBeneficiaryAdditionalInformation?
 
     public init() {}
     
@@ -22,6 +23,7 @@ public class PSTransferBeneficiary: Mappable {
         beneficiaryTaxAccount       <- map["tax_account"]
         beneficiaryWebmoneyAccount  <- map["webmoney_account"]
         beneficiaryIdentifiers      <- map["identifiers"]
+        beneficiaryAdditionalInformation <- map["additional_information"]
     }
 
     public func isBankAccount() -> Bool {
@@ -119,5 +121,21 @@ public class PSTransferBeneficiaryIdentifiers: Mappable {
 
     public func mapping(map: Map) {
         general <- map["general"]
+    }
+}
+
+public class PSTransferBeneficiaryAdditionalInformation: Mappable {
+    public var type: String?
+    public var city: String?
+    public var country: String?
+
+    public init() {}
+    
+    required public init?(map: Map) { }
+
+    public func mapping(map: Map) {
+        type <- map["type"]
+        city <- map["city"]
+        country <- map["country"]
     }
 }
