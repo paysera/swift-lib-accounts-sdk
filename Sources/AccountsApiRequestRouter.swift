@@ -31,12 +31,14 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getAvailableCurrencies(filter: PSAvailableCurrencyFilter)
     case getPurposeCodes
     case getSigningLimits(userId: Int)
-    
+    case getConversionTransfers(filter: PSConversionTransferFilter)
     
     // MARK: - POST
     case createCard(PSCreatePaymentCardRequest)
     case createAuthorization(PSCreateAuthorizationRequest)
     case createAccount(userId: Int)
+    case signConversionTransfer(transferId: String)
+    case cancelConversionTransfer(transferId: String)
     
     // MARK: - PUT
     case deactivateAccount(accountNumber: String)
@@ -83,7 +85,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getPaymentPaymentCardExpiringCardOrderRestriction,
              .getAvailableCurrencies,
              .getPurposeCodes,
-             .getSigningLimits:
+             .getSigningLimits,
+             .getConversionTransfers:
             return .get
 
         case .post,
@@ -106,7 +109,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .updateAuthorization,
              .setAccountDescription,
              .setPaymentCardDeliveryPreference,
-             .validateAuthorization:
+             .validateAuthorization,
+             .signConversionTransfer,
+             .cancelConversionTransfer:
             return .put
 
         case .delete,
@@ -241,6 +246,15 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .validateAuthorization:
             return "/permission/rest/v1/authorizations/authorization-validation"
+            
+        case .getConversionTransfers(_):
+            return "/transfer/rest/v1/conversion-transfers"
+            
+        case .signConversionTransfer(let id):
+            return "/transfer/rest/v1/conversion-transfers/\(id)/sign"
+            
+        case .cancelConversionTransfer(let id):
+            return "/transfer/rest/v1/conversion-transfers/\(id)/cancel"
         }
     }
     
@@ -314,6 +328,10 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
                 "account_number": accountNumber,
                 "user_ids": userIds
             ]
+            
+        case .getConversionTransfers(let filter):
+            return filter.toJSON()
+            
         default:
             return nil
         }

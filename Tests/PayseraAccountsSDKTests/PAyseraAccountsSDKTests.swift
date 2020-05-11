@@ -421,4 +421,49 @@ class AccountsSDKTests: XCTestCase {
         
         wait(for: [expectation], timeout: 5.0)
     }
+    
+    func testGetConversionTransfers() {
+        let expectation = XCTestExpectation(description: "")
+        var object: [PSConversionTransfer]?
+        let filter = PSConversionTransferFilter()
+        filter.accountNumbers = [""]
+        filter.statuses = ["prepared"]
+        accountsApiClient
+            .getConversionTransfers(filter: filter)
+            .done { result in
+                object = result.items
+            }.catch { error in
+                print(error)
+            }.finally { expectation.fulfill() }
+        wait(for: [expectation], timeout: 5.0)
+        XCTAssertNotNil(object)
+    }
+    
+    func testSignConversionTransfer() {
+        let expectation = XCTestExpectation(description: "")
+        var object: PSConversionTransfer?
+        accountsApiClient
+            .signConversionTransfer(transferId: "")
+            .done { result in
+                object = result
+            }.catch { error in
+                print(error)
+            }.finally { expectation.fulfill() }
+        wait(for: [expectation], timeout: 5.0)
+        XCTAssertNotNil(object)
+    }
+    
+    func testCancelConversionTransfer() {
+        let expectation = XCTestExpectation(description: "")
+        var object: PSConversionTransfer?
+        accountsApiClient
+            .cancelConversionTransfer(transferId: "")
+            .done { result in
+                object = result
+            }.catch { error in
+                print(error)
+            }.finally { expectation.fulfill() }
+        wait(for: [expectation], timeout: 5.0)
+        XCTAssertNotNil(object)
+    }
 }

@@ -79,6 +79,18 @@ public class AccountsApiClient: PSBaseApiClient {
         return doRequest(requestRouter: AccountsApiRequestRouter.getAvailableCurrencies(filter: filter))
     }
     
+    public func getConversionTransfers(filter: PSConversionTransferFilter) -> Promise<PSMetadataAwareResponse<PSConversionTransfer>> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.getConversionTransfers(filter: filter))
+    }
+    
+    public func signConversionTransfer(transferId: String) -> Promise<PSConversionTransfer> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.signConversionTransfer(transferId: transferId))
+    }
+    
+    public func cancelConversionTransfer(transferId: String) -> Promise<PSConversionTransfer> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.cancelConversionTransfer(transferId: transferId))
+    }
+    
     // MARK: - Payment cards API
     public func createPaymentCard(_ card: PSCreatePaymentCardRequest) -> Promise<PSPaymentCard> {
         return doRequest(requestRouter: AccountsApiRequestRouter.createCard(card))
