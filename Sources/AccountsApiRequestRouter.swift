@@ -247,7 +247,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .validateAuthorization:
             return "/permission/rest/v1/authorizations/authorization-validation"
             
-        case .getConversionTransfers(_):
+        case .getConversionTransfers:
             return "/transfer/rest/v1/conversion-transfers"
             
         case .signConversionTransfer(let id):
