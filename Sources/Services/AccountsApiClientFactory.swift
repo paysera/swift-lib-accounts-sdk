@@ -8,10 +8,14 @@ public class AccountsApiClientFactory {
         tokenRefresher: PSTokenRefresherProtocol? = nil,
         logger: PSLoggerProtocol? = nil
     ) -> AccountsApiClient {
-        let session = Session(interceptor: PSRequestAdapter(credentials: credentials))
+        let interceptor = PSRequestAdapter(credentials: credentials)
+        let trustedSession = PSTrustedSession(
+            interceptor: interceptor,
+            hosts: ["accounts.paysera.com"]
+        )
     
         return AccountsApiClient(
-            session: session,
+            session: trustedSession,
             credentials: credentials,
             tokenRefresher: tokenRefresher,
             logger: logger
