@@ -402,7 +402,7 @@ class AccountsSDKTests: XCTestCase {
         var limits: PSAuthorizationUserLimits?
         
         accountsApiClient
-            .getSigningLimits(userId: 138776)
+            .getSigningLimits(userId: 0)
             .done { signingLimits in limits = signingLimits }
             .catch { error in XCTFail(error.localizedDescription) }
             .finally { expectation.fulfill() }
