@@ -2,7 +2,7 @@ import ObjectMapper
 
 public class PSAuthorizationUserValidationResult: Mappable {
     
-    public var userId: String!
+    public var userId: Int!
     public var valid: Bool!
     public var reason: String?
     

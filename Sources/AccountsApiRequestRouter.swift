@@ -54,7 +54,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case setAccountDescription(userId: Int, accountNumber: String, description: String)
     case updateAuthorization(id: String, createAuthorizationRequest: PSCreateAuthorizationRequest)
     case setPaymentCardDeliveryPreference(accountNumber: String, preference: PSPaymentCardDeliveryPreference)
-    case validateAuthorizationUsers(userIds: [String])
+    case validateAuthorizationUsers(userIds: [Int])
     
     // MARK: - Delete
     case deleteAuthorization(id: String)

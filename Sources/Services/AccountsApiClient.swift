@@ -198,7 +198,7 @@ public class AccountsApiClient: PSBaseApiClient {
     }
     
     public func validateAuthorizationUsers(
-        userIds: [String]
+        userIds: [Int]
     ) -> Promise<PSMetadataAwareResponse<PSAuthorizationUserValidationResult>> {
         return doRequest(requestRouter: AccountsApiRequestRouter.validateAuthorizationUsers(userIds: userIds))
     }
