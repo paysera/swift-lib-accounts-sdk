@@ -54,7 +54,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case setAccountDescription(userId: Int, accountNumber: String, description: String)
     case updateAuthorization(id: String, createAuthorizationRequest: PSCreateAuthorizationRequest)
     case setPaymentCardDeliveryPreference(accountNumber: String, preference: PSPaymentCardDeliveryPreference)
-    case validateAuthorization(accountNumber: String, userIds: [String])
+    case validateAuthorizationUsers(userIds: [String])
     
     // MARK: - Delete
     case deleteAuthorization(id: String)
@@ -111,7 +111,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .updateAuthorization,
              .setAccountDescription,
              .setPaymentCardDeliveryPreference,
-             .validateAuthorization,
+             .validateAuthorizationUsers,
              .signConversionTransfer,
              .cancelConversionTransfer:
             return .put
@@ -249,8 +249,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .getSigningLimits(let userId):
             return "/permission/rest/v1/users/\(userId)/limits"
             
-        case .validateAuthorization:
-            return "/permission/rest/v1/authorizations/authorization-validation"
+        case .validateAuthorizationUsers:
+            return "/permission/rest/v1/authorizations/authorization-user-validation"
             
         case .getConversionTransfers:
             return "/transfer/rest/v1/conversion-transfers"
@@ -334,11 +334,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .getAvailableCurrencies(let filter):
             return filter.toJSON()
             
-        case let .validateAuthorization(accountNumber, userIds):
-            return [
-                "account_number": accountNumber,
-                "user_ids": userIds
-            ]
+        case .validateAuthorizationUsers(let userIds):
+            return ["user_ids": userIds]
             
         case .getConversionTransfers(let filter):
             return filter.toJSON()

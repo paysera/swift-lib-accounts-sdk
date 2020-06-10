@@ -197,8 +197,10 @@ public class AccountsApiClient: PSBaseApiClient {
         return doRequest(requestRouter: AccountsApiRequestRouter.getSigningLimits(userId: userId))
     }
     
-    public func validateAuthorization(accountNumber: String, userIds: [String]) -> Promise<Void> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.validateAuthorization(accountNumber: accountNumber, userIds: userIds))
+    public func validateAuthorizationUsers(
+        userIds: [String]
+    ) -> Promise<PSMetadataAwareResponse<PSAuthorizationUserValidationResult>> {
+        return doRequest(requestRouter: AccountsApiRequestRouter.validateAuthorizationUsers(userIds: userIds))
     }
 
     public func getCardOrderRestrictions(

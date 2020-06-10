@@ -411,15 +411,18 @@ class AccountsSDKTests: XCTestCase {
         XCTAssertNotNil(limits)
     }
     
-    func testValidatingAuthorization() {
+    func testValidatingAuthorizationUsers() {
         let expectation = XCTestExpectation(description: "Should validate if users can be added to an authorization")
+        var validationResponse: PSMetadataAwareResponse<PSAuthorizationUserValidationResult>?
         
         accountsApiClient
-            .validateAuthorization(accountNumber: "", userIds: [])
+            .validateAuthorizationUsers(userIds: [])
+            .done { response in validationResponse = response }
             .catch { error in XCTFail(error.localizedDescription) }
             .finally { expectation.fulfill() }
         
         wait(for: [expectation], timeout: 5.0)
+        XCTAssertNotNil(validationResponse)
     }
     
     func testGetConversionTransfers() {
