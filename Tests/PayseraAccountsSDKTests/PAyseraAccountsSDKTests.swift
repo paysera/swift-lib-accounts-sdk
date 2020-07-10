@@ -483,4 +483,21 @@ class AccountsSDKTests: XCTestCase {
         wait(for: [expectation], timeout: 5.0)
         XCTAssertNotNil(object)
     }
+    
+    func testGetTransfer() {
+        let expectation = XCTestExpectation(description: "")
+        var object: PSTransfer?
+        let transferId = "" //"insert_ne"
+        
+        accountsApiClient
+            .getTransfer(id: transferId)
+            .done { result in
+                object = result
+            }.catch { error in
+                print(error)
+            }.finally { expectation.fulfill() }
+        
+        wait(for: [expectation], timeout: 5.0)
+        XCTAssertNotNil(object)
+    }
 }

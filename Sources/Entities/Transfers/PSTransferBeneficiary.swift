@@ -65,6 +65,7 @@ public class PSTransferBeneficiaryBankAccount: Mappable {
     public var sortCode: String?
     public var accountNumber: String?
     public var countryCode: String?
+    public var bankAddress: String?
 
     public init() {}
     
@@ -78,6 +79,7 @@ public class PSTransferBeneficiaryBankAccount: Mappable {
         sortCode        <- map["sort_code"]
         accountNumber   <- map["account_number"]
         countryCode     <- map["country_code"]
+        bankAddress     <- map["bank_address"]
     }
 }
 
