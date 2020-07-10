@@ -487,7 +487,7 @@ class AccountsSDKTests: XCTestCase {
     func testGetTransfer() {
         let expectation = XCTestExpectation(description: "")
         var object: PSTransfer?
-        let transferId = "" //"insert_ne"
+        let transferId = "insert_me"
         
         accountsApiClient
             .getTransfer(id: transferId)
