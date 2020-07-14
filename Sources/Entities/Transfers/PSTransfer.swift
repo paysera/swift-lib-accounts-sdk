@@ -19,6 +19,7 @@ public class PSTransfer: Mappable {
     public var cancelable: Bool!
     public var notifications: [PSTransferNotification]?
     public var password: PSPassword?
+    public var paymentType: String?
 
     public init() {}
     
@@ -42,6 +43,7 @@ public class PSTransfer: Mappable {
         beneficiary     <- map["beneficiary"]
         password        <- map["password"]
         notifications   <- (map["notifications"], ObjectFromKeyTransform<PSTransferNotification>(rootKeyPath: \.status))
+        paymentType <- map["charge_type"]
     }
 
     public func isSigned() -> Bool {
