@@ -33,6 +33,10 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getSigningLimits(userId: Int)
     case getConversionTransfers(filter: PSConversionTransferFilter)
     case getCardOrderRestrictions(cardAccountOwnerId: Int, cardOwnerId: Int)
+    case getBullionItems(filter: PSBullionFilter)
+    case getBullionOptions(filter: PSBaseFilter)
+    case getUnallocatedBullionBalance(filter: PSBullionFilter)
+    case getSpreadPercentage(request: PSSpreadPercentageRequest)
     
     // MARK: - POST
     case createCard(PSCreatePaymentCardRequest)
@@ -40,6 +44,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case createAccount(userId: Int)
     case signConversionTransfer(transferId: String)
     case cancelConversionTransfer(transferId: String)
+    case buyBullion(identifier: String, accountNumber: String)
+    case sellBullion(hash: String)
     
     // MARK: - PUT
     case deactivateAccount(accountNumber: String)
@@ -88,13 +94,19 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getPurposeCodes,
              .getSigningLimits,
              .getConversionTransfers,
-             .getCardOrderRestrictions:
+             .getCardOrderRestrictions,
+             .getBullionItems,
+             .getBullionOptions,
+             .getUnallocatedBullionBalance,
+             .getSpreadPercentage:
             return .get
 
         case .post,
              .createCard,
              .createAccount,
-             .createAuthorization:
+             .createAuthorization,
+             .buyBullion,
+             .sellBullion:
             return .post
             
         case .put,
@@ -260,6 +272,24 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .cancelConversionTransfer(let id):
             return "/transfer/rest/v1/conversion-transfers/\(id)/cancel"
+            
+        case .getBullionItems:
+            return "/bullion/rest/v1/items"
+
+        case .getBullionOptions:
+            return "/bullion/rest/v1/item-options"
+
+        case .getUnallocatedBullionBalance:
+            return "/bullion/rest/v1/unallocated-balance"
+
+        case .buyBullion:
+            return "/bullion/rest/v1/items/buy"
+
+        case .sellBullion:
+            return "/bullion/rest/v1/items/sell"
+
+        case .getSpreadPercentage:
+            return "/currency-exchange/rest/v1/currency-exchanges/spread-percentage"
         }
     }
     
@@ -339,6 +369,25 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .getConversionTransfers(let filter):
             return filter.toJSON()
+            
+        case .getBullionItems(let filter),
+             .getUnallocatedBullionBalance(let filter):
+            return filter.toJSON()
+
+        case .getBullionOptions(let filter):
+            return filter.toJSON()
+
+        case .buyBullion(let identifier, let accountNumber):
+            return [
+                "account_number": accountNumber,
+                "identifier": identifier
+            ]
+
+        case .sellBullion(let hash):
+            return ["hash": hash]
+
+        case .getSpreadPercentage(let request):
+            return request.toJSON()
             
         default:
             return nil

@@ -500,4 +500,95 @@ class AccountsSDKTests: XCTestCase {
         wait(for: [expectation], timeout: 5.0)
         XCTAssertNotNil(object)
     }
+    
+    func testGetBullionItems() {
+        let expectation = XCTestExpectation(description: "Bullion items that are owned by user should be returned")
+        var object: PSMetadataAwareResponse<PSBullion>?
+        let filter = PSBullionFilter()
+        filter.accountNumber = "EVPXXXXXXXXXXXXXXX"
+
+        accountsApiClient
+            .getBullionItems(filter: filter)
+            .done { result in object = result }
+            .catch { error in XCTFail(error.localizedDescription) }
+            .finally { expectation.fulfill() }
+
+        wait(for: [expectation], timeout: 5.0)
+        XCTAssertNotNil(object)
+    }
+
+    func testGetBullionOptions() {
+        let expectation = XCTestExpectation(description: "Available bullion options should be returned")
+        var object: PSMetadataAwareResponse<PSBullionOption>?
+        let filter = PSBaseFilter()
+
+        accountsApiClient
+            .getBullionOptions(filter: filter)
+            .done { result in object = result }
+            .catch { error in XCTFail(error.localizedDescription) }
+            .finally { expectation.fulfill() }
+
+        wait(for: [expectation], timeout: 5.0)
+        XCTAssertNotNil(object)
+    }
+
+    func testGetUnallocatedBullionBalance() {
+        let expectation = XCTestExpectation(description: "Unallocated bullion balance should be returned")
+        var object: PSMetadataAwareResponse<PSUnallocatedBullionBalance>?
+
+        let filter = PSBullionFilter()
+        filter.accountNumber = "EVPXXXXXXXXXXXXXXX"
+        accountsApiClient
+            .getUnallocatedBullionBalance(filter: filter)
+            .done { result in object = result }
+            .catch { error in XCTFail(error.localizedDescription) }
+            .finally { expectation.fulfill() }
+
+        wait(for: [expectation], timeout: 5.0)
+        XCTAssertNotNil(object)
+    }
+
+    func testBuyBullion() {
+        let expectation = XCTestExpectation(description: "Bullion should be successfully bought")
+
+        accountsApiClient
+            .buyBullion(identifier: "test_coin", accountNumber: "EVPXXXXXXXXXXXXXXX")
+            .done { }
+            .catch { error in XCTFail(error.localizedDescription) }
+            .finally { expectation.fulfill() }
+
+        wait(for: [expectation], timeout: 5.0)
+    }
+
+    func testSellBullion() {
+        let expectation = XCTestExpectation(description: "Bullion should be successfully sold")
+
+        accountsApiClient
+            .sellBullion(hash: "jxqiXcgoQePkjk8FFahahaoxbwiZdUWl")
+            .done { }
+            .catch { error in XCTFail(error.localizedDescription) }
+            .finally { expectation.fulfill() }
+
+        wait(for: [expectation], timeout: 5.0)
+    }
+
+    func testGetSpreadPercentage() {
+        var response: PSSpreadPercentageResponse?
+        let expectation = XCTestExpectation(description: "Spread percentage should be returned")
+        let request = PSSpreadPercentageRequest(
+            accountNumber: "EVPXXXXXXXXXXXX",
+            fromCurrency: "EUR",
+            toCurrency: "XAU",
+            toAmount: "0.04345"
+        )
+
+        accountsApiClient
+            .getSpreadPercentage(request: request)
+            .done { response = $0 }
+            .catch { error in XCTFail(error.localizedDescription) }
+            .finally { expectation.fulfill() }
+
+        wait(for: [expectation], timeout: 5.0)
+        XCTAssertNotNil(response)
+    }
 }
