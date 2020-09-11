@@ -33,6 +33,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getSigningLimits(userId: Int)
     case getConversionTransfers(filter: PSConversionTransferFilter)
     case getCardOrderRestrictions(cardAccountOwnerId: Int, cardOwnerId: Int)
+    case getBankParticipationInfo(swift: String)
     case getBullionItems(filter: PSBullionFilter)
     case getBullionOptions(filter: PSBaseFilter)
     case getUnallocatedBullionBalance(filter: PSBullionFilter)
@@ -95,6 +96,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getSigningLimits,
              .getConversionTransfers,
              .getCardOrderRestrictions,
+             .getBankParticipationInfo,
              .getBullionItems,
              .getBullionOptions,
              .getUnallocatedBullionBalance,
@@ -200,6 +202,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .getCardOrderRestrictions:
             return "/issued-payment-card/v1/card-order-restrictions"
+            
+        case .getBankParticipationInfo(let swift):
+            return "/transfer/rest/v1/bank-participation/\(swift)"
             
         case .createCard:
             return "/issued-payment-card/v1/cards"

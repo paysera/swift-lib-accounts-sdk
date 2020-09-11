@@ -501,6 +501,19 @@ class AccountsSDKTests: XCTestCase {
         XCTAssertNotNil(object)
     }
     
+    func testGetBankParticipationInfo() {
+        let expectation = XCTestExpectation(description: "")
+        let swift = "insert_me"
+        var object: PSBankParticipationInformation?
+        accountsApiClient
+            .getBankParticipationInformation(swift: swift)
+            .done { object = $0 }
+            .catch { error in print(error) }
+            .finally { expectation.fulfill() }
+        wait(for: [expectation], timeout: 5.0)
+        XCTAssertNotNil(object)
+    }
+    
     func testGetBullionItems() {
         let expectation = XCTestExpectation(description: "Bullion items that are owned by user should be returned")
         var object: PSMetadataAwareResponse<PSBullion>?

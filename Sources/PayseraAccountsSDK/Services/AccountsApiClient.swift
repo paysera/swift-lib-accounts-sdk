@@ -215,6 +215,14 @@ public class AccountsApiClient: PSBaseApiClient {
         )
     }
     
+    public func getBankParticipationInformation(
+        swift: String
+    ) -> Promise<PSBankParticipationInformation> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.getBankParticipationInfo(swift: swift)
+        )
+    }
+    
     public func getBullionItems(filter: PSBullionFilter) -> Promise<PSMetadataAwareResponse<PSBullion>> {
         return doRequest(requestRouter: AccountsApiRequestRouter.getBullionItems(filter: filter))
     }
