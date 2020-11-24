@@ -261,4 +261,16 @@ public class AccountsApiClient: PSBaseApiClient {
     public func getSpreadPercentage(request: PSSpreadPercentageRequest) -> Promise<PSSpreadPercentageResponse> {
         return doRequest(requestRouter: AccountsApiRequestRouter.getSpreadPercentage(request: request))
     }
+    
+    public func getInformationRequests(filter: PSInformationRequestFilter) -> Promise<PSMetadataAwareResponse<PSInformationRequest>> {
+        doRequest(requestRouter: AccountsApiRequestRouter.getInformationRequests(filter: filter))
+    }
+    
+    public func uploadInformationRequestFile(id: String, hash: String, filename: String) -> Promise<Any> {
+        doRequest(requestRouter: AccountsApiRequestRouter.uploadInformationRequestFile(id: id, hash: hash, filename: filename))
+    }
+    
+    public func uploadInformationRequestAnswers(id: String, answers: PSInformationRequestAnswers) -> Promise<Any> {
+        doRequest(requestRouter: AccountsApiRequestRouter.uploadInformationRequestAnswers(id: id, answers: answers))
+    }
 }

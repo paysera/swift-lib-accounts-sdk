@@ -644,4 +644,74 @@ class AccountsSDKTests: XCTestCase {
         wait(for: [expectation], timeout: 5.0)
         XCTAssertNotNil(response)
     }
+    
+    func testGetInformationRequest() {
+        var object: [PSInformationRequest]?
+        let expectation = XCTestExpectation(description: "")
+       
+        let filter = PSInformationRequestFilter()
+        filter.accountNumbers = ["0000"]
+        filter.status = "waiting_for_answer"
+        
+        accountsApiClient
+            .getInformationRequests(filter: filter)
+            .done { response in
+                object = response.items
+            }
+            .catch { error in
+                XCTFail(error.localizedDescription)
+            }
+            .finally {
+                expectation.fulfill()
+            }
+        
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(object)
+    }
+    
+    func testUploadInformationRequestFile() {
+        var object: Any?
+        let expectation = XCTestExpectation(description: "")
+        
+        accountsApiClient
+            .uploadInformationRequestFile(id: "", hash: "", filename: "")
+            .done { file in
+                object = file
+            }
+            .catch { error in
+                XCTFail(error.localizedDescription)
+            }
+            .finally {
+                expectation.fulfill()
+            }
+        
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(object)
+    }
+    
+    func testUploadInformationRequestAnswers() {
+        var object: Any?
+        let expectation = XCTestExpectation(description: "")
+      
+        let answer1 = PSInformationRequestAnswer()
+        answer1.questionId = ""
+        answer1.answer = ""
+        let answers = PSInformationRequestAnswers()
+        answers.answers = [answer1]
+        
+        accountsApiClient
+            .uploadInformationRequestAnswers(id: "", answers: answers)
+            .done { request in
+                object = request
+            }
+            .catch { error in
+                XCTFail(error.localizedDescription)
+            }
+            .finally {
+                expectation.fulfill()
+            }
+        
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(object)
+    }
 }
