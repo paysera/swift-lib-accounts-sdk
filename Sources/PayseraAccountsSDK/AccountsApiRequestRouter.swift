@@ -426,10 +426,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             return filter.toJSON()
             
         case .uploadInformationRequestFile(_, let hash, let filename):
-            return [
-                "file": hash,
-                "filename": filename
-            ]
+            return ["content": hash, "filename": filename]
             
         case .uploadInformationRequestAnswers(_, let answers):
             return answers.toJSON()

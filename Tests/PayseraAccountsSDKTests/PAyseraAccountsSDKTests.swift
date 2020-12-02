@@ -670,7 +670,7 @@ class AccountsSDKTests: XCTestCase {
     }
     
     func testUploadInformationRequestFile() {
-        var object: Any?
+        var object: PSInformationRequestFile?
         let expectation = XCTestExpectation(description: "")
         
         accountsApiClient
@@ -690,7 +690,7 @@ class AccountsSDKTests: XCTestCase {
     }
     
     func testUploadInformationRequestAnswers() {
-        var object: Any?
+        var object: PSInformationRequest?
         let expectation = XCTestExpectation(description: "")
       
         let answer1 = PSInformationRequestAnswer()

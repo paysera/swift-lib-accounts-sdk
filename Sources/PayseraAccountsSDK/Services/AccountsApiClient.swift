@@ -266,11 +266,11 @@ public class AccountsApiClient: PSBaseApiClient {
         doRequest(requestRouter: AccountsApiRequestRouter.getInformationRequests(filter: filter))
     }
     
-    public func uploadInformationRequestFile(id: String, hash: String, filename: String) -> Promise<Any> {
+    public func uploadInformationRequestFile(id: String, hash: String, filename: String) -> Promise<PSInformationRequestFile> {
         doRequest(requestRouter: AccountsApiRequestRouter.uploadInformationRequestFile(id: id, hash: hash, filename: filename))
     }
     
-    public func uploadInformationRequestAnswers(id: String, answers: PSInformationRequestAnswers) -> Promise<Any> {
+    public func uploadInformationRequestAnswers(id: String, answers: PSInformationRequestAnswers) -> Promise<PSInformationRequest> {
         doRequest(requestRouter: AccountsApiRequestRouter.uploadInformationRequestAnswers(id: id, answers: answers))
     }
 }
