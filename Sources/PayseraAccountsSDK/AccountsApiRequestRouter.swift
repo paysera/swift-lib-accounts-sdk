@@ -66,6 +66,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case setPaymentCardDeliveryPreference(accountNumber: String, preference: PSPaymentCardDeliveryPreference)
     case validateAuthorizationUsers(userIds: [Int])
     case uploadInformationRequestAnswers(id: String, answers: PSInformationRequestAnswers)
+    case unblockPaymentCardCVV(cardId: String)
     
     // MARK: - Delete
     case deleteAuthorization(id: String)
@@ -135,7 +136,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .validateAuthorizationUsers,
              .signConversionTransfer,
              .cancelConversionTransfer,
-             .uploadInformationRequestAnswers:
+             .uploadInformationRequestAnswers,
+             .unblockPaymentCardCVV:
             return .put
 
         case .delete,
@@ -315,6 +317,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .uploadInformationRequestAnswers(let id, _):
             return "/transfer-aml-information/rest/v1/information-requests/\(id)/answer"
+            
+        case .unblockPaymentCardCVV(let cardId):
+        return "/issued-payment-card/v1/cards/\(cardId)/unblock-cvv"
         }
     }
     
@@ -423,6 +428,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .uploadInformationRequestAnswers(_, let answers):
             return answers.toJSON()
+            
+        case .unblockPaymentCardCVV(let cardId):
+            return ["id": cardId]
             
         default:
             return nil
