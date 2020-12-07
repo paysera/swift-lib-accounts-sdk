@@ -3,17 +3,19 @@ import ObjectMapper
 
 public class PSClientAllowance: Mappable {
     
-    public var allowed: Bool
+    public var userId: Int!
+    public var canOrderCard = false
+    public var canFillQuestionnaire = false
+    public var canCreateAccount = false
+    public var accountAuthorizationAllowances: [PSAccountAuthorizationAllowance] = []
     
-    required public init?(map: Map) {
-        do {
-            allowed = try map.value("allowed")
-        } catch {
-            print(error)
-            return nil
-        }
+    required public init?(map: Map) { }
+    
+    public func mapping(map: Map) {
+        userId                          <- map["covenantee_id"]
+        canOrderCard                    <- map["can_order_card"]
+        canFillQuestionnaire            <- map["can_fill_questionnaire"]
+        canCreateAccount                <- map["can_create_account"]
+        accountAuthorizationAllowances  <- map["can_create_authorization"]
     }
-    
-    public func mapping(map: Map) {}
 }
-

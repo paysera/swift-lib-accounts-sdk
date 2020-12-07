@@ -23,8 +23,6 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getPaymentCardDeliveryCountries(filter: PSBaseFilter)
     case getCategorizedAccountNumbers(filter: PSGetCategorizedAccountNumbersFilterRequest)
     case getTransfer(id: String)
-    case canUserOrderCard(userId: Int)
-    case canUserFillQuestionnaire(userId: Int)
     case getAuthorizations(PSGetAuthorizationsFilterRequest)
     case getPaymentCardExpiringCardOrderRestriction(accountNumber: String)
     case getPaymentCardDeliveryPreference(accountNumber: String)
@@ -39,6 +37,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case getUnallocatedBullionBalance(filter: PSBullionFilter)
     case getSpreadPercentage(request: PSSpreadPercentageRequest)
     case getInformationRequests(filter: PSInformationRequestFilter)
+    case getClientAllowances
     
     // MARK: - POST
     case createCard(PSCreatePaymentCardRequest)
@@ -90,8 +89,6 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getPaymentCardDeliveryDate,
              .getCategorizedAccountNumbers,
              .getTransfer,
-             .canUserOrderCard,
-             .canUserFillQuestionnaire,
              .getPaymentCardDeliveryCountries,
              .getAuthorizations,
              .getPaymentCardDeliveryPreference,
@@ -106,7 +103,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
              .getBullionOptions,
              .getUnallocatedBullionBalance,
              .getSpreadPercentage,
-             .getInformationRequests:
+             .getInformationRequests,
+             .getClientAllowances:
             return .get
 
         case .post,
@@ -216,6 +214,9 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .getBankParticipationInfo(let swift):
             return "/transfer/rest/v1/bank-participation/\(swift)"
             
+        case .getClientAllowances:
+            return "/client-allowance/rest/v1/client-allowances"
+            
         case .createCard:
             return "/issued-payment-card/v1/cards"
             
@@ -248,12 +249,6 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .setAccountDescription( _,let accountNumber, _):
             return "/account/rest/v1/accounts/\(accountNumber)/descriptions"
-            
-        case .canUserOrderCard:
-            return "/client-allowance/rest/v1/client-allowances/can-order-card"
-            
-        case .canUserFillQuestionnaire:
-            return "/client-allowance/rest/v1/client-allowances/can-fill-questionnaire"
             
         case .getAuthorizations:
             return "/permission/rest/v1/authorizations"
@@ -379,13 +374,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .setAccountDescription(let userId, _, let description):
             return ["body": ["description" : description], "query": ["user_id": userId]]
-            
-        case .canUserOrderCard(let userId):
-            return ["user_id": userId]
-            
-        case .canUserFillQuestionnaire(let userId):
-            return ["user_id": userId]
-            
+               
         case .getAuthorizations(let psGetAuthorizationsRequest):
             return psGetAuthorizationsRequest.toJSON()
             
