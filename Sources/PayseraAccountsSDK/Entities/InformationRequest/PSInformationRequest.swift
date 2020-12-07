@@ -3,9 +3,9 @@ import ObjectMapper
 
 public class PSInformationRequest: Mappable {
     
-    public var id: String?
+    public var id: String!
     public var transferId: String!
-    public var transferInformation: PSTransferInformation?
+    public var transferInformation: PSTransferInformation!
     public var comment: String?
     public var status: String?
     public var createdAt: TimeInterval?
