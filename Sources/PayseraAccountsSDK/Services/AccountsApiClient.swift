@@ -269,4 +269,8 @@ public class AccountsApiClient: PSBaseApiClient {
     public func uploadInformationRequestAnswers(id: String, answers: PSInformationRequestAnswers) -> Promise<PSInformationRequest> {
         doRequest(requestRouter: AccountsApiRequestRouter.uploadInformationRequestAnswers(id: id, answers: answers))
     }
+    
+    public func unblockPaymentCardCVV(cardId: String) -> Promise<PSPaymentCard> {
+        doRequest(requestRouter: AccountsApiRequestRouter.unblockPaymentCardCVV(cardId: cardId))
+    }
 }

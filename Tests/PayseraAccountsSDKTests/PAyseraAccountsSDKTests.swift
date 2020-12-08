@@ -702,4 +702,25 @@ class AccountsSDKTests: XCTestCase {
         wait(for: [expectation], timeout: 5.0)
         XCTAssertNotNil(object)
     }
+    
+    func testUnblockPaymentCardCVV() {
+        var object: PSPaymentCard?
+        let expectation = XCTestExpectation(description: "")
+        
+        accountsApiClient
+            .unblockPaymentCardCVV(cardId: "")
+            .done { response in
+                object = response
+            }
+            .catch { error in
+                XCTFail(error.localizedDescription)
+            }
+            .finally {
+                expectation.fulfill()
+            }
+        
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(object)
+    }
+    
 }
