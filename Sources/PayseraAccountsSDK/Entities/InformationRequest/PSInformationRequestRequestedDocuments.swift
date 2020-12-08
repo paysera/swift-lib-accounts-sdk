@@ -2,7 +2,7 @@ import ObjectMapper
 
 public class PSInformationRequestRequestedDocuments: Mappable {
     
-    public var question: String?
+    public var instructions: String!
     public var documents: [String]!
     
     public init() {}
@@ -10,7 +10,7 @@ public class PSInformationRequestRequestedDocuments: Mappable {
     required public init?(map: Map) {}
     
     public func mapping(map: Map) {
-        question     <- map["question"]
-        documents    <- map["documents"]
+        instructions    <- map["instructions"]
+        documents       <- map["documents"]
     }
 }
