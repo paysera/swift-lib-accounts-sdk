@@ -319,7 +319,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             return "/transfer-aml-information/rest/v1/information-requests/\(id)/answer"
             
         case .unblockPaymentCardCVV(let cardId):
-        return "/issued-payment-card/v1/cards/\(cardId)/unblock-cvv"
+            return "/issued-payment-card/v1/cards/\(cardId)/unblock-cvv"
         }
     }
     
@@ -428,9 +428,6 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             
         case .uploadInformationRequestAnswers(_, let answers):
             return answers.toJSON()
-            
-        case .unblockPaymentCardCVV(let cardId):
-            return ["id": cardId]
             
         default:
             return nil
