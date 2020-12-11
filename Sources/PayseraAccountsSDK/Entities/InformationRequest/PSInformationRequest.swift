@@ -12,7 +12,7 @@ public class PSInformationRequest: Mappable {
     public var answeredAt: TimeInterval?
     public var questions: [PSInformationRequestQuestion]!
     public var requestedFrom: String!
-    public var files: [PSInformationRequestFile]?
+    public var files: [PSInformationRequestUploadedFile]?
     public var requestedDocuments: PSInformationRequestRequestedDocuments!
     
     public init() {}

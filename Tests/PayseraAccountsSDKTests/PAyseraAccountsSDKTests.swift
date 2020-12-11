@@ -638,14 +638,15 @@ class AccountsSDKTests: XCTestCase {
     }
     
     func testUploadInformationRequestFile() {
-        var object: PSInformationRequestFile?
+        var object: PSInformationRequestUploadedFile?
         let expectation = XCTestExpectation(description: "")
         
-        let hash = ""
-        let filename = ""
+        let psInformationRequestFile = PSInformationRequestFile()
+        psInformationRequestFile.content = ""
+        psInformationRequestFile.filename = ""
         
         accountsApiClient
-            .uploadInformationRequestFile(id: "", hash: hash, filename: filename)
+            .uploadInformationRequestFile(id: "", file: psInformationRequestFile)
             .done { file in
                 object = file
             }
