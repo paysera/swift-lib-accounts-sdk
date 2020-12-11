@@ -47,7 +47,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case cancelConversionTransfer(transferId: String)
     case buyBullion(identifier: String, accountNumber: String)
     case sellBullion(hash: String)
-    case uploadInformationRequestFile(id: String, file: PSInformationRequestFile)
+    case uploadInformationRequestFile(id: String, hash: String, filename: String)
     
     // MARK: - PUT
     case deactivateAccount(accountNumber: String)
@@ -312,7 +312,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .getInformationRequests:
             return "/transfer-aml-information/rest/v1/information-requests"
             
-        case .uploadInformationRequestFile(let id, _):
+        case .uploadInformationRequestFile(let id, _, _):
             return "/transfer-aml-information/rest/v1/information-requests/\(id)/files"
             
         case .uploadInformationRequestAnswers(let id, _):
@@ -423,8 +423,8 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
         case .getInformationRequests(let filter):
             return filter.toJSON()
             
-        case .uploadInformationRequestFile(_, let file):
-            return file.toJSON()
+        case .uploadInformationRequestFile(_, let hash, let filename):
+            return ["content": hash, "filename": filename]
             
         case .uploadInformationRequestAnswers(_, let answers):
             return answers.toJSON()
