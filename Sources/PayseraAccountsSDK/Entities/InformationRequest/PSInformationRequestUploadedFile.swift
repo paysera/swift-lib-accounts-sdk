@@ -1,8 +1,8 @@
 import ObjectMapper
 
-public class PSInformationRequestFile: Mappable {
+public class PSInformationRequestUploadedFile: Mappable {
     
-    public var content: String!
+    public var hash: String!
     public var filename: String!
     
     public init() {}
@@ -10,7 +10,7 @@ public class PSInformationRequestFile: Mappable {
     required public init?(map: Map) {}
     
     public func mapping(map: Map) {
-        content     <- map["content"]
+        hash        <- map["hash"]
         filename    <- map["filename"]
     }
 }

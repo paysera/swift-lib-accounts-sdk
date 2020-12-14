@@ -262,7 +262,7 @@ public class AccountsApiClient: PSBaseApiClient {
         doRequest(requestRouter: AccountsApiRequestRouter.getInformationRequests(filter: filter))
     }
     
-    public func uploadInformationRequestFile(id: String, file: PSInformationRequestFile) -> Promise<PSInformationRequestFile> {
+    public func uploadInformationRequestFile(id: String, file: PSInformationRequestFile) -> Promise<PSInformationRequestUploadedFile> {
         doRequest(requestRouter: AccountsApiRequestRouter.uploadInformationRequestFile(id: id, file: file))
     }
     
