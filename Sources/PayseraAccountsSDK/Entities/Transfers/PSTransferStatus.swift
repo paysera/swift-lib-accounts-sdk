@@ -1,5 +1,3 @@
-import Foundation
-
 public enum PSTransferStatus: CustomStringConvertible {
     case signed
     case unsigned

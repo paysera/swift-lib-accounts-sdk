@@ -1,217 +1,348 @@
 import Foundation
-import Alamofire
-import ObjectMapper
-import PromiseKit
 import PayseraCommonSDK
+import PromiseKit
 
 public class AccountsApiClient: PSBaseApiClient {
     public func get(path: String, parameters: [String: Any]? = nil) -> Promise<Any> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.get(path: path, parameters: parameters))
+        doRequest(requestRouter: AccountsApiRequestRouter.get(path: path, parameters: parameters))
     }
     
     public func post(path: String, parameters: [String: Any]? = nil) -> Promise<Any> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.post(path: path, parameters: parameters))
+        doRequest(requestRouter: AccountsApiRequestRouter.post(path: path, parameters: parameters))
     }
     
     public func put(path: String, parameters: [String: Any]? = nil) -> Promise<Any> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.put(path: path, parameters: parameters))
+        doRequest(requestRouter: AccountsApiRequestRouter.put(path: path, parameters: parameters))
     }
     
     public func put(path: String, data: Data, contentType: String) -> Promise<Any> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.putWithData(path: path, data: data, contentType: contentType))
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.putWithData(
+                path: path,
+                data: data,
+                contentType: contentType
+            )
+        )
     }
     
     public func delete(path: String, parameters: [String: Any]? = nil) -> Promise<Any> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.delete(path: path, parameters: parameters))
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.delete(path: path, parameters: parameters)
+        )
     }
     
     public func getTransfer(id: String) -> Promise<PSTransfer> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getTransfer(id: id))
+        doRequest(requestRouter: AccountsApiRequestRouter.getTransfer(id: id))
     }
 
-    public func setDefaultAccountDescription(accountNumber: String, description: String) -> Promise<Void> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.setAccountDefaultDescription(accountNumber: accountNumber, description: description))
+    public func setDefaultAccountDescription(
+        accountNumber: String,
+        description: String
+    ) -> Promise<Void> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.setAccountDefaultDescription(
+                accountNumber: accountNumber,
+                description: description
+            )
+        )
     }
     
-    public func setAccountDescription(userId: Int, accountNumber: String, description: String) -> Promise<Void> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.setAccountDescription(userId: userId, accountNumber: accountNumber, description: description))
+    public func setAccountDescription(
+        userId: Int,
+        accountNumber: String,
+        description: String
+    ) -> Promise<Void> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.setAccountDescription(
+                userId: userId,
+                accountNumber: accountNumber,
+                description: description
+            )
+        )
     }
 
     public func activateAccount(accountNumber: String) -> Promise<PSAccount> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.activateAccount(accountNumber: accountNumber))
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.activateAccount(accountNumber: accountNumber)
+        )
     }
     
     public func deactivateAccount(accountNumber: String) -> Promise<PSAccount> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.deactivateAccount(accountNumber: accountNumber))
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.deactivateAccount(accountNumber: accountNumber)
+        )
     }
     
     public func getLastUserQuestionnaire(userId: Int) -> Promise<PSQuestionnaire> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getLastUserQuestionnaire(userId: userId))
+        doRequest(requestRouter: AccountsApiRequestRouter.getLastUserQuestionnaire(userId: userId))
     }
     
-    public func getIbanInformation(iban: String, currency: String? = nil) -> Promise<PSIbanInformation> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getIbanInformation(iban: iban, currency: currency))
+    public func getIbanInformation(
+        iban: String,
+        currency: String? = nil
+    ) -> Promise<PSIbanInformation> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.getIbanInformation(
+                iban: iban,
+                currency: currency
+            )
+        )
     }
     
     public func getBalance(
         accountNumber: String,
         showHistoricalCurrencies: Bool = false
     ) -> Promise<PSBalanceInformation> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getBalance(
+        doRequest(requestRouter: AccountsApiRequestRouter.getBalance(
             accountNumber: accountNumber,
             showHistoricalCurrencies: showHistoricalCurrencies
         ))
     }
     
     public func createAccount(userId: Int) -> Promise<PSAccount> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.createAccount(userId: userId))
+        doRequest(requestRouter: AccountsApiRequestRouter.createAccount(userId: userId))
     }
     
     public func getAvailableCurrencies(filter: PSAvailableCurrencyFilter) -> Promise<PSMetadataAwareResponse<PSAvailableCurrency>> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getAvailableCurrencies(filter: filter))
+        doRequest(requestRouter: AccountsApiRequestRouter.getAvailableCurrencies(filter: filter))
     }
     
     public func getConversionTransfers(filter: PSConversionTransferFilter) -> Promise<PSMetadataAwareResponse<PSConversionTransfer>> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getConversionTransfers(filter: filter))
+        doRequest(requestRouter: AccountsApiRequestRouter.getConversionTransfers(filter: filter))
     }
     
     public func signConversionTransfer(transferId: String) -> Promise<PSConversionTransfer> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.signConversionTransfer(transferId: transferId))
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.signConversionTransfer(transferId: transferId)
+        )
     }
     
     public func cancelConversionTransfer(transferId: String) -> Promise<PSConversionTransfer> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.cancelConversionTransfer(transferId: transferId))
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.cancelConversionTransfer(transferId: transferId)
+        )
     }
     
     // MARK: - Payment cards API
     public func createPaymentCard(_ card: PSCreatePaymentCardRequest) -> Promise<PSPaymentCard> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.createCard(card))
+        doRequest(requestRouter: AccountsApiRequestRouter.createCard(card))
     }
 
     public func activateCard(_ id: Int) -> Promise<PSPaymentCard> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.activateCard(id: id))
+        doRequest(requestRouter: AccountsApiRequestRouter.activateCard(id: id))
     }
     
     public func enableCard(_ id: Int) -> Promise<PSPaymentCard> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.enableCard(id: id))
+        doRequest(requestRouter: AccountsApiRequestRouter.enableCard(id: id))
     }
     
     public func deactivatePaymentCard(id: Int) -> Promise<PSPaymentCard> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.deactivateCard(id: id))
+        doRequest(requestRouter: AccountsApiRequestRouter.deactivateCard(id: id))
     }
     
-    public func getCategorizedAccountNumbers(filter: PSGetCategorizedAccountNumbersFilterRequest) -> Promise<PSMetadataAwareResponse<PSCategorizedAccountNumbers>> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getCategorizedAccountNumbers(filter: filter))
+    public func getCategorizedAccountNumbers(
+        filter: PSGetCategorizedAccountNumbersFilterRequest
+    ) -> Promise<PSMetadataAwareResponse<PSCategorizedAccountNumbers>> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.getCategorizedAccountNumbers(filter: filter)
+        )
     }
     
     public func retrievePaymentCardPIN(id: Int, cvv: String) -> Promise<PSPaymentCardPIN> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.retrievePaymentCardPIN(id: id, cvv: cvv))
+        doRequest(requestRouter: AccountsApiRequestRouter.retrievePaymentCardPIN(id: id, cvv: cvv))
     }
     
-    public func getPaymentCardDeliveryCountries(filter: PSBaseFilter) -> Promise<PSPaymentCardDeliveryCountries> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardDeliveryCountries(filter: filter))
+    public func getPaymentCardDeliveryCountries(
+        filter: PSBaseFilter
+    ) -> Promise<PSPaymentCardDeliveryCountries> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.getPaymentCardDeliveryCountries(filter: filter)
+        )
     }
         
-    public func getPaymentCards(cardsFilter: PSGetPaymentCardsFilterRequest) -> Promise<PSMetadataAwareResponse<PSPaymentCard>> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCards(cardsFilter: cardsFilter))
+    public func getPaymentCards(
+        cardsFilter: PSGetPaymentCardsFilterRequest
+    ) -> Promise<PSMetadataAwareResponse<PSPaymentCard>> {
+        doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCards(cardsFilter: cardsFilter))
     }
     
-    public func setPaymentCardLimit(accountNumber: String, cardLimit: PSUpdatePaymentCardLimitRequest) -> Promise<PSPaymentCardLimit> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.setPaymentCardLimit(accountNumber: accountNumber, cardLimit: cardLimit))
+    public func setPaymentCardLimit(
+        accountNumber: String,
+        cardLimit: PSUpdatePaymentCardLimitRequest
+    ) -> Promise<PSPaymentCardLimit> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.setPaymentCardLimit(
+                accountNumber: accountNumber,
+                cardLimit: cardLimit
+            )
+        )
     }
     
     public func getPaymentCardLimit(accountNumber: String) -> Promise<PSPaymentCardLimit> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardLimit(accountNumber: accountNumber))
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.getPaymentCardLimit(
+                accountNumber: accountNumber
+            )
+        )
     }
     
-    public func getPaymentCardDesigns(filter: PSPaymentCardDesignFilter) -> Promise<PSMetadataAwareResponse<PSPaymentCardDesign>> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardDesigns(filter: filter))
+    public func getPaymentCardDesigns(
+        filter: PSPaymentCardDesignFilter
+    ) -> Promise<PSMetadataAwareResponse<PSPaymentCardDesign>> {
+        doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardDesigns(filter: filter))
     }
     
-    public func getPaymentCardShippingAddress(accountNumber: String) -> Promise<PSPaymentCardShippingAddress> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardShippingAddress(accountNumber: accountNumber))
+    public func getPaymentCardShippingAddress(
+        accountNumber: String
+    ) -> Promise<PSPaymentCardShippingAddress> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.getPaymentCardShippingAddress(
+                accountNumber: accountNumber
+            )
+        )
     }
     
-    public func getPaymentCardDeliveryPrices(country: String) -> Promise<[PSPaymentCardDeliveryPrice]> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardDeliveryPrices(country: country))
+    public func getPaymentCardDeliveryPrices(
+        country: String
+    ) -> Promise<[PSPaymentCardDeliveryPrice]> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.getPaymentCardDeliveryPrices(country: country)
+        )
     }
 
-    public func getPaymentCardIssuePrice(filter: PSPaymentCardIssuePriceFilter) -> Promise<PSPaymentCardIssuePrice> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardIssuePrice(filter: filter))
+    public func getPaymentCardIssuePrice(
+        filter: PSPaymentCardIssuePriceFilter
+    ) -> Promise<PSPaymentCardIssuePrice> {
+        doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardIssuePrice(filter: filter))
     }
     
-    public func getPaymentCardDeliveryDate(country: String, deliveryType: String) -> Promise<PSPaymentCardDeliveryDate> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardDeliveryDate(country: country, deliveryType: deliveryType))
+    public func getPaymentCardDeliveryDate(
+        country: String,
+        deliveryType: String
+    ) -> Promise<PSPaymentCardDeliveryDate> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.getPaymentCardDeliveryDate(
+                country: country,
+                deliveryType: deliveryType
+            )
+        )
     }
     
-    public func getPaymentCardExpiringCardOrderRestriction(accountNumber: String) -> Promise<PSPaymentCardOrderRestriction> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardExpiringCardOrderRestriction(accountNumber: accountNumber))
+    public func getPaymentCardExpiringCardOrderRestriction(
+        accountNumber: String
+    ) -> Promise<PSPaymentCardOrderRestriction> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.getPaymentCardExpiringCardOrderRestriction(
+                accountNumber: accountNumber
+            )
+        )
     }
     
     public func getClientAllowances() -> Promise<[PSClientAllowance]> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getClientAllowances)
+        doRequest(requestRouter: AccountsApiRequestRouter.getClientAllowances)
     }
     
     public func cancelPaymentCard(id: Int) -> Promise<PSPaymentCard> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.cancelPaymentCard(id: id))
+        doRequest(requestRouter: AccountsApiRequestRouter.cancelPaymentCard(id: id))
     }
     
     public func activateCardForXPay(id: Int) -> Promise<PSXpayToken> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.activateCardForXPay(id: id))
+        doRequest(requestRouter: AccountsApiRequestRouter.activateCardForXPay(id: id))
     }
 
-    public func provisionCardForXPay(id: Int, request: PSXpayTokenRequest) -> Promise<PSXpayToken> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.provisionCardForXPay(id: id, request: request))
+    public func provisionCardForXPay(
+        id: Int,
+        request: PSXpayTokenRequest
+    ) -> Promise<PSXpayToken> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.provisionCardForXPay(id: id, request: request)
+        )
     }
 
-    public func getPaymentCardDeliveryPreference(accountNumber: String) -> Promise<PSPaymentCardDeliveryPreference> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getPaymentCardDeliveryPreference(accountNumber: accountNumber))
+    public func getPaymentCardDeliveryPreference(
+        accountNumber: String
+    ) -> Promise<PSPaymentCardDeliveryPreference> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.getPaymentCardDeliveryPreference(
+                accountNumber: accountNumber
+            )
+        )
     }
     
-    public func setPaymentCardDeliveryPreference(accountNumber: String, preference: PSPaymentCardDeliveryPreference) -> Promise<PSPaymentCardDeliveryPreference> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.setPaymentCardDeliveryPreference(accountNumber: accountNumber, preference: preference))
+    public func setPaymentCardDeliveryPreference(
+        accountNumber: String,
+        preference: PSPaymentCardDeliveryPreference
+    ) -> Promise<PSPaymentCardDeliveryPreference> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.setPaymentCardDeliveryPreference(
+                accountNumber: accountNumber,
+                preference: preference
+            )
+        )
     }
     
     // MARK: - Authorizations API
-    public func getAuthorizations(filter: PSGetAuthorizationsFilterRequest) -> Promise<PSMetadataAwareResponse<PSAuthorization>> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getAuthorizations(filter))
+    public func getAuthorizations(
+        filter: PSGetAuthorizationsFilterRequest
+    ) -> Promise<PSMetadataAwareResponse<PSAuthorization>> {
+        doRequest(requestRouter: AccountsApiRequestRouter.getAuthorizations(filter))
     }
     
     public func deleteAuthorization(id: String) -> Promise<Void> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.deleteAuthorization(id: id))
+        doRequest(requestRouter: AccountsApiRequestRouter.deleteAuthorization(id: id))
     }
     
-    public func createAuthorization(authorization: PSCreateAuthorizationRequest) -> Promise<PSAuthorization> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.createAuthorization(authorization))
+    public func createAuthorization(
+        authorization: PSCreateAuthorizationRequest
+    ) -> Promise<PSAuthorization> {
+        doRequest(requestRouter: AccountsApiRequestRouter.createAuthorization(authorization))
     }
     
-    public func updateAuthorization(id: String, authorization: PSCreateAuthorizationRequest) -> Promise<PSAuthorization> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.updateAuthorization(id: id, createAuthorizationRequest: authorization))
+    public func updateAuthorization(
+        id: String,
+        authorization: PSCreateAuthorizationRequest
+    ) -> Promise<PSAuthorization> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.updateAuthorization(
+                id: id,
+                createAuthorizationRequest: authorization
+            )
+        )
     }
     
     public func getPurposeCodes() -> Promise<PSPurposeCodeCollection> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getPurposeCodes)
+        doRequest(requestRouter: AccountsApiRequestRouter.getPurposeCodes)
     }
     
-    public func deleteUserFromAuthorization(authorizationId: String, userId: String) -> Promise<Void> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.deleteUserFromAuthorization(authorizationId: authorizationId, userId: userId))
+    public func deleteUserFromAuthorization(
+        authorizationId: String,
+        userId: String
+    ) -> Promise<Void> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.deleteUserFromAuthorization(
+                authorizationId: authorizationId,
+                userId: userId
+            )
+        )
     }
     
     public func getSigningLimits(userId: Int) -> Promise<PSAuthorizationUserLimits> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getSigningLimits(userId: userId))
+        doRequest(requestRouter: AccountsApiRequestRouter.getSigningLimits(userId: userId))
     }
     
     public func validateAuthorizationUsers(
         userIds: [Int]
     ) -> Promise<PSMetadataAwareResponse<PSAuthorizationUserValidationResult>> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.validateAuthorizationUsers(userIds: userIds))
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.validateAuthorizationUsers(userIds: userIds)
+        )
     }
 
     public func getCardOrderRestrictions(
         cardAccountOwnerId: Int,
         cardOwnerId: Int
     ) -> Promise<PSMetadataAwareResponse<PSPaymentCardOrderRestriction>> {
-        return doRequest(
+        doRequest(
             requestRouter: AccountsApiRequestRouter.getCardOrderRestrictions(
                 cardAccountOwnerId: cardAccountOwnerId,
                 cardOwnerId: cardOwnerId
@@ -227,22 +358,28 @@ public class AccountsApiClient: PSBaseApiClient {
         )
     }
     
-    public func getBullionItems(filter: PSBullionFilter) -> Promise<PSMetadataAwareResponse<PSBullion>> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getBullionItems(filter: filter))
+    public func getBullionItems(
+        filter: PSBullionFilter
+    ) -> Promise<PSMetadataAwareResponse<PSBullion>> {
+        doRequest(requestRouter: AccountsApiRequestRouter.getBullionItems(filter: filter))
     }
 
-    public func getBullionOptions(filter: PSBaseFilter) -> Promise<PSMetadataAwareResponse<PSBullionOption>> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getBullionOptions(filter: filter))
+    public func getBullionOptions(
+        filter: PSBaseFilter
+    ) -> Promise<PSMetadataAwareResponse<PSBullionOption>> {
+        doRequest(requestRouter: AccountsApiRequestRouter.getBullionOptions(filter: filter))
     }
 
     public func getUnallocatedBullionBalance(
         filter: PSBullionFilter
     ) -> Promise<PSMetadataAwareResponse<PSUnallocatedBullionBalance>> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getUnallocatedBullionBalance(filter: filter))
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.getUnallocatedBullionBalance(filter: filter)
+        )
     }
 
     public func buyBullion(identifier: String, accountNumber: String) -> Promise<Void> {
-        return doRequest(
+        doRequest(
             requestRouter: AccountsApiRequestRouter.buyBullion(
                 identifier: identifier,
                 accountNumber: accountNumber
@@ -251,23 +388,40 @@ public class AccountsApiClient: PSBaseApiClient {
     }
 
     public func sellBullion(hash: String) -> Promise<Void> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.sellBullion(hash: hash))
+        doRequest(requestRouter: AccountsApiRequestRouter.sellBullion(hash: hash))
     }
 
-    public func getSpreadPercentage(request: PSSpreadPercentageRequest) -> Promise<PSSpreadPercentageResponse> {
-        return doRequest(requestRouter: AccountsApiRequestRouter.getSpreadPercentage(request: request))
+    public func getSpreadPercentage(
+        request: PSSpreadPercentageRequest
+    ) -> Promise<PSSpreadPercentageResponse> {
+        doRequest(requestRouter: AccountsApiRequestRouter.getSpreadPercentage(request: request))
     }
     
-    public func getInformationRequests(filter: PSInformationRequestFilter) -> Promise<PSMetadataAwareResponse<PSInformationRequest>> {
+    public func getInformationRequests(
+        filter: PSInformationRequestFilter
+    ) -> Promise<PSMetadataAwareResponse<PSInformationRequest>> {
         doRequest(requestRouter: AccountsApiRequestRouter.getInformationRequests(filter: filter))
     }
     
-    public func uploadInformationRequestFile(id: String, file: PSInformationRequestFile) -> Promise<PSInformationRequestUploadedFile> {
-        doRequest(requestRouter: AccountsApiRequestRouter.uploadInformationRequestFile(id: id, file: file))
+    public func uploadInformationRequestFile(
+        id: String,
+        file: PSInformationRequestFile
+    ) -> Promise<PSInformationRequestUploadedFile> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.uploadInformationRequestFile(id: id, file: file)
+        )
     }
     
-    public func uploadInformationRequestAnswers(id: String, answers: PSInformationRequestAnswers) -> Promise<PSInformationRequest> {
-        doRequest(requestRouter: AccountsApiRequestRouter.uploadInformationRequestAnswers(id: id, answers: answers))
+    public func uploadInformationRequestAnswers(
+        id: String,
+        answers: PSInformationRequestAnswers
+    ) -> Promise<PSInformationRequest> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.uploadInformationRequestAnswers(
+                id: id,
+                answers: answers
+            )
+        )
     }
     
     public func unblockPaymentCardCVV(cardId: String) -> Promise<PSPaymentCard> {

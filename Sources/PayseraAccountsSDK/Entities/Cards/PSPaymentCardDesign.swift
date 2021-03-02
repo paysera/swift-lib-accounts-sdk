@@ -1,5 +1,4 @@
 import ObjectMapper
-import PayseraCommonSDK
 
 public class PSPaymentCardDesign: Mappable {
     public var id: Int!
