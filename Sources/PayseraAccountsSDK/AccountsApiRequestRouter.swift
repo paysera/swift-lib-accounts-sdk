@@ -2,7 +2,7 @@ import Alamofire
 import Foundation
 import PayseraCommonSDK
 
-public enum AccountsApiRequestRouter: URLRequestConvertible {
+enum AccountsApiRequestRouter {
     case get(path: String, parameters: [String: Any]?)
     case post(path: String, parameters: [String: Any]?)
     case put(path: String, parameters: [String: Any]?)
@@ -73,7 +73,7 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
     case deleteUserFromAuthorization(authorizationId: String, userId: String)
     
     // MARK: - Declarations
-    static let baseURL = URL(string: "https://accounts.paysera.com/public")!
+    private static let baseURL = URL(string: "https://accounts.paysera.com/public")!
     
     private var method: HTTPMethod {
         switch self {
@@ -433,9 +433,10 @@ public enum AccountsApiRequestRouter: URLRequestConvertible {
             return nil
         }
     }
-    
-    // MARK: - Method
-    public func asURLRequest() throws -> URLRequest {
+}
+
+extension AccountsApiRequestRouter: URLRequestConvertible {
+    func asURLRequest() throws -> URLRequest {
         let url = Self.baseURL.appendingPathComponent(path)
         var urlRequest = URLRequest(url: url)
         urlRequest.method = method
