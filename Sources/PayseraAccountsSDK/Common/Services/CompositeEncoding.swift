@@ -1,11 +1,14 @@
-import Foundation
 import Alamofire
+import Foundation
 
 struct CompositeEncoding: ParameterEncoding {
     
     static var `default` = CompositeEncoding()
     
-    public func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
+    public func encode(
+        _ urlRequest: URLRequestConvertible,
+        with parameters: Parameters?
+    ) throws -> URLRequest {
         guard let parameters = parameters else {
             return try urlRequest.asURLRequest()
         }
@@ -19,7 +22,10 @@ struct CompositeEncoding: ParameterEncoding {
         }
         
         if let queryParamters = (parameters["query"] as? Parameters) {
-            compositeRequest.url = try URLEncoding(destination: .queryString).encode(urlRequest, with: queryParamters).url
+            compositeRequest.url = try URLEncoding(destination: .queryString).encode(
+                urlRequest,
+                with: queryParamters
+            ).url
         }
         
         return compositeRequest

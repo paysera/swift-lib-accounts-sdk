@@ -38,7 +38,11 @@ class ObjectFromKeyTransform<ObjectType: BaseMappable>: TransformType {
                 }
                 
                 let objectMirror = Mirror(reflecting: object)
-                guard let propertyName = objectMirror.children.first(where: { ($0.value as? String) == rootKey })?.label else {
+                guard
+                    let propertyName = objectMirror
+                        .children
+                        .first(where: { ($0.value as? String) == rootKey })?.label
+                else {
                     return nil
                 }
                 

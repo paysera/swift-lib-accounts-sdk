@@ -1,10 +1,7 @@
-import Foundation
 import XCTest
 import PayseraAccountsSDK
 import PayseraCommonSDK
-import PromiseKit
 import JWTDecode
-import ObjectMapper
 
 class AccountsSDKTests: XCTestCase {
     private var accountsApiClient: AccountsApiClient!
