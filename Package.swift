@@ -3,12 +3,16 @@ import PackageDescription
 
 let package = Package(
     name: "PayseraAccountsSDK",
-    platforms: [.macOS(.v10_12), .iOS(.v10), .tvOS(.v9), .watchOS(.v2)],
+    platforms: [.macOS(.v10_15), .iOS(.v13), .tvOS(.v13), .watchOS(.v6)],
     products: [
         .library(name: "PayseraAccountsSDK", targets: ["PayseraAccountsSDK"]),
     ],
     dependencies: [
-        .package(name: "PayseraCommonSDK", url: "https://github.com/paysera/swift-lib-common-sdk", from: "4.0.0")
+        .package(
+            name: "PayseraCommonSDK",
+            url: "https://github.com/paysera/swift-lib-common-sdk",
+            .branch("xcode13")
+        )
     ],
     targets: [
         .target(
