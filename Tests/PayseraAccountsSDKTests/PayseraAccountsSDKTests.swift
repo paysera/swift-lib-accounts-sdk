@@ -720,4 +720,23 @@ class AccountsSDKTests: XCTestCase {
         XCTAssertNotNil(object)
     }
     
+    func testActivateCard() {
+        var object: PSPaymentCard?
+        let expectation = XCTestExpectation(description: "")
+        
+        accountsApiClient
+            .activateCard(id: 0, cvv: "insert_me")
+            .done { response in
+                object = response
+            }
+            .catch { error in
+                XCTFail(error.localizedDescription)
+            }
+            .finally {
+                expectation.fulfill()
+            }
+        
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(object)
+    }
 }

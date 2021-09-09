@@ -52,7 +52,7 @@ enum AccountsApiRequestRouter {
     // MARK: - PUT
     case deactivateAccount(accountNumber: String)
     case activateAccount(accountNumber: String)
-    case activateCard(id: Int)
+    case activateCard(id: Int, cvv: String)
     case enableCard(id: Int)
     case deactivateCard(id: Int)
     case setPaymentCardLimit(accountNumber: String, cardLimit: PSUpdatePaymentCardLimitRequest)
@@ -222,8 +222,8 @@ enum AccountsApiRequestRouter {
         case .createCard:
             return "/issued-payment-card/v1/cards"
             
-        case .activateCard(let id):
-            return "/issued-payment-card/v1/cards/\(String(id))/activate"
+        case .activateCard(let id, _):
+            return "/issued-payment-card/v1/cards/\(String(id))/activate-card"
             
         case .enableCard(let id):
             return "/issued-payment-card/v1/cards/\(String(id))/enable"
@@ -428,6 +428,9 @@ enum AccountsApiRequestRouter {
             
         case .uploadInformationRequestAnswers(_, let answers):
             return answers.toJSON()
+            
+        case .activateCard(_, let cvv):
+            return ["cvv2": cvv]
             
         default:
             return nil
