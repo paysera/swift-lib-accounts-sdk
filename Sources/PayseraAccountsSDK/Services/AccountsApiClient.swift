@@ -128,8 +128,8 @@ public class AccountsApiClient: PSBaseApiClient {
         doRequest(requestRouter: AccountsApiRequestRouter.createCard(card))
     }
 
-    public func activateCard(_ id: Int) -> Promise<PSPaymentCard> {
-        doRequest(requestRouter: AccountsApiRequestRouter.activateCard(id: id))
+    public func activateCard(id: Int, cvv: String) -> Promise<PSPaymentCard> {
+        doRequest(requestRouter: AccountsApiRequestRouter.activateCard(id: id, cvv: cvv))
     }
     
     public func enableCard(_ id: Int) -> Promise<PSPaymentCard> {
