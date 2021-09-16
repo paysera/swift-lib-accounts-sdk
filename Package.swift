@@ -11,7 +11,7 @@ let package = Package(
         .package(
             name: "PayseraCommonSDK",
             url: "https://github.com/paysera/swift-lib-common-sdk",
-            .branch("xcode13")
+            .exact("4.2.0")
         )
     ],
     targets: [

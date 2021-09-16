@@ -5,9 +5,9 @@
         "package": "Alamofire",
         "repositoryURL": "https://github.com/Alamofire/Alamofire",
         "state": {
-          "branch": "xcode13",
-          "revision": "b1205a15ce933edb616b8aab29e41746281a0f53",
-          "version": null
+          "branch": null,
+          "revision": "f96b619bcb2383b43d898402283924b80e2c4bae",
+          "version": "5.4.3"
         }
       },
       {
@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/auth0/JWTDecode.swift",
         "state": {
           "branch": null,
-          "revision": "22e3d174e9df2962f0268a31dac45e5ea54a6e62",
-          "version": "2.6.1"
+          "revision": "65b03eae055ef22f93e6acd3c0d6153cc0f6ec8d",
+          "version": "2.6.2"
         }
       },
       {
@@ -41,9 +41,9 @@
         "package": "PayseraCommonSDK",
         "repositoryURL": "https://github.com/paysera/swift-lib-common-sdk",
         "state": {
-          "branch": "xcode13",
-          "revision": "a2e4f49f2e403bfebed2c856ac2e6d4931b2359f",
-          "version": null
+          "branch": null,
+          "revision": "b926fa314babdef15dc973431b99fe242788bacc",
+          "version": "4.2.0"
         }
       }
     ]
