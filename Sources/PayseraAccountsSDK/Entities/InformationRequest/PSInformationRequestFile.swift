@@ -1,7 +1,6 @@
 import ObjectMapper
 
-public class PSInformationRequestFile: Mappable {
-    
+public class PSFile: Mappable {
     public var content: String!
     public var filename: String!
     

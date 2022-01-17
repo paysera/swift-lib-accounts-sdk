@@ -405,7 +405,7 @@ public class AccountsApiClient: PSBaseApiClient {
     
     public func uploadInformationRequestFile(
         id: String,
-        file: PSInformationRequestFile
+        file: PSFile
     ) -> Promise<PSInformationRequestUploadedFile> {
         doRequest(
             requestRouter: AccountsApiRequestRouter.uploadInformationRequestFile(id: id, file: file)
@@ -426,5 +426,39 @@ public class AccountsApiClient: PSBaseApiClient {
     
     public func unblockPaymentCardCVV(cardId: String) -> Promise<PSPaymentCard> {
         doRequest(requestRouter: AccountsApiRequestRouter.unblockPaymentCardCVV(cardId: cardId))
+    }
+    
+    public func getAdditionalInformationNeeded(transferID: String) -> Promise<PSAdditionalTransferInformationNeeded> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter
+                .getAdditionalInformationNeeded(transferID: transferID)
+        )
+    }
+    
+    public func createDocument() -> Promise<PSTransferAmlDetailsDocument> {
+        doRequest(requestRouter: AccountsApiRequestRouter.createDocument)
+    }
+    
+    public func uploadTransferAmlDetailsDocumentFile(hash: String, file: PSFile) -> Promise<Any> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter
+                .uploadTransferAmlDetailsDocumentFile(hash: hash, file: file)
+        )
+    }
+    
+    public func uploadTransferAmlDetailsDocument(
+        information: PSAdditionalTransferInformation
+    ) -> Promise<PSAdditionalTransferInformation> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter
+                .uploadTransferAmlDetailsDocument(information: information)
+        )
+    }
+    
+    public func uploadAdditionalTransferDetails(transferID: String, hash: String) -> Promise<PSAdditionalTransferInformation> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter
+                .uploadTransferAdditionalDetails(transferID: transferID, hash: hash)
+        )
     }
 }

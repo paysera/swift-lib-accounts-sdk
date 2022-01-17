@@ -38,6 +38,7 @@ enum AccountsApiRequestRouter {
     case getSpreadPercentage(request: PSSpreadPercentageRequest)
     case getInformationRequests(filter: PSInformationRequestFilter)
     case getClientAllowances
+    case getAdditionalInformationNeeded(transferID: String)
     
     // MARK: - POST
     case createCard(PSCreatePaymentCardRequest)
@@ -47,7 +48,10 @@ enum AccountsApiRequestRouter {
     case cancelConversionTransfer(transferId: String)
     case buyBullion(identifier: String, accountNumber: String)
     case sellBullion(hash: String)
-    case uploadInformationRequestFile(id: String, file: PSInformationRequestFile)
+    case uploadInformationRequestFile(id: String, file: PSFile)
+    case createDocument
+    case uploadTransferAmlDetailsDocumentFile(hash: String, file: PSFile)
+    case uploadTransferAmlDetailsDocument(information: PSAdditionalTransferInformation)
     
     // MARK: - PUT
     case deactivateAccount(accountNumber: String)
@@ -67,6 +71,7 @@ enum AccountsApiRequestRouter {
     case validateAuthorizationUsers(userIds: [Int])
     case uploadInformationRequestAnswers(id: String, answers: PSInformationRequestAnswers)
     case unblockPaymentCardCVV(cardId: String)
+    case uploadTransferAdditionalDetails(transferID: String, hash: String)
     
     // MARK: - Delete
     case deleteAuthorization(id: String)
@@ -105,7 +110,8 @@ enum AccountsApiRequestRouter {
              .getUnallocatedBullionBalance,
              .getSpreadPercentage,
              .getInformationRequests,
-             .getClientAllowances:
+             .getClientAllowances,
+             .getAdditionalInformationNeeded:
             return .get
 
         case .post,
@@ -114,7 +120,10 @@ enum AccountsApiRequestRouter {
              .createAuthorization,
              .buyBullion,
              .sellBullion,
-             .uploadInformationRequestFile:
+             .uploadInformationRequestFile,
+             .createDocument,
+             .uploadTransferAmlDetailsDocumentFile,
+             .uploadTransferAmlDetailsDocument:
             return .post
             
         case .put,
@@ -137,7 +146,8 @@ enum AccountsApiRequestRouter {
              .signConversionTransfer,
              .cancelConversionTransfer,
              .uploadInformationRequestAnswers,
-             .unblockPaymentCardCVV:
+             .unblockPaymentCardCVV,
+             .uploadTransferAdditionalDetails:
             return .put
 
         case .delete,
@@ -320,6 +330,21 @@ enum AccountsApiRequestRouter {
             
         case .unblockPaymentCardCVV(let cardId):
             return "/issued-payment-card/v1/cards/\(cardId)/unblock-cvv"
+            
+        case .getAdditionalInformationNeeded(let transferID):
+            return "/transfer-aml/rest/v1/details/\(transferID)/additional-info-needed"
+            
+        case .createDocument:
+            return "transfer-aml/rest/v1/documents"
+            
+        case .uploadTransferAmlDetailsDocumentFile(let hash, _):
+            return "transfer-aml/rest/v1/documents/\(hash)"
+            
+        case .uploadTransferAmlDetailsDocument:
+            return "transfer-aml/rest/v1/details"
+            
+        case .uploadTransferAdditionalDetails(let transferID, let hash):
+            return "transfer-aml/rest/v1/details/\(hash)/transfer/\(transferID)"
         }
     }
     
@@ -431,6 +456,12 @@ enum AccountsApiRequestRouter {
             
         case .activateCard(_, let cvv):
             return ["cvv2": cvv]
+            
+        case .uploadTransferAmlDetailsDocumentFile(_, let file):
+            return file.toJSON()
+            
+        case .uploadTransferAmlDetailsDocument(let information):
+            return information.toJSON()
             
         default:
             return nil
