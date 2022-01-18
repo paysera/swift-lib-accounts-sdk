@@ -49,7 +49,7 @@ enum AccountsApiRequestRouter {
     case buyBullion(identifier: String, accountNumber: String)
     case sellBullion(hash: String)
     case uploadInformationRequestFile(id: String, file: PSFile)
-    case createDocument
+    case createTransferAmlDetailsDocument
     case uploadTransferAmlDetailsDocumentFile(hash: String, file: PSFile)
     case uploadTransferAmlDetailsDocument(information: PSAdditionalTransferInformation)
     
@@ -121,7 +121,7 @@ enum AccountsApiRequestRouter {
              .buyBullion,
              .sellBullion,
              .uploadInformationRequestFile,
-             .createDocument,
+             .createTransferAmlDetailsDocument,
              .uploadTransferAmlDetailsDocumentFile,
              .uploadTransferAmlDetailsDocument:
             return .post
@@ -334,7 +334,7 @@ enum AccountsApiRequestRouter {
         case .getIsAdditionalInformationNeeded(let transferID):
             return "/transfer-aml/rest/v1/details/\(transferID)/additional-info-needed"
             
-        case .createDocument:
+        case .createTransferAmlDetailsDocument:
             return "transfer-aml/rest/v1/documents"
             
         case .uploadTransferAmlDetailsDocumentFile(let hash, _):

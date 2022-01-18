@@ -437,8 +437,8 @@ public class AccountsApiClient: PSBaseApiClient {
         )
     }
     
-    public func createDocument() -> Promise<PSTransferAmlDetailsDocument> {
-        doRequest(requestRouter: AccountsApiRequestRouter.createDocument)
+    public func createTransferAmlDetailsDocument() -> Promise<PSTransferAmlDetailsDocument> {
+        doRequest(requestRouter: AccountsApiRequestRouter.createTransferAmlDetailsDocument)
     }
     
     public func uploadTransferAmlDetailsDocumentFile(

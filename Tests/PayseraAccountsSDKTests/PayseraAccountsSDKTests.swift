@@ -760,12 +760,12 @@ class AccountsSDKTests: XCTestCase {
         XCTAssertNotNil(object)
     }
     
-    func testCreateDocument() {
+    func testCreateTransferAmlDetailsDocument() {
         var object: PSTransferAmlDetailsDocument?
         let expectation = XCTestExpectation(description: "")
         
         accountsApiClient
-            .createDocument()
+            .createTransferAmlDetailsDocument()
             .done { result in
                 object = result
             }
