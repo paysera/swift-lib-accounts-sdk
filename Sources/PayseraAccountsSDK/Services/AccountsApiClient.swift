@@ -428,10 +428,12 @@ public class AccountsApiClient: PSBaseApiClient {
         doRequest(requestRouter: AccountsApiRequestRouter.unblockPaymentCardCVV(cardId: cardId))
     }
     
-    public func getAdditionalInformationNeeded(transferID: String) -> Promise<PSAdditionalTransferInformationNeeded> {
+    public func getIsAdditionalInformationNeeded(
+        transferID: String
+    ) -> Promise<PSAdditionalTransferInformationNeeded> {
         doRequest(
             requestRouter: AccountsApiRequestRouter
-                .getAdditionalInformationNeeded(transferID: transferID)
+                .getIsAdditionalInformationNeeded(transferID: transferID)
         )
     }
     
@@ -439,7 +441,10 @@ public class AccountsApiClient: PSBaseApiClient {
         doRequest(requestRouter: AccountsApiRequestRouter.createDocument)
     }
     
-    public func uploadTransferAmlDetailsDocumentFile(hash: String, file: PSFile) -> Promise<Any> {
+    public func uploadTransferAmlDetailsDocumentFile(
+        hash: String,
+        file: PSFile
+    ) -> Promise<PSTransferAmlDetailsDocument> {
         doRequest(
             requestRouter: AccountsApiRequestRouter
                 .uploadTransferAmlDetailsDocumentFile(hash: hash, file: file)
@@ -458,7 +463,7 @@ public class AccountsApiClient: PSBaseApiClient {
     public func uploadAdditionalTransferDetails(transferID: String, hash: String) -> Promise<PSAdditionalTransferInformation> {
         doRequest(
             requestRouter: AccountsApiRequestRouter
-                .uploadTransferAdditionalDetails(transferID: transferID, hash: hash)
+                .uploadAdditionalTransferDetails(transferID: transferID, hash: hash)
         )
     }
 }

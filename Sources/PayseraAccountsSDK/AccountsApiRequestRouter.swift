@@ -38,7 +38,7 @@ enum AccountsApiRequestRouter {
     case getSpreadPercentage(request: PSSpreadPercentageRequest)
     case getInformationRequests(filter: PSInformationRequestFilter)
     case getClientAllowances
-    case getAdditionalInformationNeeded(transferID: String)
+    case getIsAdditionalInformationNeeded(transferID: String)
     
     // MARK: - POST
     case createCard(PSCreatePaymentCardRequest)
@@ -71,7 +71,7 @@ enum AccountsApiRequestRouter {
     case validateAuthorizationUsers(userIds: [Int])
     case uploadInformationRequestAnswers(id: String, answers: PSInformationRequestAnswers)
     case unblockPaymentCardCVV(cardId: String)
-    case uploadTransferAdditionalDetails(transferID: String, hash: String)
+    case uploadAdditionalTransferDetails(transferID: String, hash: String)
     
     // MARK: - Delete
     case deleteAuthorization(id: String)
@@ -111,7 +111,7 @@ enum AccountsApiRequestRouter {
              .getSpreadPercentage,
              .getInformationRequests,
              .getClientAllowances,
-             .getAdditionalInformationNeeded:
+             .getIsAdditionalInformationNeeded:
             return .get
 
         case .post,
@@ -147,7 +147,7 @@ enum AccountsApiRequestRouter {
              .cancelConversionTransfer,
              .uploadInformationRequestAnswers,
              .unblockPaymentCardCVV,
-             .uploadTransferAdditionalDetails:
+             .uploadAdditionalTransferDetails:
             return .put
 
         case .delete,
@@ -331,7 +331,7 @@ enum AccountsApiRequestRouter {
         case .unblockPaymentCardCVV(let cardId):
             return "/issued-payment-card/v1/cards/\(cardId)/unblock-cvv"
             
-        case .getAdditionalInformationNeeded(let transferID):
+        case .getIsAdditionalInformationNeeded(let transferID):
             return "/transfer-aml/rest/v1/details/\(transferID)/additional-info-needed"
             
         case .createDocument:
@@ -343,7 +343,7 @@ enum AccountsApiRequestRouter {
         case .uploadTransferAmlDetailsDocument:
             return "transfer-aml/rest/v1/details"
             
-        case .uploadTransferAdditionalDetails(let transferID, let hash):
+        case .uploadAdditionalTransferDetails(let transferID, let hash):
             return "transfer-aml/rest/v1/details/\(hash)/transfer/\(transferID)"
         }
     }

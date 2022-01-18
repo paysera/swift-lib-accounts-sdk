@@ -1,3 +1,5 @@
+import ObjectMapper
+
 public class PSAdditionalTransferInformationNeeded: Mappable {
     public var value: Bool!
     

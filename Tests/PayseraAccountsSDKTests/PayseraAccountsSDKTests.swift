@@ -740,12 +740,12 @@ class AccountsSDKTests: XCTestCase {
         XCTAssertNotNil(object)
     }
     
-    func testGetAdditionalInformationNeeded() {
+    func testGetIsAdditionalInformationNeeded() {
         var object: Bool?
         let expectation = XCTestExpectation(description: "")
         
         accountsApiClient
-            .getAdditionalInformationNeeded(transferID: "insert_me")
+            .getIsAdditionalInformationNeeded(transferID: "insert_me")
             .done { result in
                 object = result.value
             }
