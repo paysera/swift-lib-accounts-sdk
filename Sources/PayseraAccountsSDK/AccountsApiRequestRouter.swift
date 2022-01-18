@@ -335,16 +335,16 @@ enum AccountsApiRequestRouter {
             return "/transfer-aml/rest/v1/details/\(transferID)/additional-info-needed"
             
         case .createTransferAmlDetailsDocument:
-            return "transfer-aml/rest/v1/documents"
+            return "/transfer-aml/rest/v1/documents"
             
         case .uploadTransferAmlDetailsDocumentFile(let hash, _):
-            return "transfer-aml/rest/v1/documents/\(hash)"
+            return "/transfer-aml/rest/v1/documents/\(hash)"
             
         case .uploadTransferAmlDetailsDocument:
-            return "transfer-aml/rest/v1/details"
+            return "/transfer-aml/rest/v1/details"
             
         case .uploadAdditionalTransferDetails(let transferID, let hash):
-            return "transfer-aml/rest/v1/details/\(hash)/transfer/\(transferID)"
+            return "/transfer-aml/rest/v1/details/\(hash)/transfer/\(transferID)"
         }
     }
     
