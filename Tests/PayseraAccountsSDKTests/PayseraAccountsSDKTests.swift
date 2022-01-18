@@ -638,7 +638,7 @@ class AccountsSDKTests: XCTestCase {
         var object: PSInformationRequestUploadedFile?
         let expectation = XCTestExpectation(description: "")
         
-        let psInformationRequestFile = PSInformationRequestFile()
+        let psInformationRequestFile = PSFile()
         psInformationRequestFile.content = ""
         psInformationRequestFile.filename = ""
         
@@ -737,6 +737,120 @@ class AccountsSDKTests: XCTestCase {
             }
         
         wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(object)
+    }
+    
+    func testGetIsAdditionalInformationNeeded() {
+        var object: Bool?
+        let expectation = XCTestExpectation(description: "")
+        
+        accountsApiClient
+            .getIsAdditionalInformationNeeded(transferID: "insert_me")
+            .done { result in
+                object = result.value
+            }
+            .catch { error in
+                XCTFail(error.localizedDescription)
+            }
+            .finally {
+                expectation.fulfill()
+            }
+        
+        wait(for: [expectation], timeout: 5.0)
+        XCTAssertNotNil(object)
+    }
+    
+    func testCreateTransferAmlDetailsDocument() {
+        var object: PSTransferAmlDetailsDocument?
+        let expectation = XCTestExpectation(description: "")
+        
+        accountsApiClient
+            .createTransferAmlDetailsDocument()
+            .done { result in
+                object = result
+            }
+            .catch { error in
+                XCTFail(error.localizedDescription)
+            }
+            .finally {
+                expectation.fulfill()
+            }
+        
+        wait(for: [expectation], timeout: 5.0)
+        XCTAssertNotNil(object)
+    }
+    
+    func testUploadTransferAmlDetailsDocumentFile() {
+        var object: Any?
+        let expectation = XCTestExpectation(description: "")
+        
+        let hash = "insert_me"
+        let file = PSFile()
+        file.content = "insert_me"
+        file.filename = "insert_me"
+        
+        accountsApiClient
+            .uploadTransferAmlDetailsDocumentFile(hash: hash, file: file)
+            .done { result in
+                object = result
+            }
+            .catch { error in
+                XCTFail(error.localizedDescription)
+            }
+            .finally {
+                expectation.fulfill()
+            }
+        
+        wait(for: [expectation], timeout: 5.0)
+        XCTAssertNotNil(object)
+    }
+    
+    func testSaveTransferAmlDetails() {
+        var object: Any?
+        let expectation = XCTestExpectation(description: "")
+        
+        let information = PSAdditionalTransferInformation()
+        information.description = "insert_me"
+        information.fundsOrigin = "insert_me"
+        let document = PSTransferAmlDetailsDocument()
+        document.hash = "insert_me"
+        information.documents = [document]
+        
+        accountsApiClient
+            .saveTransferAmlDetails(information: information)
+            .done { result in
+                object = result
+            }
+            .catch { error in
+                XCTFail(error.localizedDescription)
+            }
+            .finally {
+                expectation.fulfill()
+            }
+        
+        wait(for: [expectation], timeout: 5.0)
+        XCTAssertNotNil(object)
+    }
+    
+    func testAssignAdditionalTransferDetails() {
+        var object: PSAdditionalTransferInformation?
+        let expectation = XCTestExpectation(description: "")
+        let hash = "insert_me"
+        let transferID = "insert_me"
+        
+        accountsApiClient
+            .assignAdditionalTransferDetails(transferID: transferID, hash: hash)
+            .done { result in
+                object = result
+            }
+            .catch { error in
+                XCTFail(error.localizedDescription)
+            }
+            .finally {
+                expectation.fulfill()
+            }
+        
+        wait(for: [expectation], timeout: 5.0)
         XCTAssertNotNil(object)
     }
 }

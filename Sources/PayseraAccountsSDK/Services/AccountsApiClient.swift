@@ -405,7 +405,7 @@ public class AccountsApiClient: PSBaseApiClient {
     
     public func uploadInformationRequestFile(
         id: String,
-        file: PSInformationRequestFile
+        file: PSFile
     ) -> Promise<PSInformationRequestUploadedFile> {
         doRequest(
             requestRouter: AccountsApiRequestRouter.uploadInformationRequestFile(id: id, file: file)
@@ -426,5 +426,44 @@ public class AccountsApiClient: PSBaseApiClient {
     
     public func unblockPaymentCardCVV(cardId: String) -> Promise<PSPaymentCard> {
         doRequest(requestRouter: AccountsApiRequestRouter.unblockPaymentCardCVV(cardId: cardId))
+    }
+    
+    public func getIsAdditionalInformationNeeded(
+        transferID: String
+    ) -> Promise<PSAdditionalTransferInformationNeeded> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter
+                .getIsAdditionalInformationNeeded(transferID: transferID)
+        )
+    }
+    
+    public func createTransferAmlDetailsDocument() -> Promise<PSTransferAmlDetailsDocument> {
+        doRequest(requestRouter: AccountsApiRequestRouter.createTransferAmlDetailsDocument)
+    }
+    
+    public func uploadTransferAmlDetailsDocumentFile(
+        hash: String,
+        file: PSFile
+    ) -> Promise<PSTransferAmlDetailsDocument> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter
+                .uploadTransferAmlDetailsDocumentFile(hash: hash, file: file)
+        )
+    }
+    
+    public func saveTransferAmlDetails(
+        information: PSAdditionalTransferInformation
+    ) -> Promise<PSAdditionalTransferInformation> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter
+                .saveTransferAmlDetails(information: information)
+        )
+    }
+    
+    public func assignAdditionalTransferDetails(transferID: String, hash: String) -> Promise<PSAdditionalTransferInformation> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter
+                .assignAdditionalTransferDetails(transferID: transferID, hash: hash)
+        )
     }
 }
