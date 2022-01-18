@@ -451,19 +451,19 @@ public class AccountsApiClient: PSBaseApiClient {
         )
     }
     
-    public func uploadTransferAmlDetailsDocument(
+    public func saveTransferAmlDetails(
         information: PSAdditionalTransferInformation
     ) -> Promise<PSAdditionalTransferInformation> {
         doRequest(
             requestRouter: AccountsApiRequestRouter
-                .uploadTransferAmlDetailsDocument(information: information)
+                .saveTransferAmlDetails(information: information)
         )
     }
     
-    public func uploadAdditionalTransferDetails(transferID: String, hash: String) -> Promise<PSAdditionalTransferInformation> {
+    public func assignAdditionalTransferDetails(transferID: String, hash: String) -> Promise<PSAdditionalTransferInformation> {
         doRequest(
             requestRouter: AccountsApiRequestRouter
-                .uploadAdditionalTransferDetails(transferID: transferID, hash: hash)
+                .assignAdditionalTransferDetails(transferID: transferID, hash: hash)
         )
     }
 }

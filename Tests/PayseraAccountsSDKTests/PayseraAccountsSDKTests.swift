@@ -805,7 +805,7 @@ class AccountsSDKTests: XCTestCase {
         XCTAssertNotNil(object)
     }
     
-    func testUploadTransferAmlDetailsDocument() {
+    func testSaveTransferAmlDetails() {
         var object: Any?
         let expectation = XCTestExpectation(description: "")
         
@@ -817,7 +817,7 @@ class AccountsSDKTests: XCTestCase {
         information.documents = [document]
         
         accountsApiClient
-            .uploadTransferAmlDetailsDocument(information: information)
+            .saveTransferAmlDetails(information: information)
             .done { result in
                 object = result
             }
@@ -832,14 +832,14 @@ class AccountsSDKTests: XCTestCase {
         XCTAssertNotNil(object)
     }
     
-    func testUploadAdditionalTransferDetails() {
+    func testAssignAdditionalTransferDetails() {
         var object: PSAdditionalTransferInformation?
         let expectation = XCTestExpectation(description: "")
         let hash = "insert_me"
         let transferID = "insert_me"
         
         accountsApiClient
-            .uploadAdditionalTransferDetails(transferID: transferID, hash: hash)
+            .assignAdditionalTransferDetails(transferID: transferID, hash: hash)
             .done { result in
                 object = result
             }

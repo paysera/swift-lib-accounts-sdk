@@ -51,7 +51,7 @@ enum AccountsApiRequestRouter {
     case uploadInformationRequestFile(id: String, file: PSFile)
     case createTransferAmlDetailsDocument
     case uploadTransferAmlDetailsDocumentFile(hash: String, file: PSFile)
-    case uploadTransferAmlDetailsDocument(information: PSAdditionalTransferInformation)
+    case saveTransferAmlDetails(information: PSAdditionalTransferInformation)
     
     // MARK: - PUT
     case deactivateAccount(accountNumber: String)
@@ -71,7 +71,7 @@ enum AccountsApiRequestRouter {
     case validateAuthorizationUsers(userIds: [Int])
     case uploadInformationRequestAnswers(id: String, answers: PSInformationRequestAnswers)
     case unblockPaymentCardCVV(cardId: String)
-    case uploadAdditionalTransferDetails(transferID: String, hash: String)
+    case assignAdditionalTransferDetails(transferID: String, hash: String)
     
     // MARK: - Delete
     case deleteAuthorization(id: String)
@@ -123,7 +123,7 @@ enum AccountsApiRequestRouter {
              .uploadInformationRequestFile,
              .createTransferAmlDetailsDocument,
              .uploadTransferAmlDetailsDocumentFile,
-             .uploadTransferAmlDetailsDocument:
+             .saveTransferAmlDetails:
             return .post
             
         case .put,
@@ -147,7 +147,7 @@ enum AccountsApiRequestRouter {
              .cancelConversionTransfer,
              .uploadInformationRequestAnswers,
              .unblockPaymentCardCVV,
-             .uploadAdditionalTransferDetails:
+             .assignAdditionalTransferDetails:
             return .put
 
         case .delete,
@@ -340,10 +340,10 @@ enum AccountsApiRequestRouter {
         case .uploadTransferAmlDetailsDocumentFile(let hash, _):
             return "/transfer-aml/rest/v1/documents/\(hash)"
             
-        case .uploadTransferAmlDetailsDocument:
+        case .saveTransferAmlDetails:
             return "/transfer-aml/rest/v1/details"
             
-        case .uploadAdditionalTransferDetails(let transferID, let hash):
+        case .assignAdditionalTransferDetails(let transferID, let hash):
             return "/transfer-aml/rest/v1/details/\(hash)/transfer/\(transferID)"
         }
     }
@@ -460,7 +460,7 @@ enum AccountsApiRequestRouter {
         case .uploadTransferAmlDetailsDocumentFile(_, let file):
             return file.toJSON()
             
-        case .uploadTransferAmlDetailsDocument(let information):
+        case .saveTransferAmlDetails(let information):
             return information.toJSON()
             
         default:
