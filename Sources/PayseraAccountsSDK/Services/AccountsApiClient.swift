@@ -466,4 +466,14 @@ public class AccountsApiClient: PSBaseApiClient {
                 .assignAdditionalTransferDetails(transferID: transferID, hash: hash)
         )
     }
+    
+    public func getPartner(userID: Int) -> Promise<PSClientPartnerResponse> {
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+        let date = inputFormatter.string(from: Date())
+        return doRequest(
+            requestRouter: AccountsApiRequestRouter
+                .getPartner(userID: userID, date: date)
+        )
+    }
 }

@@ -39,6 +39,7 @@ enum AccountsApiRequestRouter {
     case getInformationRequests(filter: PSInformationRequestFilter)
     case getClientAllowances
     case getIsAdditionalInformationNeeded(transferID: String)
+    case getPartner(userID: Int, date: String)
     
     // MARK: - POST
     case createCard(PSCreatePaymentCardRequest)
@@ -111,7 +112,8 @@ enum AccountsApiRequestRouter {
              .getSpreadPercentage,
              .getInformationRequests,
              .getClientAllowances,
-             .getIsAdditionalInformationNeeded:
+             .getIsAdditionalInformationNeeded,
+             .getPartner:
             return .get
 
         case .post,
@@ -345,6 +347,9 @@ enum AccountsApiRequestRouter {
             
         case .assignAdditionalTransferDetails(let transferID, let hash):
             return "/transfer-aml/rest/v1/details/\(hash)/transfer/\(transferID)"
+            
+        case .getPartner:
+            return "/rest/partner/v1/partners"
         }
     }
     
@@ -463,6 +468,12 @@ enum AccountsApiRequestRouter {
         case .saveTransferAmlDetails(let information):
             return information.toJSON()
             
+        case .getPartner(let userID, let date):
+            return [
+                "covenantee_id": userID,
+                "date": date
+            ]
+        
         default:
             return nil
         }
