@@ -8,8 +8,8 @@ public class PSConversionTransfer: Mappable {
     public var status: String!
     public var details: String!
     public var accountNumber: String!
-    public var from: PSMoney!
-    public var to: PSMoney!
+    public var from: PSMoney?
+    public var to: PSMoney?
     public var type: String!
     public var createdAt: TimeInterval?
     public var performAt: TimeInterval?
