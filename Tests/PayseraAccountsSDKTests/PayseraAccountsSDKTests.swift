@@ -855,7 +855,7 @@ class AccountsSDKTests: XCTestCase {
     }
     
     func testGetPartner() {
-        var object: [PSClientPartnerResponseItem]?
+        var object: [PSClientPartner]?
         let expectation = XCTestExpectation(description: "")
         let userID = 9068578
         
