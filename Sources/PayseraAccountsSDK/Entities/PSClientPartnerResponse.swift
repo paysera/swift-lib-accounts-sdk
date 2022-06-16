@@ -7,7 +7,7 @@ public class PSClientPartner: Mappable {
     required public init?(map: Map) { }
     
     public func mapping(map: Map) {
-        code   <- map["code"]
-        covenanteeId <- map["covenantee_id"]
+        code            <- map["code"]
+        covenanteeId    <- map["covenantee_id"]
     }
 }
