@@ -473,7 +473,7 @@ public class AccountsApiClient: PSBaseApiClient {
         let date = inputFormatter.string(from: Date())
         return doRequest(
             requestRouter: AccountsApiRequestRouter
-            .getPartner(userID: userID, date: date)
+                .getPartner(userID: userID, date: date)
         )
     }
 }

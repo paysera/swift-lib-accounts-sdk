@@ -9,7 +9,7 @@ class AccountsSDKTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJldnBiYW5rIiwiaXNzIjoiYXV0aF9hcGkiLCJleHAiOjE2NTUzOTE2MzQsImp0aSI6IjI2NDk3MjYzOCIsInBzcjpzIjpbImNvbmZpcm1lZF9sb2dfaW4iXSwicHNyOnUiOiI5MDY4NTc4IiwicHNyOnNpZCI6Img0dWNkTXE3eThKVTdONTdKQUZuTXV3S3lFNFUwOUdSIiwicHNyOmEiOnsidXNlcl9pZCI6IjkwNjg1NzgifSwiaWF0IjoxNjU1MzQ4NDM0fQ.HqdOOgJxGmQlFc2apvoM4tz7FojvoOGdcwRiRDUSfCHM9w3Nq4URx2eqqbszriESo_U4EoqJ06EgnOwwbyx2JYoAosedfHCbUWrsBx4b3dFs6QU2GX1EZ0G7q38y3ISo0gBgQE3Nmx48xQlnj8wJCvnHraB-017N40if386oblbYEHtDYdfwTe4OIZkfBm-wEq7PziELNb29Ti9AqVwtaFoAvsi_C-62fOvp17jJO1Ik9zstUj8qNmcxwwZNnqdinkKiKvPebcDyZm6IVzpj0sfY2zW0wsXwDMJSzw_-HwvwXkVY64ySgJ7Q3LjRiCbh1S5Tg-16SUqVaPG1zYxPbbQwkrgM50HnnZ1Sp6s6c5dXWJEfdJTAbKuPwbpK6pG4tFoQmW664IS6g30kEj0VKSgp9uEfrnb_hrWcBNC2WNWwHeFUHy7v3vBBLULjxaLNfN639jEBorUfsf7cs_Eh9MciBWaCJIsTQg8CHrUuZe-TpGWcR-SuQDzHJDK8A12gxFkZ4_IcOtpv9GodQLFRhApu2270-yW5D-csmyijouPFiVvCYA0JheBedVeFkX3EW2p_1fqm01OctattNhGE1ecaOcrH0s1RSTWbuygynpRq9R27LD1t31-daXNj_0bVHkjuY-HYmVAdQotLVlP1TThbx7y20oo3QLM-noCAffM"
+        let token = "insert_me"
         
         let credentials = PSApiJWTCredentials()
         credentials.token = try! decode(jwt: token)
@@ -857,7 +857,7 @@ class AccountsSDKTests: XCTestCase {
     func testGetPartner() {
         var object: [PSClientPartner]?
         let expectation = XCTestExpectation(description: "")
-        let userID = 9068578
+        let userID = 0
         
         accountsApiClient
             .getPartner(userID: userID)
