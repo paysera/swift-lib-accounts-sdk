@@ -467,7 +467,7 @@ public class AccountsApiClient: PSBaseApiClient {
         )
     }
     
-    public func getPartner(userID: Int) -> Promise<PSClientPartnerResponse> {
+    public func getPartner(userID: Int) -> Promise<PSMetadataAwareResponse<PSClientPartner>> {
         let inputFormatter = DateFormatter()
         inputFormatter.dateFormat = "yyyy-MM-dd"
         let date = inputFormatter.string(from: Date())

@@ -855,14 +855,14 @@ class AccountsSDKTests: XCTestCase {
     }
     
     func testGetPartner() {
-        var object: String?
+        var object: [PSClientPartner]?
         let expectation = XCTestExpectation(description: "")
         let userID = 0
         
         accountsApiClient
             .getPartner(userID: userID)
             .done { result in
-                object = result.partnerID
+                object = result.items
             }
             .catch { error in
                 XCTFail(error.localizedDescription)

@@ -1,11 +1,13 @@
 import ObjectMapper
 
-public class PSClientPartnerResponse: Mappable {
-    public var partnerID: String!
+public class PSClientPartner: Mappable {
+    public var code: String!
+    public var covenanteeId: String!
     
     required public init?(map: Map) { }
     
     public func mapping(map: Map) {
-        partnerID   <- map["partner_id"]
+        code            <- map["code"]
+        covenanteeId    <- map["covenantee_id"]
     }
 }

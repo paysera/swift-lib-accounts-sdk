@@ -349,7 +349,7 @@ enum AccountsApiRequestRouter {
             return "/transfer-aml/rest/v1/details/\(hash)/transfer/\(transferID)"
             
         case .getPartner:
-            return "/rest/partner/v1/partners"
+            return "/rest/partner/v1/client-partners"
         }
     }
     
