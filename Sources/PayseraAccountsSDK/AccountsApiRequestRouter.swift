@@ -11,6 +11,7 @@ enum AccountsApiRequestRouter {
     
     // MARK: - GET
     case getLastUserQuestionnaire(userId: Int)
+    case getQuestionnaireConfiguration(legalId: Int)
     case getIbanInformation(iban: String, currency: String?)
     case getBalance(accountNumber: String, showHistoricalCurrencies: Bool)
     case getPaymentCards(cardsFilter: PSGetPaymentCardsFilterRequest)
@@ -86,6 +87,7 @@ enum AccountsApiRequestRouter {
         case .get,
              .getIbanInformation,
              .getLastUserQuestionnaire,
+             .getQuestionnaireConfiguration,
              .getBalance,
              .getPaymentCards,
              .getPaymentCardDesigns,
@@ -179,6 +181,9 @@ enum AccountsApiRequestRouter {
             
         case .getLastUserQuestionnaire(let userId):
             return "/questionnaire/rest/v1/user/\(userId)/questionnaire"
+            
+        case .getQuestionnaireConfiguration(let legalId):
+            return "/questionnaire/rest/v1/configuration/\(legalId)"
             
         case .getIbanInformation(let iban, _):
             return "/transfer/rest/v1/bank-information/\(iban)"

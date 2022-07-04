@@ -476,4 +476,11 @@ public class AccountsApiClient: PSBaseApiClient {
                 .getPartner(userID: userID, date: date)
         )
     }
+    
+    public func getQuestionnaireConfiguration(legalId: Int) -> Promise<PSQuestionnaireConfiguration> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter
+                .getQuestionnaireConfiguration(legalId: legalId)
+        )
+    }
 }
