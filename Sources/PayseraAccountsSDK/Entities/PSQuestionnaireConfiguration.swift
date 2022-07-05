@@ -63,14 +63,18 @@ public final class PSQuestionnaireConfigurationItem: Mappable {
 public final class PSQuestionnaireConfiguration: Mappable {
     
     public var id: Int!
-    public var configuration: PSQuestionnaireConfigurationItem
+    public var isInitial: Bool
+    public var featureFlags: [String]
+    public var areasOfActivity: [PSQuestionnaireAreasOfActivity]
     
     required public init?(map: Map) {
         
         print(map.JSON)
         
         do {
-            configuration = try map.value("configuration")
+            isInitial = try map.value("is_initial")
+            featureFlags  = try map.value("feature_flags")
+            areasOfActivity = try map.value("areas_of_activity")
         } catch {
             print(error)
             return nil
