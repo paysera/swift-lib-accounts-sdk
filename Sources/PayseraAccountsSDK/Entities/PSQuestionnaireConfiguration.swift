@@ -47,11 +47,9 @@ public final class PSQuestionnaireConfiguration: Mappable {
     
     required public init?(map: Map) {
         do {
-            let config: Map = try map.value("configuration")
-            
-            isInitial = try config.value("is_initial")
-            featureFlags  = try config.value("feature_flags")
-            areasOfActivity = try config.value("areas_of_activity")
+            isInitial = try map.value("is_initial")
+            featureFlags  = try map.value("feature_flags")
+            areasOfActivity = try map.value("areas_of_activity")
         } catch {
             print(error)
             return nil
