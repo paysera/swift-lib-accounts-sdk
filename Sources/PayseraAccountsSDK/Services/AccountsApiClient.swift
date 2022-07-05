@@ -477,7 +477,7 @@ public class AccountsApiClient: PSBaseApiClient {
         )
     }
     
-    public func getQuestionnaireConfiguration(legalId: Int) -> Promise<[PSQuestionnaireConfiguration]> {
+    public func getQuestionnaireConfiguration(legalId: Int) -> Promise<PSQuestionnaireConfiguration> {
         return doRequest(
             requestRouter: AccountsApiRequestRouter
                 .getQuestionnaireConfiguration(legalId: legalId)
