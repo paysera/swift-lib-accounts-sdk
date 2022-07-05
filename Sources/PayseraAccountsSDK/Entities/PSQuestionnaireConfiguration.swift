@@ -47,7 +47,7 @@ public final class PSQuestionnaireConfiguration: Mappable {
     
     required public init?(map: Map) {
         
-        print(map)
+        print(map.JSON)
         
         do {
             isInitial = try map.value("is_initial")
