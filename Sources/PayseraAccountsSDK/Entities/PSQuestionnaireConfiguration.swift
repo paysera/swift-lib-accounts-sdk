@@ -21,7 +21,7 @@ import ObjectMapper
 //    ]
 //}
 
-public final class PSQuestionnaireAreasOfActivity {
+public final class PSQuestionnaireAreasOfActivity: Mappable {
     public var id: String
     public var name: String
     
@@ -44,9 +44,6 @@ public final class PSQuestionnaireConfigurationItem: Mappable {
     public var areasOfActivity: [PSQuestionnaireAreasOfActivity]
     
     required public init?(map: Map) {
-        
-        print(map.JSON)
-        
         do {
             isInitial = try map.value("is_initial")
             featureFlags  = try map.value("feature_flags")
@@ -63,18 +60,12 @@ public final class PSQuestionnaireConfigurationItem: Mappable {
 public final class PSQuestionnaireConfiguration: Mappable {
     
     public var id: Int!
-    public var isInitial: Bool
-    public var featureFlags: [String]
-    public var areasOfActivity: [PSQuestionnaireAreasOfActivity]
+    public var configuration: PSQuestionnaireConfigurationItem
     
     required public init?(map: Map) {
         
-        print(map.JSON)
-        
         do {
-            isInitial = try map.value("is_initial")
-            featureFlags  = try map.value("feature_flags")
-            areasOfActivity = try map.value("areas_of_activity")
+            configuration = try map.value("configuration")
         } catch {
             print(error)
             return nil
