@@ -39,7 +39,7 @@ public final class PSQuestionnaireAreasOfActivity {
 }
 
 public final class PSQuestionnaireConfigurationItem: Mappable {
-    public var isInitial: Int
+    public var isInitial: Bool
     public var featureFlags: [String]
     public var areasOfActivity: [PSQuestionnaireAreasOfActivity]
     
