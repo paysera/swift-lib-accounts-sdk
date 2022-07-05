@@ -46,6 +46,9 @@ public final class PSQuestionnaireConfiguration: Mappable {
     public var areasOfActivity: [PSQuestionnaireAreasOfActivity]
     
     required public init?(map: Map) {
+        
+        print(map)
+        
         do {
             isInitial = try map.value("is_initial")
             featureFlags  = try map.value("feature_flags")
