@@ -874,4 +874,25 @@ class AccountsSDKTests: XCTestCase {
         wait(for: [expectation], timeout: 5.0)
         XCTAssertNotNil(object)
     }
+    
+    func testGetLegalAccountsConfigs() {
+        var object: PSQuestionnaireConfiguration?
+        let expectation = XCTestExpectation(description: "")
+        let userID = 0
+        
+        accountsApiClient
+            .getQuestionnaireConfiguration(legalId: userID)
+            .done { result in
+                object = result
+            }
+            .catch { error in
+                XCTFail(error.localizedDescription)
+            }
+            .finally {
+                expectation.fulfill()
+            }
+        
+        wait(for: [expectation], timeout: 5.0)
+        XCTAssertNotNil(object)
+    }
 }
