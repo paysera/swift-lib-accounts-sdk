@@ -63,7 +63,7 @@ public final class PSQuestionnaireConfigurationItem: Mappable {
 public final class PSQuestionnaireConfiguration: Mappable {
     
     public var id: Int!
-    public var configuration: [PSQuestionnaireConfigurationItem]
+    public var configuration: PSQuestionnaireConfigurationItem
     
     required public init?(map: Map) {
         

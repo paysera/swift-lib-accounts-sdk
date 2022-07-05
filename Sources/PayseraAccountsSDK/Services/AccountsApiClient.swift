@@ -477,16 +477,19 @@ public class AccountsApiClient: PSBaseApiClient {
         )
     }
     
-    public func getQuestionnaireConfiguration(legalId: Int) -> Promise<PSQuestionnaireConfiguration> {
-        let promise: Promise<PSQuestionnaireConfiguration> = doRequest(
+    public func getQuestionnaireConfiguration(legalId: Int) -> Promise<[PSQuestionnaireConfiguration]> {
+        let promise: Promise<[PSQuestionnaireConfiguration]> = doRequest(
             requestRouter: AccountsApiRequestRouter
                 .getQuestionnaireConfiguration(legalId: legalId)
         )
         
-        let updated = promise.map { config -> PSQuestionnaireConfiguration in
-            config.id = legalId
+        let updated = promise.map { configs -> [PSQuestionnaireConfiguration] in
             
-            return config
+            return configs.map { config in
+                config.id = legalId
+                
+                return config
+            }
         }
         
         return updated
