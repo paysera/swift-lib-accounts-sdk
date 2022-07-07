@@ -476,4 +476,19 @@ public class AccountsApiClient: PSBaseApiClient {
                 .getPartner(userID: userID, date: date)
         )
     }
+    
+    public func getQuestionnaireConfiguration(legalId: Int) -> Promise<PSQuestionnaireConfiguration> {
+        let promise: Promise<PSQuestionnaireConfiguration> = doRequest(
+            requestRouter: AccountsApiRequestRouter
+                .getQuestionnaireConfiguration(legalId: legalId)
+        )
+
+        let updated = promise.map { config -> PSQuestionnaireConfiguration in
+            config.id = legalId
+
+            return config
+        }
+
+        return updated
+    }
 }
