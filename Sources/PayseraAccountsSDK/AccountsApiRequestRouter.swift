@@ -19,6 +19,7 @@ enum AccountsApiRequestRouter {
     case getPaymentCardLimit(accountNumber: String)
     case getPaymentCardShippingAddress(accountNumber: String)
     case getPaymentCardDeliveryPrices(country: String)
+    case getPaymentCardDeliveryPriceForTemporaryAddress
     case getPaymentCardIssuePrice(filter: PSPaymentCardIssuePriceFilter)
     case getPaymentCardDeliveryDate(country: String, deliveryType: String)
     case getPaymentCardDeliveryCountries(filter: PSBaseFilter)
@@ -94,6 +95,7 @@ enum AccountsApiRequestRouter {
              .getPaymentCardLimit,
              .getPaymentCardShippingAddress,
              .getPaymentCardDeliveryPrices,
+             .getPaymentCardDeliveryPriceForTemporaryAddress,
              .getPaymentCardIssuePrice,
              .getPaymentCardDeliveryDate,
              .getCategorizedAccountNumbers,
@@ -217,6 +219,9 @@ enum AccountsApiRequestRouter {
 
         case .getPaymentCardDeliveryPrices(let country):
             return "/issued-payment-card/v1/card-delivery-prices/\(country)"
+            
+        case .getPaymentCardDeliveryPriceForTemporaryAddress:
+            return "/issued-payment-card/v1/card-delivery-prices/temporary_address"
             
         case .getPaymentCardIssuePrice:
             return "/issued-payment-card/v1/card-account-issue-price"

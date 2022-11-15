@@ -171,6 +171,22 @@ class AccountsSDKTests: XCTestCase {
         XCTAssertNotNil(object)
     }
     
+    func testGetPaymentCardDeliveryPricesForTemporaryAddress() {
+        var object: [PSPaymentCardDeliveryPrice]?
+        let expectation = XCTestExpectation(description: "")
+        
+        accountsApiClient
+            .getPaymentCardDeliveryPricesForTemporaryAddress()
+            .done { deliveryPrices in
+                object = deliveryPrices
+            }.catch { error in
+                print(error)
+            }.finally { expectation.fulfill() }
+        
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(object)
+    }
+    
     func testGetPaymentCardDeliveryDate() {
         var object: PSPaymentCardDeliveryDate?
         let expectation = XCTestExpectation(description: "")
