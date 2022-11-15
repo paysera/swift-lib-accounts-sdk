@@ -209,6 +209,12 @@ public class AccountsApiClient: PSBaseApiClient {
             requestRouter: AccountsApiRequestRouter.getPaymentCardDeliveryPrices(country: country)
         )
     }
+    
+    public func getPaymentCardDeliveryPricesForTemporaryAddress() -> Promise<[PSPaymentCardDeliveryPrice]> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.getPaymentCardDeliveryPriceForTemporaryAddress
+        )
+    }
 
     public func getPaymentCardIssuePrice(
         filter: PSPaymentCardIssuePriceFilter
