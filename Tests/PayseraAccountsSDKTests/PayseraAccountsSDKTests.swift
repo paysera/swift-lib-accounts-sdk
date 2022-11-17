@@ -244,6 +244,27 @@ class AccountsSDKTests: XCTestCase {
         XCTAssertNotNil(object)
     }
     
+    func testGetPaymentCardDeliveryTravelCountries() {
+        var object: PSPaymentCardDeliveryCountries?
+        let expectation = XCTestExpectation(description: "")
+        
+        let filter = PSBaseFilter()
+        filter.limit = 200
+        
+        accountsApiClient
+            .getPaymentCardDeliveryTravelCountries(filter: filter)
+            .done { response in
+                object = response
+                
+                print(object ?? "N/A")
+            }.catch { error in
+                print(error)
+            }.finally { expectation.fulfill() }
+        
+        wait(for: [expectation], timeout: 3.0)
+        XCTAssertNotNil(object)
+    }
+    
     func testCreateAccount() {
         let expectation = XCTestExpectation(description: "")
         var object: Any?
