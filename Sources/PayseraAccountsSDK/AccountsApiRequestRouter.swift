@@ -23,6 +23,7 @@ enum AccountsApiRequestRouter {
     case getPaymentCardIssuePrice(filter: PSPaymentCardIssuePriceFilter)
     case getPaymentCardDeliveryDate(country: String, deliveryType: String)
     case getPaymentCardDeliveryCountries(filter: PSBaseFilter)
+    case getPaymentCardDeliveryTravelCountries(filter: PSBaseFilter)
     case getCategorizedAccountNumbers(filter: PSGetCategorizedAccountNumbersFilterRequest)
     case getTransfer(id: String)
     case getAuthorizations(PSGetAuthorizationsFilterRequest)
@@ -101,6 +102,7 @@ enum AccountsApiRequestRouter {
              .getCategorizedAccountNumbers,
              .getTransfer,
              .getPaymentCardDeliveryCountries,
+             .getPaymentCardDeliveryTravelCountries,
              .getAuthorizations,
              .getPaymentCardDeliveryPreference,
              .getPaymentCardExpiringCardOrderRestriction,
@@ -204,6 +206,9 @@ enum AccountsApiRequestRouter {
             
         case .getPaymentCardDeliveryCountries:
             return "/issued-payment-card/v1/card-delivery-countries"
+            
+        case .getPaymentCardDeliveryTravelCountries:
+            return "/issued-payment-card/v1/card-tnt-delivery-countries"
             
         case .getPaymentCardLimit(let accountNumber):
             return "/issued-payment-card/v1/accounts/\(accountNumber)/card-limit"
@@ -388,6 +393,9 @@ enum AccountsApiRequestRouter {
             return filter.toJSON()
             
         case .getPaymentCardDeliveryCountries(let filter):
+            return filter.toJSON()
+            
+        case .getPaymentCardDeliveryTravelCountries(let filter):
             return filter.toJSON()
             
         case .getPaymentCards(let cardsFilter):

@@ -159,6 +159,14 @@ public class AccountsApiClient: PSBaseApiClient {
             requestRouter: AccountsApiRequestRouter.getPaymentCardDeliveryCountries(filter: filter)
         )
     }
+    
+    public func getPaymentCardDeliveryTravelCountries(
+        filter: PSBaseFilter
+    ) -> Promise<PSPaymentCardDeliveryCountries> {
+        doRequest(
+            requestRouter: AccountsApiRequestRouter.getPaymentCardDeliveryTravelCountries(filter: filter)
+        )
+    }
         
     public func getPaymentCards(
         cardsFilter: PSGetPaymentCardsFilterRequest
