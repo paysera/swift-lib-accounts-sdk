@@ -1,8 +1,7 @@
 import ObjectMapper
 import PayseraCommonSDK
 
-public class PSPaymentCardDeliveryPrice: Mappable {
-    
+public final class PSPaymentCardDeliveryPrice: Mappable {
     public var price: PSMoney
     public var country: String
     public var deliveryType: String
@@ -19,5 +18,8 @@ public class PSPaymentCardDeliveryPrice: Mappable {
     }
     
     public func mapping(map: Map) {
+        price           <- map["price"]
+        country         <- map["country"]
+        deliveryType    <- map["delivery_type"]
     }
 }

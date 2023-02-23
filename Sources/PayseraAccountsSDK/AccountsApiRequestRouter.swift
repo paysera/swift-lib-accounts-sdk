@@ -222,11 +222,9 @@ enum AccountsApiRequestRouter {
         case .getPaymentCardExpiringCardOrderRestriction(let accountNumber):
             return "/issued-payment-card/v1/accounts/\(accountNumber)/expiring-card-reorder-restriction"
 
-        case .getPaymentCardDeliveryPrices(let country):
-            return "/issued-payment-card/v1/card-delivery-prices/\(country)"
-            
-        case .getPaymentCardDeliveryPriceForTemporaryAddress:
-            return "/issued-payment-card/v1/card-delivery-prices/temporary_address"
+        case .getPaymentCardDeliveryPrices,
+             .getPaymentCardDeliveryPriceForTemporaryAddress:
+            return "/issued-payment-card/v1/card-delivery-prices"
             
         case .getPaymentCardIssuePrice:
             return "/issued-payment-card/v1/card-account-issue-price"
@@ -491,6 +489,12 @@ enum AccountsApiRequestRouter {
                 "covenantee_id": userID,
                 "date": date
             ]
+            
+        case .getPaymentCardDeliveryPrices(let country):
+            return ["country_code": country]
+            
+        case .getPaymentCardDeliveryPriceForTemporaryAddress:
+            return ["country_code": "temporary_address"]
         
         default:
             return nil

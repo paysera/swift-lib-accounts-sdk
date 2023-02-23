@@ -212,13 +212,14 @@ public class AccountsApiClient: PSBaseApiClient {
     
     public func getPaymentCardDeliveryPrices(
         country: String
-    ) -> Promise<[PSPaymentCardDeliveryPrice]> {
+    ) -> Promise<PSMetadataAwareResponse<PSPaymentCardDeliveryPrice>> {
         doRequest(
             requestRouter: AccountsApiRequestRouter.getPaymentCardDeliveryPrices(country: country)
         )
     }
     
-    public func getPaymentCardDeliveryPricesForTemporaryAddress() -> Promise<[PSPaymentCardDeliveryPrice]> {
+    public func getPaymentCardDeliveryPricesForTemporaryAddress()
+    -> Promise<PSMetadataAwareResponse<PSPaymentCardDeliveryPrice>> {
         doRequest(
             requestRouter: AccountsApiRequestRouter.getPaymentCardDeliveryPriceForTemporaryAddress
         )
