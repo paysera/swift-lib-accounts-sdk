@@ -156,13 +156,13 @@ class AccountsSDKTests: XCTestCase {
     }
 
     func testGetPaymentCardDeliveryPrices() {
-        var object: [PSPaymentCardDeliveryPrice]?
+        var object: PSMetadataAwareResponse<PSPaymentCardDeliveryPrice>?
         let expectation = XCTestExpectation(description: "")
         
         accountsApiClient
             .getPaymentCardDeliveryPrices(country: "de")
-            .done { deliveryPrices in
-                object = deliveryPrices
+            .done { response in
+                object = response
             }.catch { error in
                 print(error)
             }.finally { expectation.fulfill() }
@@ -172,13 +172,13 @@ class AccountsSDKTests: XCTestCase {
     }
     
     func testGetPaymentCardDeliveryPricesForTemporaryAddress() {
-        var object: [PSPaymentCardDeliveryPrice]?
+        var object: PSMetadataAwareResponse<PSPaymentCardDeliveryPrice>?
         let expectation = XCTestExpectation(description: "")
         
         accountsApiClient
             .getPaymentCardDeliveryPricesForTemporaryAddress()
-            .done { deliveryPrices in
-                object = deliveryPrices
+            .done { response in
+                object = response
             }.catch { error in
                 print(error)
             }.finally { expectation.fulfill() }
