@@ -43,6 +43,7 @@ enum AccountsApiRequestRouter {
     case getClientAllowances
     case getIsAdditionalInformationNeeded(transferID: String)
     case getPartner(userID: Int, date: String)
+    case getPayseraOfficeAddresses
     
     // MARK: - POST
     case createCard(PSCreatePaymentCardRequest)
@@ -119,7 +120,8 @@ enum AccountsApiRequestRouter {
              .getInformationRequests,
              .getClientAllowances,
              .getIsAdditionalInformationNeeded,
-             .getPartner:
+             .getPartner,
+             .getPayseraOfficeAddresses:
             return .get
 
         case .post,
@@ -363,6 +365,8 @@ enum AccountsApiRequestRouter {
             
         case .getPartner:
             return "/rest/partner/v1/client-partners"
+        case .getPayseraOfficeAddresses:
+            return "/public/issued-payment-card/v1/office-addresses"
         }
     }
     
