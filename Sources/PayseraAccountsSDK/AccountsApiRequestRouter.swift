@@ -366,7 +366,7 @@ enum AccountsApiRequestRouter {
         case .getPartner:
             return "/rest/partner/v1/client-partners"
         case .getPayseraOfficeAddresses:
-            return "/public/issued-payment-card/v1/office-addresses"
+            return "/issued-payment-card/v1/office-addresses"
         }
     }
     
