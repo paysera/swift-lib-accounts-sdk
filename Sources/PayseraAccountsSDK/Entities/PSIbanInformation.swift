@@ -22,6 +22,6 @@ public class PSIbanInformation: Mappable {
         branchCode             <- map["branch_code"]
         sepaParticipant        <- map["sepa_participant"]
         sepaInstantParticipant <- map["sepa_instant_participant"]
-        target2Participant <- map["target2_participant"]
+        target2Participant     <- map["target2_participant"]
     }
 }

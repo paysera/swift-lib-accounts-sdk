@@ -932,4 +932,23 @@ class AccountsSDKTests: XCTestCase {
         wait(for: [expectation], timeout: 5.0)
         XCTAssertNotNil(object)
     }
+    
+    func testGetPayseraOfficeAddresses() {
+        var object: PSMetadataAwareResponse<PSPayseraOfficeAddress>?
+        let expectation = XCTestExpectation(description: "")
+        
+        accountsApiClient.getPayseraOfficeAddresses()
+            .done { result in
+                object = result
+            }
+            .catch { error in
+                XCTFail(error.localizedDescription)
+            }
+            .finally {
+                expectation.fulfill()
+            }
+        
+        wait(for: [expectation], timeout: 5.0)
+        XCTAssertNotNil(object)
+    }
 }

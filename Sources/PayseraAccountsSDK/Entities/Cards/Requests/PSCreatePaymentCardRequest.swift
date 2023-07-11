@@ -4,6 +4,8 @@ public class PSCreatePaymentCardRequest: Mappable {
 
     public var cardOwnerId: Int?
     public var shippingAddress: PSPaymentCardShippingAddress?
+    public var travelerAddress: PSPaymentCardShippingAddress?
+    public var officeId: String?
     public var deliveryType: String?
     public var accountNumber: String?
     public var accountOwnerId: Int?
@@ -16,6 +18,8 @@ public class PSCreatePaymentCardRequest: Mappable {
     public init(
         cardOwnerId: Int,
         shippingAddress: PSPaymentCardShippingAddress,
+        travelerAddress: PSPaymentCardShippingAddress?,
+        officeId: String?,
         deliveryType: String,
         accountOwnerId: Int? = nil,
         accountNumber: String? = nil,
@@ -24,6 +28,8 @@ public class PSCreatePaymentCardRequest: Mappable {
     ) {
         self.cardOwnerId = cardOwnerId
         self.shippingAddress = shippingAddress
+        self.travelerAddress = travelerAddress
+        self.officeId = officeId
         self.accountOwnerId = accountOwnerId
         self.accountNumber = accountNumber
         self.chargeInfo = chargeInfo
@@ -37,6 +43,8 @@ public class PSCreatePaymentCardRequest: Mappable {
         accountOwnerId  <- map["account_owner_id"]
         chargeInfo      <- map["charge_info"]
         shippingAddress <- map["shipping_address"]
+        travelerAddress <- map["traveler_address"]
+        officeId        <- map["office_id"]
         deliveryType    <- map["delivery_type"]
         visualType      <- map["visual_type"]
     }

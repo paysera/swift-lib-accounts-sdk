@@ -506,4 +506,8 @@ public class AccountsApiClient: PSBaseApiClient {
 
         return updated
     }
+    
+    public func getPayseraOfficeAddresses() -> Promise<PSMetadataAwareResponse<PSPayseraOfficeAddress>> {
+        doRequest(requestRouter: AccountsApiRequestRouter.getPayseraOfficeAddresses)
+    }
 }
