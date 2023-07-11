@@ -9,7 +9,7 @@ public class PSPayseraOfficeAddress: Mappable {
     public var officeId: String?
     public var shipmentCode: String?
     
-    required public init?(map: Map) { }
+    required public init?(map: Map) {}
     
     public func mapping(map: Map) {
         name         <- map["name"]
