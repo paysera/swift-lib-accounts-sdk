@@ -5,7 +5,7 @@ public final class PSQuestionnaireConfigurationItem: Mappable {
     
     required public init?(map: Map) {
         do {
-            isInitial = try map.value("is_initial")
+            isInitial = try map.value("is_initial_tmp")
         } catch {
             print(error)
             return nil
