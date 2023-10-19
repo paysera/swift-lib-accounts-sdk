@@ -13,35 +13,34 @@ public class PSTransferBeneficiary: Mappable {
 
     public init() {}
     
-    required public init?(map: Map) {
-    }
+    required public init?(map: Map) {}
 
     public func mapping(map: Map) {
-        name                        <- map["name"]
-        type                        <- map["type"]
-        beneficiaryPayseraAccount   <- map["paysera_account"]
-        beneficiaryBankAccount      <- map["bank_account"]
-        beneficiaryTaxAccount       <- map["tax_account"]
-        beneficiaryWebmoneyAccount  <- map["webmoney_account"]
-        beneficiaryIdentifiers      <- map["identifiers"]
+        name                             <- map["name"]
+        type                             <- map["type"]
+        beneficiaryPayseraAccount        <- map["paysera_account"]
+        beneficiaryBankAccount           <- map["bank_account"]
+        beneficiaryTaxAccount            <- map["tax_account"]
+        beneficiaryWebmoneyAccount       <- map["webmoney_account"]
+        beneficiaryIdentifiers           <- map["identifiers"]
         beneficiaryAdditionalInformation <- map["additional_information"]
-        beneficiaryAddress <- map["address"]
+        beneficiaryAddress               <- map["address"]
     }
 
     public func isBankAccount() -> Bool {
-        return beneficiaryBankAccount != nil
+        beneficiaryBankAccount != nil
     }
 
     public func isWebmoneyAccount() -> Bool {
-        return beneficiaryWebmoneyAccount != nil
+        beneficiaryWebmoneyAccount != nil
     }
 
     public func isTaxAccount() -> Bool {
-        return beneficiaryTaxAccount != nil
+        beneficiaryTaxAccount != nil
     }
 
     public func isPayseraAccount() -> Bool {
-        return beneficiaryPayseraAccount != nil
+        beneficiaryPayseraAccount != nil
     }
 }
 
@@ -50,8 +49,7 @@ public class PSTransferBeneficiaryTaxAccount: Mappable {
 
     public init() {}
     
-    required public init?(map: Map) {
-    }
+    required public init?(map: Map) {}
 
     public func mapping(map: Map) {
         identifier <- map["identifier"]
@@ -69,17 +67,16 @@ public class PSTransferBeneficiaryBankAccount: Mappable {
 
     public init() {}
     
-    required public init?(map: Map) {
-    }
+    required public init?(map: Map) {}
 
     public func mapping(map: Map) {
-        iban            <- map["iban"]
-        bic             <- map["bic"]
-        bankTitle       <- map["bank_title"]
-        sortCode        <- map["sort_code"]
-        accountNumber   <- map["account_number"]
-        countryCode     <- map["country_code"]
-        bankAddress     <- map["bank_address"]
+        iban          <- map["iban"]
+        bic           <- map["bic"]
+        bankTitle     <- map["bank_title"]
+        sortCode      <- map["sort_code"]
+        accountNumber <- map["account_number"]
+        countryCode   <- map["country_code"]
+        bankAddress   <- map["bank_address"]
     }
 }
 
@@ -91,14 +88,13 @@ public class PSTransferBeneficiaryPayseraAccount: Mappable {
     
     public init() {}
     
-    required public init?(map: Map) {
-    }
+    required public init?(map: Map) {}
     
     public func mapping(map: Map) {
-        userId          <- map["user_id"]
-        phone           <- map["phone"]
-        email           <- map["email"]
-        accountNumber   <- map["account_number"]
+        userId        <- map["user_id"]
+        phone         <- map["phone"]
+        email         <- map["email"]
+        accountNumber <- map["account_number"]
     }
 }
 
@@ -107,8 +103,7 @@ public class PSTransferBeneficiaryWebmoneyAccount: Mappable {
 
     public init() {}
     
-    required public init?(map: Map) {
-    }
+    required public init?(map: Map) {}
 
     public func mapping(map: Map) {
         purse <- map["purse"]
@@ -120,8 +115,7 @@ public class PSTransferBeneficiaryIdentifiers: Mappable {
 
     public init() {}
     
-    required public init?(map: Map) {
-    }
+    required public init?(map: Map) {}
 
     public func mapping(map: Map) {
         general <- map["general"]
@@ -132,15 +126,17 @@ public class PSTransferBeneficiaryAdditionalInformation: Mappable {
     public var type: String?
     public var city: String?
     public var country: String?
+    public var postalCode: String?
 
     public init() {}
     
-    required public init?(map: Map) { }
+    required public init?(map: Map) {}
 
     public func mapping(map: Map) {
-        type <- map["type"]
-        city <- map["city"]
-        country <- map["country"]
+        type     <- map["type"]
+        city     <- map["city"]
+        country  <- map["country"]
+        postalCode <- map["postal_code"]
     }
 }
 
@@ -150,7 +146,7 @@ public class PSTransferAddress: Mappable {
 
     public init() {}
     
-    required public init?(map: Map) { }
+    required public init?(map: Map) {}
 
     public func mapping(map: Map) {
         addressLine <- map["address_line"]
