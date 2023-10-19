@@ -133,9 +133,9 @@ public class PSTransferBeneficiaryAdditionalInformation: Mappable {
     required public init?(map: Map) {}
 
     public func mapping(map: Map) {
-        type     <- map["type"]
-        city     <- map["city"]
-        country  <- map["country"]
+        type       <- map["type"]
+        city       <- map["city"]
+        country    <- map["country"]
         postalCode <- map["postal_code"]
     }
 }
